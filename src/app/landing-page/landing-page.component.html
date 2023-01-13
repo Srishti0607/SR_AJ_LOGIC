@@ -1,110 +1,63 @@
 <div>
-  <mat-form-field fxFlex="100" appearance="outline" style="margin-right:10px">
-    <mat-select [(ngModel)]="currencyCode" placeholder="Select" appearance="outline">
-      <mat-option *ngFor="let countryDet of countryDetObj"
-        value="{{countryDet?.currencyCode}}">{{countryDet?.countryName}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Currency Code</mat-label>
-    <input matInput [(ngModel)]="currencyCode" [disabled]='true'>
-  </mat-form-field>
+  <select [(ngModel)]="currencyCode" placeholder="Select" appearance="outline">
+    <option *ngFor="let countryDet of countryDetObj" value="{{countryDet?.currencyCode}}">{{countryDet?.countryName}}</option>
+  </select>
+  <input type="text" [(ngModel)]="currencyCode" disabled>
 </div>
+<br/>
 <div>
-  <mat-form-field fxFlex="100" appearance="outline" style="margin-right:10px">
-    <mat-select placeholder="Select" appearance="outline" [(ngModel)]="upperAlpha">
-      <mat-option *ngFor="let upLet of upperLetterObj" value="{{upLet}}">{{upLet}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field fxFlex="100" appearance="outline" style="margin-right:10px">
-    <mat-select placeholder="Select" appearance="outline">
-      <mat-option *ngFor="let loLet of lowerLetterObj" value="{{loLet}}">{{loLet}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field fxFlex="100" appearance="outline" style="margin-right:10px">
-    <mat-select placeholder="Select" appearance="outline">
-      <mat-option *ngFor="let num of numberObj" value="{{num}}">{{num}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-button mat-button color="primary" [disabled]="upperLetterObj.length>0 || lowerLetterObj.length>0 || numberObj.length>0"
-    (click)="initializeList()">RESET LIST</button>
+  <select placeholder="Select" appearance="outline" [(ngModel)]="upperAlpha">
+    <option *ngFor="let upLet of upperLetterObj" value="{{upLet}}">{{upLet}}</option>
+  </select>
+  <select placeholder="Select" appearance="outline">
+    <option *ngFor="let loLet of lowerLetterObj" value="{{loLet}}">{{loLet}}</option>
+  </select>
+  <select placeholder="Select" appearance="outline">
+    <option *ngFor="let num of numberObj" value="{{num}}">{{num}}</option>
+  </select>
+  <button type="button" [disabled]="upperLetterObj.length>0 || lowerLetterObj.length>0 || numberObj.length>0"  (click)="initializeList()">RESET LIST</button>
 </div>
+<br/>
 <div>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Upper Drop Down Length</mat-label>
-    <input matInput [value]="upperLetterObj?.length" [disabled]='true'>
-  </mat-form-field>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Lower Drop Down Length</mat-label>
-    <input matInput [value]="lowerLetterObj?.length" [disabled]='true'>
-  </mat-form-field>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Number Drop Down Length</mat-label>
-    <input matInput [value]="numberObj?.length" [disabled]='true'>
-  </mat-form-field>
-  <button mat-button mat-button color="primary" (click)="clearDetails()">CLEAR ITEM</button>
+  <input type="text" [value]="upperLetterObj?.length" disabled>
+  <input type="text" [value]="lowerLetterObj?.length" disabled>
+  <input type="text" [value]="numberObj?.length" disabled>
+  <button type="button" (click)="clearDetails()">CLEAR LIST</button>
 </div>
+<br/>
 <div>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Enter Data To Delete</mat-label>
-    <input matInput [(ngModel)]="inputData">
-  </mat-form-field>
-  <button mat-button mat-button color="primary" [disabled]="!inputData" (click)="applyOperation('D')">DELETE
-    ITEM</button>
+  <input type="text" placeholder="Enter Data To Delete" [(ngModel)]="inputData">
+  <button type="button" [disabled]="!inputData" (click)="applyOperation('D')">DELETE ITEM</button>
 </div>
+<br/>
 <div>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Enter Data To Insert</mat-label>
-    <input matInput [(ngModel)]="inputDataForInsertion">
-  </mat-form-field>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Enter position</mat-label>
-    <input matInput type="number" [(ngModel)]="position">
-  </mat-form-field>
-  <button mat-button mat-button color="primary" [disabled]="!inputDataForInsertion"
-    (click)="insertItemInUpperList()">INSERT ITEM</button>
+  <input type="text" placeholder="Enter Data To Insert" [(ngModel)]="inputDataForInsertion">
+  <input type="number" placeholder="Enter Data To Insert" [(ngModel)]="position">
+  <button type="button" [disabled]="!inputDataForInsertion" (click)="insertItemInUpperList()">INSERT ITEM</button>
 </div>
+<br/>
 <div>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Enter Data To Select</mat-label>
-    <input matInput [(ngModel)]="selectDataForInsertion">
-  </mat-form-field>
-  <button mat-button mat-button color="primary" [disabled]="!selectDataForInsertion"
-    (click)="applyOperation('S')">SELECT ITEM</button>
+  <input type="text" placeholder="Enter Data To Select" [(ngModel)]="selectDataForInsertion">
+  <button type="button" [disabled]="!selectDataForInsertion" (click)="applyOperation('S')">SELECT ITEM</button>
 </div>
+<br/>
 <div>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Initial Data To Update</mat-label>
-    <input matInput [(ngModel)]="initialData">
-  </mat-form-field>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Final Data To Select</mat-label>
-    <input matInput [(ngModel)]="finalData">
-  </mat-form-field>
-  <button mat-button mat-button color="primary" [disabled]="!initialData || !finalData"
-    (click)="applyOperation('U')">UPDATE ITEM</button>
+  <input type="text" placeholder="Enter Data To Update" [(ngModel)]="initialData">
+  <input type="text" placeholder="Enter Data To Update" [(ngModel)]="finalData">
+  <button type="button" [disabled]="!initialData || !finalData"(click)="applyOperation('U')">UPDATE ITEM</button>
 </div>
+<br/>
 <div>
-  <mat-form-field style="margin-right:10px">
-    <mat-label>Amount</mat-label>
-    <input matInput type="number" [(ngModel)]="amount">
-  </mat-form-field>
-  <mat-form-field fxFlex="100" appearance="outline" style="margin-right:10px">
-    <mat-select [(ngModel)]="fromCurr" placeholder="Select" appearance="outline">
-      <mat-option *ngFor="let curr of CurrencyObj"
-        value="{{curr}}">{{curr}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field fxFlex="100" appearance="outline" style="margin-right:10px">
-    <mat-select [(ngModel)]="toCurr" placeholder="Select" appearance="outline">
-      <mat-option *ngFor="let curr of CurrencyObj"
-        value="{{curr}}">{{curr}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-button mat-button color="primary" [disabled]="!amount || !fromCurr || !toCurr || fromCurr == toCurr"
-    (click)="convertCurrency()">CONVERT</button>
-    <mat-spinner *ngIf="conversionFlag"></mat-spinner>
+  <input type="number" placeholder="Amount" [(ngModel)]="amount">
+  <select [(ngModel)]="fromCurr" placeholder="Select" appearance="outline">
+    <option *ngFor="let curr of CurrencyObj" value="{{curr}}">{{curr}}</option>
+  </select>
+  <select [(ngModel)]="toCurr" placeholder="Select" appearance="outline">
+    <option *ngFor="let curr of CurrencyObj" value="{{curr}}">{{curr}}</option>
+  </select>
+  <button type="button" [disabled]="!amount || !fromCurr || !toCurr || fromCurr == toCurr" (click)="convertCurrency()">CONVERT</button>
 </div>
+<br/>
 <div *ngIf="conversionResult">
   <span>{{amount}} {{fromCurr}} =</span><br/>
   <span>{{conversionResult}} {{toCurr}}</span><br/>

@@ -20,7 +20,7 @@ export class LandingPageComponent implements OnInit {
   inputDataForInsertion: string = '';//Capture string to insert
   selectDataForInsertion: string = '';//Capture string to select
   position: string = '';//Capture position
-  upperAlpha: any;//select upper alphabet
+  upperAlpha: any = 'A';//select upper alphabet
   initialData: string = '';//store initial data to update
   finalData: string;//store final data to update
   amount:any;//store amount value
