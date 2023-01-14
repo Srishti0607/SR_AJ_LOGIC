@@ -16,11 +16,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadDirectiveComponent } from './load-directive/load-directive.component';
+import { InputListComponentComponent } from './input-list-component/input-list-component.component';
+import {ComponentLoadDirective} from './directives/compLoader.directive'
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
+    LoadDirectiveComponent,
+    InputListComponentComponent,
+    ComponentLoadDirective
+    
   ],
   imports: [
     BrowserModule,

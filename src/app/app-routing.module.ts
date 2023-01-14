@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LoadDirectiveComponent } from './load-directive/load-directive.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
    { path: 'landing', component: LandingPageComponent },
+   { path: 'custom-directive', component: LoadDirectiveComponent },
 ];
 
 @NgModule({
