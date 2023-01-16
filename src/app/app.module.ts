@@ -19,6 +19,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadDirectiveComponent } from './load-directive/load-directive.component';
 import { InputListComponentComponent } from './input-list-component/input-list-component.component';
 import {ComponentLoadDirective} from './directives/compLoader.directive'
+import {IfDirective} from './directives/structFunc.directive';
+import { LoadPipeComponent } from './load-pipe/load-pipe.component'
+import { FieldAscSortPipe,CapitalPipe,SearchPipe } from "./pipes/custom.pipe";
 
 @NgModule({
   declarations: [
@@ -26,8 +29,12 @@ import {ComponentLoadDirective} from './directives/compLoader.directive'
     LandingPageComponent,
     LoadDirectiveComponent,
     InputListComponentComponent,
-    ComponentLoadDirective
-    
+    ComponentLoadDirective,
+    IfDirective,
+    LoadPipeComponent,
+    FieldAscSortPipe,
+    CapitalPipe,
+    SearchPipe    
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import {ComponentLoadDirective} from './directives/compLoader.directive'
     MatProgressSpinnerModule
   ],
   providers: [
-    LandingService
+    LandingService,
+    FieldAscSortPipe,CapitalPipe,SearchPipe
   ],
   bootstrap: [AppComponent],
 })

@@ -5,3 +5,7 @@
 <input placeholder="Alphabets Only" dynamicDirective [alphabetsOnly]="true" autocomplete="off" maxlength="10"/>
 <br/>
 <input placeholder="Alphabets and Numeric Only" dynamicDirective [alphaNumericOnly]="true" autocomplete="off" maxlength="10"/>
+<br/>
+<input id="showInput" type="checkbox" [(ngModel)]="showInput" />
+<label for="showInput">Show conditional header</label>
+<h2 *conditionalIf="showInput">My conditional header</h2>

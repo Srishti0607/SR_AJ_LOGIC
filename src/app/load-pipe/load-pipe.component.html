@@ -1,0 +1,20 @@
+<h1>Custom Pipes</h1>
+<br/>
+<span>{{userName}}</span>
+<br/>
+<select placeholder="Select" appearance="outline">
+  <option *ngFor="let num of randomNumb | fieldsort" value="{{num}}">{{num}}</option>
+</select>
+<br/>
+<br/>
+<div>
+<input type="text" class="form-control" placeholder="Search" [(ngModel)]="query" id="listSearch">
+    <div class="panel panel-default col-xs-12 col-sm-11" *ngFor="let lock of locked | LockFilter: query">
+    <input type="checkbox" (change)="openModal($event, lock)" class="check" id="{{lock.ID}}">
+    <label [for]="lock.ID" class="check-label"></label>
+    <h3 class="card-text name">{{lock.User}}</h3>
+    <h3 class="card-text auth">{{lock.AuthID}}</h3>
+    <h3 class="card-text form">{{lock.FormName}}</h3>
+    <h3 class="card-text win">{{lock.WinHandle}}</h3>
+</div>
+</div>

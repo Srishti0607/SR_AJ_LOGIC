@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input-list-component.component.css']
 })
 export class InputListComponentComponent implements OnInit {
+  showInput: any;
 
   constructor() { }
 
