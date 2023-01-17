@@ -12,6 +12,7 @@ export class LoadPipeComponent implements OnInit {
   public search:any = '';
   locked: any[] = [];
   query: any;
+  newDigit: any;
 
   constructor(private capitalize:CapitalPipe) { }
 
@@ -30,6 +31,11 @@ export class LoadPipeComponent implements OnInit {
     for(var num = 0;num <10 ; num++){
       this.randomNumb.push(Math.random())
     }
+  }
+
+  addNewDigit(){
+    console.log(this.newDigit);
+    this.randomNumb.push(this.newDigit);
   }
 
 }

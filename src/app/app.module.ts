@@ -21,7 +21,7 @@ import { InputListComponentComponent } from './input-list-component/input-list-c
 import {ComponentLoadDirective} from './directives/compLoader.directive'
 import {IfDirective} from './directives/structFunc.directive';
 import { LoadPipeComponent } from './load-pipe/load-pipe.component'
-import { FieldAscSortPipe,CapitalPipe,SearchPipe } from "./pipes/custom.pipe";
+import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe } from "./pipes/custom.pipe";
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { FieldAscSortPipe,CapitalPipe,SearchPipe } from "./pipes/custom.pipe";
     LoadPipeComponent,
     FieldAscSortPipe,
     CapitalPipe,
-    SearchPipe    
+    SearchPipe,
+    ImpureSortPipe
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,7 @@ import { FieldAscSortPipe,CapitalPipe,SearchPipe } from "./pipes/custom.pipe";
   ],
   providers: [
     LandingService,
-    FieldAscSortPipe,CapitalPipe,SearchPipe
+    FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe
   ],
   bootstrap: [AppComponent],
 })
