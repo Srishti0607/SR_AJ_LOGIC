@@ -22,11 +22,30 @@
 <br/>
 <div>
 <input type="text" class="form-control" placeholder="Search" [(ngModel)]="query" id="listSearch">
-    <div class="panel panel-default col-xs-12 col-sm-11" *ngFor="let lock of locked | LockFilter: query">    
+<table border="1" id="customers">
+  <tr>
+    <th>User<i (click)="onSortClick($event,'User')" class="my-icon fa fa-chevron-up"></i></th>
+    <th>Auth Id<i (click)="onSortClick($event,'AuthID')" class="my-icon fa fa-chevron-up"></i></th>
+    <th>Country<i (click)="onSortClick($event,'Mobile')" class="my-icon fa fa-chevron-up"></i></th>
+  </tr>
+  <tr *ngFor="let lock of locked | paginate: config | LockFilter:query:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement">
+    <td>{{lock.User}}</td>
+    <td>{{lock.AuthID}}</td>
+    <td>{{lock.Mobile}}</td>
+  </tr>
+</table>
+<div>
+  <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+</div>
+
+<div>Length = {{filterMetadata.count}}</div>
+
+
+    <!-- <div class="panel panel-default col-xs-12 col-sm-11" *ngFor="let lock of locked | LockFilter: query">    
     <label [for]="lock.ID" class="check-label"></label>
     <h3 class="card-text name">{{lock.User}}</h3>
     <h3 class="card-text auth">{{lock.AuthID}}</h3>
     <h3 class="card-text form">{{lock.FormName}}</h3>
     <h3 class="card-text win">{{lock.WinHandle}}</h3>
-</div>
+</div> -->
 </div>

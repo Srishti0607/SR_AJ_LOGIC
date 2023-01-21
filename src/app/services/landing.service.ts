@@ -15,6 +15,12 @@ export class LandingService {
       return this.http.get(url);
   }
 
+  //Get users
+  getUsers() {
+    let url = "assets/USERS.json"
+      return this.http.get(url);
+  }
+
   //Get currency conversion rate
   getCurrencyData(sourceCurr:string){
       return this.http.get(this.currencyDetBaseURL+'/latest?base='+sourceCurr);

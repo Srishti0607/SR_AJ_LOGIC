@@ -26,16 +26,18 @@ export class FieldAscSortPipe implements PipeTransform {
 })
 
 export class SearchPipe implements PipeTransform {
-  transform(value: any, args?: any): any {
-
-      if(!value)return null;
-      if(!args)return value;
-
-      args = args.toLowerCase();
-
-      return value.filter(function(item){
-          return JSON.stringify(item).toLowerCase().includes(args);
-      });
+  transform(items: any[], searchText: string, filterMetadata: any): any {
+    if(!items) return [];
+    if(!searchText) {
+      filterMetadata.count = items.length;
+      return items;
+    }
+    searchText = searchText.toLowerCase();
+    let filteredItems = items.filter(function(item){
+      return JSON.stringify(item).toLowerCase().includes(searchText);
+  });
+    filterMetadata.count = filteredItems.length;
+    return filteredItems;
   }
 }
 

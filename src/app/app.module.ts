@@ -22,6 +22,7 @@ import {ComponentLoadDirective} from './directives/compLoader.directive'
 import {IfDirective} from './directives/structFunc.directive';
 import { LoadPipeComponent } from './load-pipe/load-pipe.component'
 import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe } from "./pipes/custom.pipe";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe } from "./pipes/
     HttpClientModule,
     FormsModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [
     LandingService,

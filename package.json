@@ -24,8 +24,8 @@
     "@angular/material-moment-adapter": "^14.0.0",
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
-    "@angular/router": "^14.0.0"
-    
+    "@angular/router": "^14.0.0",
+    "ngx-pagination": "^6.0.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.1",
