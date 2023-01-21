@@ -23,6 +23,8 @@ import {IfDirective} from './directives/structFunc.directive';
 import { LoadPipeComponent } from './load-pipe/load-pipe.component'
 import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe } from "./pipes/custom.pipe";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ChildComponent } from './child/child.component';
+import {LifeCycleComponent} from './life-cycle/life-cycle.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FieldAscSortPipe,
     CapitalPipe,
     SearchPipe,
-    ImpureSortPipe
+    ImpureSortPipe,
+    ChildComponent,
+    LifeCycleComponent
   ],
   imports: [
     BrowserModule,

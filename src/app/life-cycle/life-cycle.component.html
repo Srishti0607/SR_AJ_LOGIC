@@ -1,1 +1,7 @@
-<p>life-cycle works!</p>
+<span>Check console Logs</span>
+<h2>Life Cycle Hooks</h2>
+    <button (click)="toggle()">Hide/Show Child</button>
+    <app-child
+      *ngIf="displayChild"
+      [message]="'Hello'">
+    </app-child>
