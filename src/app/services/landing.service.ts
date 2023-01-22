@@ -21,6 +21,12 @@ export class LandingService {
       return this.http.get(url);
   }
 
+  //Get Order details from JSON
+  getOrderData() {
+    let url = "assets/Orders_Details.json"
+      return this.http.get(url);
+  }
+
   //Get currency conversion rate
   getCurrencyData(sourceCurr:string){
       return this.http.get(this.currencyDetBaseURL+'/latest?base='+sourceCurr);

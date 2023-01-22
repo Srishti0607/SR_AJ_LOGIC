@@ -25,6 +25,8 @@ import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe } from "./pipes/
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChildComponent } from './child/child.component';
 import {LifeCycleComponent} from './life-cycle/life-cycle.component';
+import { SubtotalsRunningtotalsComponent } from './subtotals-runningtotals/subtotals-runningtotals.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import {LifeCycleComponent} from './life-cycle/life-cycle.component';
     SearchPipe,
     ImpureSortPipe,
     ChildComponent,
-    LifeCycleComponent
+    LifeCycleComponent,
+    SubtotalsRunningtotalsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import {LifeCycleComponent} from './life-cycle/life-cycle.component';
     FormsModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatPaginatorModule
   ],
   providers: [
     LandingService,

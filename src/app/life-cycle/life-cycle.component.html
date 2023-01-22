@@ -1,4 +1,14 @@
-<span>Check console Logs</span>
+<span>Check console Logs</span><br/>
+<span *ngIf="const">Life-Cycle Component: Constructor</span><br/>
+<span *ngIf="onChange">Life-Cycle Component: OnChanges</span><br/>
+<span *ngIf="init">Life-Cycle Component: OnInit</span><br/>
+<span *ngIf="doCheck">Life-Cycle Component: DoCheck</span><br/>
+<span *ngIf="afterContentInit">Life-Cycle Component: AfterContentInit</span><br/>
+<span *ngIf="afterContentChecked">Life-Cycle Component: AfterContentChecked</span><br/>
+<span *ngIf="afterViewInit">Life-Cycle Component: AfterViewInit</span><br/>
+<span *ngIf="afterViewChecked">Life-Cycle Component: AfterViewChecked</span><br/>
+<span *ngIf="destroy">Life-Cycle Component: OnDestroy</span><br/>
+
 <h2>Life Cycle Hooks</h2>
     <button (click)="toggle()">Hide/Show Child</button>
     <app-child
