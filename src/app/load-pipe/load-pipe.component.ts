@@ -26,6 +26,7 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
     currentPage: 1,
     totalItems: this.locked.length
   };
+  pageSize: any;
   constructor(private capitalize:CapitalPipe, private landingSrv: LandingService) { }
 
   ngOnInit(): void {
@@ -39,6 +40,10 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
       })
     );
   this.sortArr('User');
+  }
+
+  updateConfig(){
+    this.config.itemsPerPage = this.pageSize;
   }
 
   onPageChange(e){

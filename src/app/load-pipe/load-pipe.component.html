@@ -35,7 +35,13 @@
   </tr>
 </table>
 <div>
-  <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+  <div> 
+    <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls> Items Per Page: <select [(ngModel)]="pageSize" placeholder="Select" appearance="outline" (change)="updateConfig()">
+    <option value="5" selected>5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+  </select>
+</div>
 </div>
 
 <div>Length = {{filterMetadata.count}}</div>

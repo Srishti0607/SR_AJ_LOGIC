@@ -36,7 +36,6 @@ export class SubtotalsRunningtotalsComponent implements OnInit {
                 runningAmt = runningAmt + order.BILLAMOUNT;
                 this.pushData(order,runningAmt);                                          
               }else{
-                console.log('else');
                 this.pushData('',runningAmt)
                 orderId = order.ORDERID;
                 runningAmt = runningAmt + order.BILLAMOUNT;
@@ -54,8 +53,6 @@ export class SubtotalsRunningtotalsComponent implements OnInit {
   }
 
   pushData(order,runningAmt){  
-    console.log('push data')
-    console.log(order);  
     if(order == ''){
       let dataToPush =   {
         "ORDERID":'',
@@ -69,7 +66,6 @@ export class SubtotalsRunningtotalsComponent implements OnInit {
         "RUNNINGTOTAL": ''
       }
       this.orderDetObj.push(dataToPush);
-      console.log(this.orderDetObj)
     }else{
     let dataToPush =   {
       "ORDERID":order.ORDERID,
