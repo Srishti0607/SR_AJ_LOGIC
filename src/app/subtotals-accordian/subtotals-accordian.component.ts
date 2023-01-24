@@ -50,6 +50,7 @@ export class SubtotalsAccordianComponent implements OnInit {
                   } 
                 });
                 let ele = {
+                  "isActive": false,
                   "orderId": order.ORDERID,
                   "orderDate": order.ORDERDATE,
                   "companyName":order.COMPANYNAME,
@@ -63,7 +64,6 @@ export class SubtotalsAccordianComponent implements OnInit {
               this.detailsArray.push(order);
             }
           });
-          console.log(this.orderDetObj);
         }
       })
     );
@@ -77,11 +77,22 @@ export class SubtotalsAccordianComponent implements OnInit {
     } else {
       this.orderDetObj[index].isActive = true;
     }
-    const panel = element.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
+    // const panel = element.nextElementSibling;
+    // if (panel.style.maxHeight) {
+    //   panel.style.maxHeight = null;
+    // } else {
+    //   panel.style.maxHeight = panel.scrollHeight + "px";
+    // }
+  }
+
+  toggleAll(){
+    this.orderDetObj.forEach(orderDet => {  
+      if (orderDet['isActive']) {
+        orderDet['isActive'] = false;
+      } else {
+        orderDet['isActive'] = true;
+      }      
+    });
+
   }
 }

@@ -1,3 +1,5 @@
+<button type="button" (click)="toggleAll()">Expand All</button>
+<button type="button" (click)="toggleAll()">Collapse All</button>
 <div style="width:97%" *ngFor="let order of orderDetObj;let i = index;">
     <div class="accordion" (click)="toggleAccordian($event, i)">
         <table border="1" id="customers">
@@ -13,7 +15,7 @@
             </tr>
         </table>
     </div>
-    <div class="panel" hide="!item.isActive">
+    <div *ngIf="order.isActive">
         <table border="1" id="customers">
             <tr>
 
