@@ -38,10 +38,16 @@ export class LandingService {
       return this.http.get(url);
   }
 
+  //get grand totals
   getTotalData(){
     let url = "assets/SubTotals.json"
       return this.http.get(url);
+  }
 
+   //get employee data
+   getEmployeeData(){
+    let url = "assets/Employees.json"
+      return this.http.get(url);
   }
 
 }

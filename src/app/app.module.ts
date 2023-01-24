@@ -28,6 +28,7 @@ import {LifeCycleComponent} from './life-cycle/life-cycle.component';
 import { SubtotalsRunningtotalsComponent } from './subtotals-runningtotals/subtotals-runningtotals.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-accordian.component';
+import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-level-accordian.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-acc
     ChildComponent,
     LifeCycleComponent,
     SubtotalsRunningtotalsComponent,
-    SubtotalsAccordianComponent
+    SubtotalsAccordianComponent,
+    MultiLevelAccordianComponent
   ],
   imports: [
     BrowserModule,

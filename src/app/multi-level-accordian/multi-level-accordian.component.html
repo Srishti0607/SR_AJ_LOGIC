@@ -1,0 +1,51 @@
+<table border="1" style="width:100%">
+    <tbody style="width:100%">
+        <tr>
+            <th style="width:10%">Employee ID</th>
+            <th style="width:10%">First Name</th>
+            <th style="width:10%">Last Name</th>
+            <th style="width:70%"></th>
+        </tr>
+        <tr *ngFor="let employee of employeeDetails; let i = index" [attr.id]="employee.EmployeeID">
+            <td> {{ employee.EmployeeID }} </td>
+            <td> {{ employee.firstname }} </td>
+            <td> {{ employee.lastname }} <i *ngIf="employee['order']?.length != 0" (click)="appendTd($event,i,'','E')" class="my-icon fa fa-solid fa-plus"></i></td>
+            <td *ngIf="employee.isActive">
+                <table border="1">
+                    <tbody>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Order Date</th>
+                            <th>Company Name</th>
+                            <th></th>
+                        </tr>
+                        <tr *ngFor="let order of employee['order']; let j = index">
+                            <td> {{ order.orderid }} </td>
+                            <td> {{ order.orderdate | date: 'medium'}} </td>
+                            <td> {{ order.CompanyName }} <i *ngIf="order['orderDetails']?.length != 0" (click)="appendTd($event,i,j,'O')" class="my-icon fa fa-solid fa-plus"></i></td>     
+                            <td *ngIf="order.isActive"> 
+                                <table border="1" *ngIf="order['orderDetails']?.length != 0">
+                                    <tbody>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Unit Price</th>
+                                            <th>Quantity</th>
+                                            <th>Bill Amount</th>
+                                        </tr>
+                                        <tr *ngFor="let orderDet of order['orderDetails']; let i = index" [attr.id]="employee.EmployeeID">
+                                            <td style="width:18%"> {{ orderDet.productname }} </td>
+                                            <td style="width:2%"> {{ orderDet.UnitPrice | currency:'USD'}} </td>
+                                            <td style="width:6%"> {{ orderDet.Quantity }}</td>
+                                            <td style="width:6%"> {{ orderDet.BillAmount | currency:'USD' }} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>            
+                            </td>                     
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+           
+        </tr>
+    </tbody>
+</table>
