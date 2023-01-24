@@ -27,6 +27,7 @@ import { ChildComponent } from './child/child.component';
 import {LifeCycleComponent} from './life-cycle/life-cycle.component';
 import { SubtotalsRunningtotalsComponent } from './subtotals-runningtotals/subtotals-runningtotals.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-accordian.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ImpureSortPipe,
     ChildComponent,
     LifeCycleComponent,
-    SubtotalsRunningtotalsComponent
+    SubtotalsRunningtotalsComponent,
+    SubtotalsAccordianComponent
   ],
   imports: [
     BrowserModule,

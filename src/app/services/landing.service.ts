@@ -30,6 +30,17 @@ export class LandingService {
   //Get currency conversion rate
   getCurrencyData(sourceCurr:string){
       return this.http.get(this.currencyDetBaseURL+'/latest?base='+sourceCurr);
+  }
+
+  //get Order List
+  getOrderList(){
+    let url = "assets/Orders.json"
+      return this.http.get(url);
+  }
+
+  getTotalData(){
+    let url = "assets/SubTotals.json"
+      return this.http.get(url);
 
   }
 

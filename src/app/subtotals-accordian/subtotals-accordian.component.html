@@ -1,0 +1,37 @@
+<div style="width:97%" *ngFor="let order of orderDetObj;let i = index;">
+    <div class="accordion" (click)="toggleAccordian($event, i)">
+        <table border="1" id="customers">
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Company Name</th>
+            </tr>
+            <tr>
+                <td>{{order.orderId}}</td>
+                <td>{{order.orderDate | date: 'medium'}}</td>
+                <td>{{order.companyName}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel" hide="!item.isActive">
+        <table border="1" id="customers">
+            <tr>
+
+                <th>Product Name</th>
+                <th>User Price</th>
+                <th>Quantity</th>
+                <th>Bill Amount</th>
+            </tr>
+            <tr *ngFor="let orderDet of order[order['orderId']]">
+                <td>{{orderDet.PRODUCTNAME}}</td>
+                <td>{{orderDet.UNITPRICE | currency:'USD'}}</td>
+                <td>{{orderDet.QUANTITY}}</td>
+                <td>{{orderDet.BILLAMOUNT | currency:'USD'}}</td>
+            </tr>
+        </table>
+        <div style="float:right">Sub Total : {{order.subTotal}}</div>
+    </div>
+    <br/>
+</div>
+<br/>
+<div style="float:right">Grand Total : {{grandTotal}}</div>
