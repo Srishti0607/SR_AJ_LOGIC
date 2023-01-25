@@ -29,6 +29,7 @@ import { SubtotalsRunningtotalsComponent } from './subtotals-runningtotals/subto
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-accordian.component';
 import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-level-accordian.component';
+import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-leve
     LifeCycleComponent,
     SubtotalsRunningtotalsComponent,
     SubtotalsAccordianComponent,
-    MultiLevelAccordianComponent
+    MultiLevelAccordianComponent,
+    BulkDeleteComponent
   ],
   imports: [
     BrowserModule,

@@ -50,4 +50,15 @@ export class LandingService {
       return this.http.get(url);
   }
 
+    //get data to delete
+    getDataToDelete(){
+      let url = "assets/EMP_DET.json"
+        return this.http.get(url);
+    }
+
+    getDataToDeleteCheck(){
+      let url = "assets/EMP_DET_CHECKED.json"
+        return this.http.get(url);
+    }
+
 }

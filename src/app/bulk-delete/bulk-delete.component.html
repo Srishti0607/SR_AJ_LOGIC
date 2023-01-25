@@ -1,0 +1,42 @@
+<table border="1" id="customers">
+    <tr>
+        <!-- <th><input type="checkbox"></th> -->
+        <th>Employee ID</th>
+        <th>Employee First Name</th>
+        <th>Employee Last Name</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let emp of dataToDelObj;let i = index">
+        <!-- <td><input type="checkbox"></td> -->
+        <td>{{emp.EmployeeID}}</td>
+        <td>{{emp.firstname}}</td>
+        <td>{{emp.lastname}}</td>
+        <td><input type="radio" name="del_row" (change)="itemSelectedFromRadio = i;"></td>
+    </tr>
+</table>
+<br/>
+<button type="button" style="float:right" [disabled]="!itemSelectedFromRadio" (click)="deleteOnRadio()">Delete On Radio</button>
+<button type="button" style="float:right" [disabled]="!itemSelectedFromRadio" (click)="dataToDelObj = [] ;getDetailsToDelete()">Reset</button>
+<br/>
+<h1>Bulk Delete</h1>
+<table border="1" id="customers">
+    <tr>
+        <th><input type="checkbox"(ngModelChange)="onAllSelectionChange($event)" [(ngModel)]="selectAll"></th>
+        <th>Employee ID</th>
+        <th>Employee First Name</th>
+        <th>Employee Last Name</th>
+        <th>Title</th>
+        <th>Title Courtsey</th>
+    </tr>
+    <tr *ngFor="let emp of dataToDelCheckBoxObj;let i = index">
+        <td><input type="checkbox" (change)="onSelectionChange($event, emp,i)" [checked]="emp.checked? emp.checked: false"></td>
+        <td>{{emp.EmployeeID}}</td>
+        <td>{{emp.firstname}}</td>
+        <td>{{emp.lastname}}</td>
+        <td>{{emp.title}}</td>
+        <td>{{emp.titleCourtsey}}</td>
+    </tr>
+</table>
+<br/>
+<button type="button" style="float:right" [disabled]="idObj?.length == 0" (click)="bulkDelete()">Buld Delete</button>
+<button type="button" style="float:right" [disabled]="idObj?.length == 0" (click)="idObj = [] ;dataToDelCheckBoxObj = [];getDetailsToDeleteCheck()">Reset</button>
