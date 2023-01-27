@@ -8,6 +8,7 @@ import { SubtotalsRunningtotalsComponent } from './subtotals-runningtotals/subto
 import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-accordian.component';
 import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-level-accordian.component';
 import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
+import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,9 @@ const routes: Routes = [
    { path: 'life-cycle', component: LifeCycleComponent },
    { path: 'orders', component: SubtotalsRunningtotalsComponent },
    { path: 'orders-accordian', component: SubtotalsAccordianComponent },
-   {path:'multi-level', component: MultiLevelAccordianComponent},
-   {path:'bulk-delete', component: BulkDeleteComponent}
+   { path: 'multi-level', component: MultiLevelAccordianComponent},
+   { path: 'bulk-delete', component: BulkDeleteComponent},
+   { path: 'bulk-insert', component: BulkInsertComponent},
 ];
 
 @NgModule({

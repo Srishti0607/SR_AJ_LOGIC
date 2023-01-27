@@ -13,7 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {LandingService} from './services/landing.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadDirectiveComponent } from './load-directive/load-directive.component';
@@ -30,6 +30,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-accordian.component';
 import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-level-accordian.component';
 import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
+import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
     SubtotalsRunningtotalsComponent,
     SubtotalsAccordianComponent,
     MultiLevelAccordianComponent,
-    BulkDeleteComponent
+    BulkDeleteComponent,
+    BulkInsertComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     NgxPaginationModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   providers: [
     LandingService,

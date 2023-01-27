@@ -1,0 +1,23 @@
+<form [formGroup]="customerForm">
+<table border="1" id="customers">
+    <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Action</th>
+    </tr>
+    <tbody formArrayName="customerFormArray">
+    <tr *ngFor="let control of customerForm.get('customerFormArray')['controls']; let i = index;" [formGroupName]="i">
+        <td><input type="text" formControlName="CustName"></td>
+        <td><input type="text" formControlName="CustPosition"></td>
+        <td><input type="text" formControlName="CustCity"></td>
+        <td><input type="text" formControlName="CustState"></td>
+        <td><i (click)="deleteRow(i)" class="my-icon fa fa-trash"></i></td>
+    </tr>
+</tbody>
+</table>
+</form>
+<button style="float:right" type="button" [disabled]="!customerForm.valid" (click)="addNewRow()">Add New</button>
+<br/>
+<button type="button" style="float:centre" [disabled]="!customerForm.valid" (click)="bulkInsert()">Submit</button>

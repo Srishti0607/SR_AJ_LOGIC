@@ -61,4 +61,10 @@ export class LandingService {
         return this.http.get(url);
     }
 
+    //bulk Insert
+    bulkInsertData(payload){
+      let url = "https://fakestoreapi.com/users"
+        return this.http.post(url,payload);
+    }
+
 }

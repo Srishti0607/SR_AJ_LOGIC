@@ -1,0 +1,14 @@
+[
+    {
+        "CustName": "Kameshwara",
+        "CustPosition": "Trainer",
+        "CustCity": "Hyderabad",
+        "CustState": "AP"
+    },
+    {
+        "CustName": "Sri",
+        "CustPosition": "Developer",
+        "CustCity": "Thane",
+        "CustState": "Mumbai"
+    }
+]
