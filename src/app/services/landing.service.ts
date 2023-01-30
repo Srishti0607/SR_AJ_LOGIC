@@ -63,6 +63,7 @@ export class LandingService {
 
     //bulk Insert
     bulkInsertData(payload){
+      // let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
       let url = "https://fakestoreapi.com/users"
         return this.http.post(url,payload);
     }

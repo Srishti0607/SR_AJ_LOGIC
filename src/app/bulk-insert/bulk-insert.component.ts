@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LandingService } from '../services/landing.service';
 import { Subscription } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as JsonToXML from "js2xmlparser";
 
 @Component({
   selector: 'app-bulk-insert',
@@ -50,12 +51,14 @@ export class BulkInsertComponent implements OnInit {
   }
 
   bulkInsert(){
-    this.subscriptionsList.push(
-      this.landingSrv.bulkInsertData(this.customerForm.value["customerFormArray"]).subscribe((data: any) => {
-        this.snackBar.open('Data inserted successfully!!', '', {
-          duration: 3000
-        });
-      })
-    );
+    console.log(this.customerForm.value["customerFormArray"]);
+    console.log(JsonToXML.parse("Users", this.customerForm.value["customerFormArray"]));
+    // this.subscriptionsList.push(
+    //   this.landingSrv.bulkInsertData(this.customerForm.value["customerFormArray"]).subscribe((data: any) => {
+    //     this.snackBar.open('Data inserted successfully!!', '', {
+    //       duration: 3000
+    //     });
+    //   })
+    // );
   }
 }
