@@ -9,6 +9,7 @@ import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-acc
 import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-level-accordian.component';
 import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
 import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
+import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
    { path: 'multi-level', component: MultiLevelAccordianComponent},
    { path: 'bulk-delete', component: BulkDeleteComponent},
    { path: 'bulk-insert', component: BulkInsertComponent},
+   {path:'bulk-update',component:BulkUpdateComponent}
 ];
 
 @NgModule({

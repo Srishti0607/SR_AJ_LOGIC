@@ -31,6 +31,7 @@ import { SubtotalsAccordianComponent } from './subtotals-accordian/subtotals-acc
 import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-level-accordian.component';
 import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
 import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
+import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
     SubtotalsAccordianComponent,
     MultiLevelAccordianComponent,
     BulkDeleteComponent,
-    BulkInsertComponent
+    BulkInsertComponent,
+    BulkUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -63,9 +63,31 @@ export class LandingService {
 
     //bulk Insert
     bulkInsertData(payload){
-      // let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
-      let url = "https://fakestoreapi.com/users"
+      console.log(payload)
+      let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
+      // let url = "https://fakestoreapi.com/users"
         return this.http.post(url,payload);
+    }
+
+    bulkUpdateData(payload){
+      console.log(payload)
+      let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
+      // let url = "https://fakestoreapi.com/users"
+        return this.http.put(url,payload);
+    }
+
+    bulkDeleteData(payload){
+      console.log(payload)
+      let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
+      // let url = "https://fakestoreapi.com/users"
+        return this.http.delete(url,payload);
+    }
+
+    //get Data
+    getDataToUpdate(){
+      let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
+      return this.http.get(url);
+
     }
 
 }
