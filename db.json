@@ -1,0 +1,107 @@
+{
+  "employee": [
+    {
+      "id": 1,
+      "firstName": "Andrew",
+      "lastName": "Srishti",
+      "title": "Sales Manager",
+      "titleOfCourtesy": "Mr",
+      "gender": "F",
+      "hasPassport": true,
+      "dateOfJoining": "2022-01-14T00:00:00",
+      "salary": 5000,
+      "flag": "U"
+    },
+    {
+      "id": 3,
+      "firstName": "Mark",
+      "lastName": "Boucher",
+      "title": "Marketing Executive",
+      "titleOfCourtesy": "Mr",
+      "gender": "M",
+      "hasPassport": true,
+      "dateOfJoining": "2022-01-20T00:00:00",
+      "salary": 8000
+    },
+    {
+      "id": 4,
+      "firstName": "Chris",
+      "lastName": "Gayle",
+      "title": "Team Leader",
+      "titleOfCourtesy": "Mr",
+      "gender": "M",
+      "hasPassport": false,
+      "dateOfJoining": "2022-01-25T00:00:00",
+      "salary": 9000
+    },
+    {
+      "id": 5,
+      "firstName": "Evander",
+      "lastName": "HolyField",
+      "title": "Sales Manager",
+      "titleOfCourtesy": "Mr",
+      "gender": "M",
+      "hasPassport": true,
+      "dateOfJoining": "2022-01-10T00:00:00",
+      "salary": 5000
+    },
+    {
+      "id": "300",
+      "firstName": "ABC",
+      "lastName": "DEF",
+      "title": "Team Leader",
+      "titleOfCourtesy": "Mr",
+      "gender": "M",
+      "hasPassport": true,
+      "dateOfJoining": "2023-02-18T13:13",
+      "salary": 5000,
+      "flag": "U"
+    },
+    {
+      "id": "70",
+      "firstName": "UIJ",
+      "lastName": "yuo",
+      "title": "Sales Representative",
+      "titleOfCourtesy": "Mr",
+      "gender": "F",
+      "hasPassport": true,
+      "dateOfJoining": "2023-02-17T14:20",
+      "salary": 8000,
+      "flag": "U"
+    },
+    {
+      "id": "90",
+      "firstName": "bnbhvbn",
+      "lastName": "gv",
+      "title": "Sales Representative",
+      "titleOfCourtesy": "Mr",
+      "gender": "F",
+      "hasPassport": true,
+      "dateOfJoining": "2023-02-16T14:21",
+      "salary": 8000,
+      "flag": "U"
+    },
+    {
+      "dateOfJoining": "2023-03-02T14:34",
+      "firstName": "ojnk,",
+      "gender": "M",
+      "hasPassport": true,
+      "id": "1000",
+      "lastName": "iohj",
+      "salary": 8000,
+      "title": "Sales Representative",
+      "titleOfCourtesy": "Mr"
+    },
+    {
+      "dateOfJoining": "2023-02-22T14:44",
+      "firstName": "kjhbm,n",
+      "gender": "F",
+      "hasPassport": true,
+      "id": 89789,
+      "lastName": "jhjbmn",
+      "salary": 888,
+      "title": "Sales Manager",
+      "titleOfCourtesy": "Ms"
+    }
+  ]
+}

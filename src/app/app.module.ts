@@ -32,6 +32,7 @@ import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-leve
 import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
 import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
 import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
+import { CrudOprComponent } from './crud-opr/crud-opr.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
     MultiLevelAccordianComponent,
     BulkDeleteComponent,
     BulkInsertComponent,
-    BulkUpdateComponent
+    BulkUpdateComponent,
+    CrudOprComponent
   ],
   imports: [
     BrowserModule,

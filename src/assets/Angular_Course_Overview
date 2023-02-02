@@ -1,0 +1,118 @@
+Angular Course Outline:-
+
+Day 1
+
+What is Angular?
+What is TypeScript?
+Angular Version
+Angular Project Setup 
+Angular First Application
+
+
+Day 2
+
+Angular Project Structure
+Component v/s Modules
+Creating components and modules
+Angular Life Cycle Hooks
+
+Day 3
+
+Data Binding(Diff Types)
+String Interpolation
+Decorators
+
+Day 4
+
+Property and Event Binding
+Custom Event Binding
+Directives (Custom and Default)
+
+
+Day 5
+
+Pipes (Custom and Default)
+Assignment Allocation
+
+
+Day 6
+
+Assignment Solution Discussion
+Observable
+
+
+Day 7
+
+Service And dependency Injection
+
+Day 8
+
+Sharing Data/Caching
+Http Requests
+
+Day 9
+
+Routing
+Routing Guards
+
+Day 10
+
+Doubt Session
+Assignment Allocation
+
+Day 11
+
+Assignment Solution Discussion
+Forms
+
+Day 12
+
+Interceptors
+Authorization and Authentication
+
+Day 13
+
+Lazy Loading
+
+Day 14
+
+Dynamic Components
+
+Day 15
+
+Shared Modules
+Angular Guidelines
+
+Day 16
+
+Config setup
+Debugging
+
+Day 17
+
+Angular Materials
+
+Day 18
+
+Additional Concepts
+Infinite scrolling
+Pagination
+CRUD Operations
+
+Day 19
+
+MicroFrontend
+
+Day 20
+
+Final Overview
+
+
+
+
+
+
+
+
+
+

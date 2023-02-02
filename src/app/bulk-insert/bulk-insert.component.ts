@@ -3,7 +3,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LandingService } from '../services/landing.service';
 import { Subscription } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import * as JsonToXML from "js2xmlparser";
 
 @Component({
   selector: 'app-bulk-insert',

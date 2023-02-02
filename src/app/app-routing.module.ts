@@ -10,6 +10,7 @@ import { MultiLevelAccordianComponent } from './multi-level-accordian/multi-leve
 import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
 import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
 import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
+import { CrudOprComponent } from './crud-opr/crud-opr.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
    { path: 'multi-level', component: MultiLevelAccordianComponent},
    { path: 'bulk-delete', component: BulkDeleteComponent},
    { path: 'bulk-insert', component: BulkInsertComponent},
-   {path:'bulk-update',component:BulkUpdateComponent}
+   { path:'bulk-update',component:BulkUpdateComponent},
+   { path:'crud-opr', component:CrudOprComponent}
 ];
 
 @NgModule({
