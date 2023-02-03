@@ -28,8 +28,8 @@ const routes: Routes = [
    { path: 'multi-level', component: MultiLevelAccordianComponent},
    { path: 'bulk-delete', component: BulkDeleteComponent},
    { path: 'bulk-insert', component: BulkInsertComponent},
-   { path:'bulk-update',component:BulkUpdateComponent},
-   { path:'crud-opr', component:CrudOprComponent},
+   { path: 'bulk-update',component:BulkUpdateComponent},
+   { path: 'crud-opr', component:CrudOprComponent},
    { path: 'net-sal-radio', component:NetSalRadioComponent}
 ];
 

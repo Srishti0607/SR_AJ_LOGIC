@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LandingService } from '../services/landing.service';
 import { Subscription } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -12,28 +13,31 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LandingPageComponent implements OnInit {
   public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
   countryDetObj: any = []; //store country details getting from service
-  currencyCode: string = ''; //Displays surrency code wrt the country selected
   upperLetterObj: any = []; //Store upper alphabets
   lowerLetterObj: any = []; //Store upper alphabets
   numberObj: any = []; //Store upper alphabets
-  inputData: string = '';//Capture string to delete
-  inputDataForInsertion: string = '';//Capture string to insert
-  selectDataForInsertion: string = '';//Capture string to select
-  position: string = '';//Capture position
-  upperAlpha: any = 'A';//select upper alphabet
-  initialData: string = '';//store initial data to update
-  finalData: string;//store final data to update
-  amount:any;//store amount value
-  fromCurr: string;// store from currency selected
-  toCurr: string;// store to currency selected
-  CurrencyObj: any = ['INR','USD','GBP','AUD','CAD']; //stores currency
-  conversionResult: any ;// stores converted result of currency
-  conversionFlag:boolean = false; //show/hide spinner
-  baseAmt: any ; //store base amount
+  CurrencyObj: any = ['INR', 'USD', 'GBP', 'AUD', 'CAD']; //stores currency
+  conversionResult: any;// stores converted result of currency
+  conversionFlag: boolean = false; //show/hide spinner
+  baseAmt: any; //store base amount
+  reactiveForm!: FormGroup;
 
   constructor(private landingSrv: LandingService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.reactiveForm = new FormGroup({
+      currencyCode: new FormControl(''),
+      upperAlpha: new FormControl('A'),
+      inputData: new FormControl(''),
+      inputDataForInsertion: new FormControl(''),
+      position: new FormControl(''),
+      selectDataForInsertion: new FormControl(''),
+      initialData: new FormControl(''),
+      finalData: new FormControl(''),
+      amount: new FormControl(''),
+      fromCurr: new FormControl(''),
+      toCurr: new FormControl('')
+    });
     this.getCountryCodesData();
     this.initializeList();
   }
@@ -50,7 +54,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   //Initialize list
-  initializeList(){
+  initializeList() {
     this.getUpperAlphabetList();
     this.getLowerAlphabetList();
     this.getNumbersList();
@@ -62,13 +66,13 @@ export class LandingPageComponent implements OnInit {
     this.upperLetterObj = alpha.map((x) => String.fromCharCode(x));
   }
 
-   //Get Lower case alphabet list
+  //Get Lower case alphabet list
   getLowerAlphabetList() {
     let alpha = Array.from(Array(26)).map((e, i) => i + 97);
     this.lowerLetterObj = alpha.map((x) => String.fromCharCode(x));
   }
 
-   //Get number alphabet list
+  //Get number alphabet list
   getNumbersList() {
     let alpha = Array.from(Array(10)).map((e, i) => i + 48);
     this.numberObj = alpha.map((x) => String.fromCharCode(x));
@@ -90,56 +94,56 @@ export class LandingPageComponent implements OnInit {
 
   //Insertion Operation
   insertItemInUpperList() {
-      if (this.position) {
-        this.upperLetterObj.splice(this.position, 0, this.inputDataForInsertion);
-        this.inputDataForInsertion = '';
-        this.position = '';
-      } else {
-        this.upperLetterObj.push(this.inputDataForInsertion);
-        this.inputDataForInsertion = '';
-      }
+    if (this.reactiveForm.get('position').value) {
+      this.upperLetterObj.splice(this.reactiveForm.get('position').value, 0, this.reactiveForm.get('inputDataForInsertion').value);
+      this.reactiveForm.get('inputDataForInsertion').setValue('');
+      this.reactiveForm.get('position').setValue('');
+    } else {
+      this.upperLetterObj.push(this.reactiveForm.get('inputDataForInsertion').value);
+      this.reactiveForm.get('inputDataForInsertion').setValue('');
+    }
   }
 
   //Update/Select/Delete Operation
   applyOperation(opr: string) {
-    let index = this.upperLetterObj.findIndex((data, index) => data === (opr == 'U' ? this.initialData : opr == 'S' ? this.selectDataForInsertion : opr == 'D' ? this.inputData : ''));
+    let index = this.upperLetterObj.findIndex((data, index) => data === (opr == 'U' ? this.reactiveForm.get('initialData').value : opr == 'S' ? this.reactiveForm.get('selectDataForInsertion').value : opr == 'D' ? this.reactiveForm.get('inputData').value : ''));
     if (opr == 'U') {
       index != -1 ? (
         this.upperLetterObj.splice(index, 1),
-        this.upperLetterObj.splice(index, 0, this.finalData),
+        this.upperLetterObj.splice(index, 0, this.reactiveForm.get('finalData').value),
         this.openSnackBar('Item Updated Successfully!!')
       ) : (this.openSnackBar('Item Does Not Exist!!'),
-        this.initialData = '',
-        this.finalData = ''
+        this.reactiveForm.get('initialData').setValue(''),
+        this.reactiveForm.get('finalData').setValue('')
       )
     } else if (opr == 'S') {
       index != -1 ? (
-        this.upperAlpha = this.selectDataForInsertion,
-        this.selectDataForInsertion = '',
+        this.reactiveForm.get('upperAlpha').setValue(this.reactiveForm.get('selectDataForInsertion').value),
+        this.reactiveForm.get('selectDataForInsertion').setValue(''),
         this.openSnackBar('Item Selected Successfully!!')
-      ) : (this.selectDataForInsertion = '',
+      ) : (this.reactiveForm.get('selectDataForInsertion').setValue(''),
         this.openSnackBar('Item Does Not Exist!!')
       )
     } else {
       index != -1 ? (
         this.upperLetterObj.splice(index, 1),
-        this.inputData = '',
+        this.reactiveForm.get('inputData').setValue(''),
         this.openSnackBar('Data Deleted Successfully!!')
-      ) : (this.inputData = '',
+      ) : (this.reactiveForm.get('inputData').setValue(''),
         this.openSnackBar('Item Does Not Exist!!')
       )
     }
   }
 
   //Convert currency
-  convertCurrency(){
+  convertCurrency() {
     this.conversionFlag = true
     this.subscriptionsList.push(
-      this.landingSrv.getCurrencyData(this.fromCurr).subscribe((data: any) => {
+      this.landingSrv.getCurrencyData(this.reactiveForm.get('fromCurr').value).subscribe((data: any) => {
         if (data) {
           this.conversionFlag = false;
-          this.baseAmt = data.rates[this.toCurr];
-        this.conversionResult = this.amount *  data.rates[this.toCurr];          
+          this.baseAmt = data.rates[this.reactiveForm.get('toCurr').value];
+          this.conversionResult = this.reactiveForm.get('amount').value * data.rates[this.reactiveForm.get('toCurr').value];
         }
       })
     );

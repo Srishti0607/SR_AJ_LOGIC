@@ -1,12 +1,13 @@
+<form [formGroup]="reactiveForm">
 <div>
-  <select [(ngModel)]="currencyCode" placeholder="Select" appearance="outline">
+  <select formControlName="currencyCode" placeholder="Select" appearance="outline">
     <option *ngFor="let countryDet of countryDetObj" value="{{countryDet?.currencyCode}}">{{countryDet?.countryName}}</option>
   </select>
-  <input type="text" [(ngModel)]="currencyCode" disabled>
+  <input type="text" [value]="reactiveForm.get('currencyCode').value" disabled>
 </div>
 <br/>
 <div>
-  <select placeholder="Select" appearance="outline" [(ngModel)]="upperAlpha">
+  <select placeholder="Select" appearance="outline" formControlName="upperAlpha">
     <option *ngFor="let upLet of upperLetterObj" value="{{upLet}}">{{upLet}}</option>
   </select>
   <select placeholder="Select" appearance="outline">
@@ -26,40 +27,41 @@
 </div>
 <br/>
 <div>
-  <input type="text" placeholder="Enter Data To Delete" [(ngModel)]="inputData">
-  <button type="button" [disabled]="!inputData" (click)="applyOperation('D')">DELETE ITEM</button>
+  <input type="text" placeholder="Enter Data To Delete" formControlName="inputData">
+  <button type="button" [disabled]="!reactiveForm.get('inputData').value" (click)="applyOperation('D')">DELETE ITEM</button>
 </div>
 <br/>
 <div>
-  <input type="text" placeholder="Enter Data To Insert" [(ngModel)]="inputDataForInsertion">
-  <input type="number" placeholder="Enter Data To Insert" [(ngModel)]="position">
-  <button type="button" [disabled]="!inputDataForInsertion" (click)="insertItemInUpperList()">INSERT ITEM</button>
+  <input type="text" placeholder="Enter Data To Insert" formControlName="inputDataForInsertion">
+  <input type="number" placeholder="Enter Data To Insert" formControlName="position">
+  <button type="button" [disabled]="!reactiveForm.get('inputDataForInsertion').value" (click)="insertItemInUpperList()">INSERT ITEM</button>
 </div>
 <br/>
 <div>
-  <input type="text" placeholder="Enter Data To Select" [(ngModel)]="selectDataForInsertion">
-  <button type="button" [disabled]="!selectDataForInsertion" (click)="applyOperation('S')">SELECT ITEM</button>
+  <input type="text" placeholder="Enter Data To Select" formControlName="selectDataForInsertion">
+  <button type="button" [disabled]="!reactiveForm.get('selectDataForInsertion').value" (click)="applyOperation('S')">SELECT ITEM</button>
 </div>
 <br/>
 <div>
-  <input type="text" placeholder="Enter Data To Update" [(ngModel)]="initialData">
-  <input type="text" placeholder="Enter Data To Update" [(ngModel)]="finalData">
-  <button type="button" [disabled]="!initialData || !finalData"(click)="applyOperation('U')">UPDATE ITEM</button>
+  <input type="text" placeholder="Enter Data To Update" formControlName="initialData">
+  <input type="text" placeholder="Enter Data To Update" formControlName="finalData">
+  <button type="button" [disabled]="!reactiveForm.get('initialData').value || !reactiveForm.get('finalData').value"(click)="applyOperation('U')">UPDATE ITEM</button>
 </div>
 <br/>
 <div>
-  <input type="number" placeholder="Amount" [(ngModel)]="amount">
-  <select [(ngModel)]="fromCurr" placeholder="Select" appearance="outline">
+  <input type="number" placeholder="Amount" formControlName="amount">
+  <select formControlName="fromCurr" placeholder="Select" appearance="outline">
     <option *ngFor="let curr of CurrencyObj" value="{{curr}}">{{curr}}</option>
   </select>
-  <select [(ngModel)]="toCurr" placeholder="Select" appearance="outline">
+  <select formControlName="toCurr" placeholder="Select" appearance="outline">
     <option *ngFor="let curr of CurrencyObj" value="{{curr}}">{{curr}}</option>
   </select>
-  <button type="button" [disabled]="!amount || !fromCurr || !toCurr || fromCurr == toCurr" (click)="convertCurrency()">CONVERT</button>
+  <button type="button" [disabled]="!reactiveForm.get('amount').value || !reactiveForm.get('fromCurr').value || !reactiveForm.get('toCurr').value || reactiveForm.get('fromCurr').value == reactiveForm.get('toCurr').value" (click)="convertCurrency()">CONVERT</button>
 </div>
 <br/>
 <div *ngIf="conversionResult">
-  <span>{{amount}} {{fromCurr}} =</span><br/>
-  <span>{{conversionResult}} {{toCurr}}</span><br/>
-  <span>1 {{fromCurr}} = {{baseAmt}} {{toCurr}}</span>
+  <span>{{reactiveForm.get('amount').value}} {{reactiveForm.get('fromCurr').value}} =</span><br/>
+  <span>{{conversionResult}} {{reactiveForm.get('toCurr').value}}</span><br/>
+  <span>1 {{reactiveForm.get('fromCurr').value}} = {{baseAmt}} {{reactiveForm.get('toCurr').value}}</span>
 </div>
+</form>

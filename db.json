@@ -102,19 +102,31 @@
       "salary": 888,
       "title": "Sales Manager",
       "titleOfCourtesy": "Ms"
+    },
+    {
+      "dateOfJoining": "2023-02-17T01:09",
+      "firstName": "oiuytyui",
+      "gender": "M",
+      "hasPassport": true,
+      "id": 8789,
+      "lastName": "uytrtyui",
+      "salary": 98765,
+      "title": "Sales Representative",
+      "titleOfCourtesy": "Mrs"
     }
   ],
-  "taxes": [{
-    "name":"HRA",
-    "val":10
-  },
-  {
-    "name":"CGHS",
-    "val":30
-  },
-  {
-    "name":"PPF",
-    "val":7.5
-  }
+  "taxes": [
+    {
+      "name": "HRA",
+      "val": 10
+    },
+    {
+      "name": "CGHS",
+      "val": 30
+    },
+    {
+      "name": "PPF",
+      "val": 7.5
+    }
   ]
 }

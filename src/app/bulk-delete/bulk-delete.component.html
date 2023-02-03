@@ -19,9 +19,10 @@
 <button type="button" style="float:right" [disabled]="!itemSelectedFromRadio" (click)="dataToDelObj = [] ;getDetailsToDelete()">Reset</button>
 <br/>
 <h1>Bulk Delete</h1>
+<form [formGroup]="reactiveForm">
 <table border="1" id="customers">
     <tr>
-        <th><input type="checkbox"(ngModelChange)="onAllSelectionChange($event)" [(ngModel)]="selectAll"></th>
+        <th><input type="checkbox" [checked]="reactiveForm.get('selectAll').value" (change)="onAllSelectionChange()" formControlName="selectAll"></th>
         <th>Employee ID</th>
         <th>Employee First Name</th>
         <th>Employee Last Name</th>
@@ -37,6 +38,7 @@
         <td>{{emp.titleCourtsey}}</td>
     </tr>
 </table>
+</form>
 <br/>
 <button type="button" style="float:right" [disabled]="idObj?.length == 0" (click)="bulkDelete()">Buld Delete</button>
 <button type="button" style="float:right" [disabled]="idObj?.length == 0" (click)="idObj = [] ;dataToDelCheckBoxObj = [];getDetailsToDeleteCheck()">Reset</button>

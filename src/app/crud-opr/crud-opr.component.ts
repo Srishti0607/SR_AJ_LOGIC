@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LandingService } from '../services/landing.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Config } from '../config';
@@ -20,15 +20,7 @@ export class CrudOprComponent implements OnInit {
     currentPage: 1,
     totalItems: 0
   };
-  empDate: any;
-  empFirst: any;
-  gender: any;
-  empHasPass: any;
-  empId: any;
-  empLast: any;
-  empTitle: any = "NA";
-  empCourtesy: any = "NA";
-  empSal: any;
+  reactiveForm!: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder, private landingSrv: LandingService, private snackBar: MatSnackBar) {
@@ -38,6 +30,17 @@ export class CrudOprComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.reactiveForm = new FormGroup({
+      empDate: new FormControl(''),
+      empSal: new FormControl(''),
+      empCourtesy: new FormControl('NA'),
+      empTitle: new FormControl('NA'),
+      empLast: new FormControl(''),
+      empId: new FormControl(''),
+      empHasPass: new FormControl(''),
+      gender: new FormControl(''),
+      empFirst: new FormControl('')
+    });
     this.employeeForm = this.formBuilder.group({
       employeeArray: this.formBuilder.array([]),
     });
@@ -78,15 +81,15 @@ export class CrudOprComponent implements OnInit {
   }
 
   cancelInsert() {
-    this.empDate = ""
-    this.empFirst = "";
-    this.gender = "";
-    this.empHasPass = "";
-    this.empId = "";
-    this.empLast = "";
-    this.empTitle = "NA";
-    this.empCourtesy = "NA";
-    this.empSal = "";
+    this.reactiveForm.get('empDate').setValue('');
+    this.reactiveForm.get('empFirst').setValue('');
+    this.reactiveForm.get('gender').setValue('');
+    this.reactiveForm.get('empHasPass').setValue('');
+    this.reactiveForm.get('empId').setValue('');
+    this.reactiveForm.get('empLast').setValue('');
+    this.reactiveForm.get('empTitle').setValue('NA');
+    this.reactiveForm.get('empCourtesy').setValue('NA');
+    this.reactiveForm.get('empSal').setValue('');
   }
 
   onSelectionChange(item, i) {
@@ -144,30 +147,30 @@ export class CrudOprComponent implements OnInit {
 
   insertFormData() {
     let payload = {
-      "dateOfJoining": this.empDate,
-      "firstName": this.empFirst,
-      "gender": this.gender,
-      "hasPassport": this.empHasPass,
-      "id": this.empId,
-      "lastName": this.empLast,
-      "salary": this.empSal,
-      "title": this.empTitle,
-      "titleOfCourtesy": this.empCourtesy
+      "dateOfJoining": this.reactiveForm.get('empDate').value,
+      "firstName": this.reactiveForm.get('empFirst').value,
+      "gender": this.reactiveForm.get('gender').value,
+      "hasPassport": this.reactiveForm.get('empHasPass').value,
+      "id": this.reactiveForm.get('empId').value,
+      "lastName": this.reactiveForm.get('empLast').value,
+      "salary": this.reactiveForm.get('empSal').value,
+      "title": this.reactiveForm.get('empTitle').value,
+      "titleOfCourtesy": this.reactiveForm.get('empCourtesy').value
     }
 
     this.landingSrv.insertEmpData(payload).subscribe((data: any) => {
       this.employeeForm = this.formBuilder.group({
         employeeArray: this.formBuilder.array([]),
       });
-      this.empDate = ""
-      this.empFirst = "";
-      this.gender = "";
-      this.empHasPass = "";
-      this.empId = "";
-      this.empLast = "";
-      this.empTitle = "NA";
-      this.empCourtesy = "NA";
-      this.empSal = "";
+      this.reactiveForm.get('empDate').setValue('');
+      this.reactiveForm.get('empFirst').setValue('');
+      this.reactiveForm.get('gender').setValue('');
+      this.reactiveForm.get('empHasPass').setValue('');
+      this.reactiveForm.get('empId').setValue('');
+      this.reactiveForm.get('empLast').setValue('');
+      this.reactiveForm.get('empTitle').setValue('NA');
+      this.reactiveForm.get('empCourtesy').setValue('NA');
+      this.reactiveForm.get('empSal').setValue('');
       this.getData();
       this.snackBar.open('Data updated successfully!!', '', {
         duration: 3000

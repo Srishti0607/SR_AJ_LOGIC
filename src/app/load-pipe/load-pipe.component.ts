@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CapitalPipe } from '../pipes/custom.pipe';
 import { Subscription } from "rxjs";
 import { LandingService } from '../services/landing.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-load-pipe',
@@ -9,13 +10,12 @@ import { LandingService } from '../services/landing.service';
   styleUrls: ['./load-pipe.component.css']
 })
 export class LoadPipeComponent implements OnInit,AfterViewInit {
+  reactiveForm!: FormGroup;
   public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
   randomNumb: any = []; //Store Random number
   userName: string = 'kameswara'
   public search:any = '';
   locked: any[] = [];
-  query: any;
-  newDigit: any;
   filterMetadata = { count: 0 };
   filtre: string;
   sortDir = 1;
@@ -26,10 +26,14 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
     currentPage: 1,
     totalItems: this.locked.length
   };
-  pageSize: any;
   constructor(private capitalize:CapitalPipe, private landingSrv: LandingService) { }
 
   ngOnInit(): void {
+    this.reactiveForm = new FormGroup({
+      newDigit: new FormControl(''),
+      query: new FormControl(''),
+      pageSize: new FormControl('')
+    });
     this.userName = this.capitalize.transform(this.userName);
     this.getRandomNumbers();
     this.subscriptionsList.push(
@@ -43,7 +47,7 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
   }
 
   updateConfig(){
-    this.config.itemsPerPage = this.pageSize;
+    this.reactiveForm.get('pageSize').setValue(this.config.itemsPerPage);
   }
 
   onPageChange(e){
@@ -65,8 +69,7 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
   }
 
   addNewDigit(){
-    console.log(this.newDigit);
-    this.randomNumb.push(this.newDigit);
+    this.randomNumb.push(this.reactiveForm.get('newDigit').value);
   }
 
   onSortClick(event:any,column: any){

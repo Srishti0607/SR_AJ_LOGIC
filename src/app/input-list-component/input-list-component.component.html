@@ -1,11 +1,13 @@
 <h1>Input List Component Loaded Dynamically</h1>
 <br/>
+<form [formGroup]="reactiveForm">
 <input dynamicDirective [numericOnly]="true" placeholder="Numeric Only" >
 <br/>
 <input placeholder="Alphabets Only" dynamicDirective [alphabetsOnly]="true" autocomplete="off" maxlength="10"/>
 <br/>
 <input placeholder="Alphabets and Numeric Only" dynamicDirective [alphaNumericOnly]="true" autocomplete="off" maxlength="10"/>
 <br/>
-<input id="showInput" type="checkbox" [(ngModel)]="showInput" />
+<input id="showInput" type="checkbox" formControlName="showInput" />
 <label for="showInput">Show conditional header</label>
-<h2 *conditionalIf="showInput">My conditional header</h2>
+<h2 *conditionalIf="reactiveForm.get('showInput').value">My conditional header</h2>
+</form>

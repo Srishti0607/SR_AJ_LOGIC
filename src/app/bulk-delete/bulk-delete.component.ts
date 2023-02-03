@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LandingService } from '../services/landing.service';
 import { Subscription } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-bulk-delete',
@@ -13,13 +14,16 @@ export class BulkDeleteComponent implements OnInit {
   dataToDelObj: any = [];
   dataToDelCheckBoxObj: any = [];
   itemSelectedFromRadio: any;
-  selectAll: any;
   idObj: any = [];
   strCSVId: string = '';
+  reactiveForm!: FormGroup;
 
   constructor(private landingSrv: LandingService,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.reactiveForm = new FormGroup({
+      selectAll: new FormControl(false)
+    });
     this.getDetailsToDelete();
     this.getDetailsToDeleteCheck();
   }
@@ -52,11 +56,16 @@ export class BulkDeleteComponent implements OnInit {
     });
   }
 
-  onAllSelectionChange(event: any) {
-    this.selectAll = event;
+  onAllSelectionChange() {   
+    if(this.reactiveForm.get('selectAll').value){
+      this.reactiveForm.get('selectAll').setValue(true);
+    }else{
+      this.reactiveForm.get('selectAll').setValue(false);
+    }
+    
     this.dataToDelCheckBoxObj.forEach(data => {
-      data['checked'] = this.selectAll;
-      if(this.selectAll){
+      data['checked'] = this.reactiveForm.get('selectAll').value;
+      if(this.reactiveForm.get('selectAll').value){
         this.idObj.push(data.EmployeeID);
       }else{
         this.idObj = [];
@@ -69,14 +78,14 @@ export class BulkDeleteComponent implements OnInit {
     if(event.currentTarget.checked){
     this.idObj.push(item.EmployeeID);
     }else{
-      this.selectAll= event.currentTarget.checked;
+      this.reactiveForm.get('selectAll').setValue(event.currentTarget.checked);
       const objIdRef = this.idObj.find(ele => ele === item.EmployeeID);
       objIdRef && this.idObj.splice(this.idObj.indexOf(objIdRef), 1);
     }
   }
 
   bulkDelete(){
-    this.selectAll = false;
+    this.reactiveForm.get('selectAll').setValue(false);
     for (let id of this.idObj) {
       const objIdRef = this.dataToDelCheckBoxObj.find(ele => ele.EmployeeID === id);
       objIdRef && this.dataToDelCheckBoxObj.splice(this.dataToDelCheckBoxObj.indexOf(objIdRef), 1);

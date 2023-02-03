@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input-list-component',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input-list-component.component.css']
 })
 export class InputListComponentComponent implements OnInit {
-  showInput: any;
+  reactiveForm!: FormGroup;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.reactiveForm = new FormGroup({
+      showInput: new FormControl('')
+    });
   }
 
 }
