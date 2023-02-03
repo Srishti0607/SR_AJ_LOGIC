@@ -121,4 +121,8 @@ export class LandingService {
     // return this.http.delete(this.employeeURL,payload);
     return this.http.post('http://localhost:3000/employee',payload)
   }
+
+  getTaxData(){
+    return this.http.get('http://localhost:3000/taxes')
+  }
 }

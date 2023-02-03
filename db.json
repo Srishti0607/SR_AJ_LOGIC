@@ -103,5 +103,18 @@
       "title": "Sales Manager",
       "titleOfCourtesy": "Ms"
     }
+  ],
+  "taxes": [{
+    "name":"HRA",
+    "val":10
+  },
+  {
+    "name":"CGHS",
+    "val":30
+  },
+  {
+    "name":"PPF",
+    "val":7.5
+  }
   ]
 }

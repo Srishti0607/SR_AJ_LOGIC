@@ -1,0 +1,21 @@
+<h1>Net Salary Calculation</h1>
+<div>
+    <label for="Salary">Salary</label>
+    <input type="number" name="salary" [(ngModel)]="salary" (ngModelChange)="calculateAmt();" />
+    <br/>
+    <span style="color:red" *ngIf="showError">Input salary required and greater than zero *</span>
+</div>
+<div>
+    <label for="Salary">Salary</label>
+    <div *ngFor="let tax of taxObj">
+        <input type="radio" name="tax" value="{{tax?.val}}" [(ngModel)]="taxVal" (change)="calculateAmt();">{{tax?.name}}
+    </div>
+    <span style="color:red" *ngIf="showTaxError">Select Tax *</span>
+</div>
+<div>
+    <label for="Salary">Allowance Amount</label>
+    <input [(ngModel)]="allownceAmt" readonly />
+    <br/>
+    <label for="Salary">Net Salary</label>
+    <input [(ngModel)]="netSal" readonly />
+</div>

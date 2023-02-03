@@ -11,6 +11,7 @@ import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
 import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
 import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
 import { CrudOprComponent } from './crud-opr/crud-opr.component';
+import { NetSalRadioComponent } from './net-sal-radio/net-sal-radio.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
    { path: 'bulk-delete', component: BulkDeleteComponent},
    { path: 'bulk-insert', component: BulkInsertComponent},
    { path:'bulk-update',component:BulkUpdateComponent},
-   { path:'crud-opr', component:CrudOprComponent}
+   { path:'crud-opr', component:CrudOprComponent},
+   { path: 'net-sal-radio', component:NetSalRadioComponent}
 ];
 
 @NgModule({
