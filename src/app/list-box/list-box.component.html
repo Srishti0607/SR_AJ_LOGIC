@@ -1,1 +1,27 @@
-<p>list-box works!</p>
+<form [formGroup]="reactiveForm">
+  <h1>List Box Implementation...</h1>
+  Salary<input type="number" formControlName="salary"/>
+  <br/>
+  <br/>
+<div id="grid" class="parent">
+    <select name="initialList" formControlName="initialList" [multiple]="isMultiple" size="6">
+      <option *ngFor="let tax of taxObj;let i = index" value="{{tax?.val}}-{{tax?.name}}-{{i}}">{{tax?.name}}</option>
+    </select>
+    <div>
+    <button type="button" [disabled]="this.taxObj.length == 0 || this.reactiveForm.get('initialList').value.length == 0 || this.reactiveForm.get('initialList').value.length > 1" (click)="pushData('R')">></button><br/>
+    <button type="button" [disabled]="this.finalObj.length == 0 || this.reactiveForm.get('finalList').value.length > 1 || this.reactiveForm.get('finalList').value.length == 0" (click)="pushData('L')"><</button><br />
+    <button type="button" [disabled]="this.taxObj.length == 0 || this.reactiveForm.get('initialList').value.length == 0 || this.reactiveForm.get('initialList').value.length == 1" (click)="pushData('R')">>></button><br/>
+    <button type="button" [disabled]="this.finalObj.length == 0 || this.reactiveForm.get('finalList').value.length == 0 || this.reactiveForm.get('finalList').value.length == 1" (click)="pushData('L')"><<</button><br />
+  </div>
+  <div>
+    <select name="finalList" formControlName="finalList" [multiple]="isMultiple" size="6">
+    <option>Please Insert</option>
+    <option *ngFor="let tax of finalObj;let i = index" value="{{tax?.val}}-{{tax?.name}}-{{i}}">{{tax?.name}}</option>
+  </select>
+  </div>
+</div>
+<br/>
+Net Allowance Amount<input type="number" formControlName="allowance" readonly/><br/>
+Net Salary<input type="number" formControlName="netSal" readonly/><br/>
+<button type="button" (click)="calculateNetSal()" [disabled]="reactiveForm.get('salary').value == 0 || this.finalObj.length == 0">Calculate</button>
+</form>

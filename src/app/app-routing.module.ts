@@ -13,6 +13,7 @@ import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
 import { CrudOprComponent } from './crud-opr/crud-opr.component';
 import { NetSalRadioComponent } from './net-sal-radio/net-sal-radio.component';
 import { NetSalCheckComponent } from './net-sal-check/net-sal-check.component';
+import { ListBoxComponent } from './list-box/list-box.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
    { path: 'bulk-update',component:BulkUpdateComponent},
    { path: 'crud-opr', component:CrudOprComponent},
    { path: 'net-sal-radio', component:NetSalRadioComponent},
-   { path: 'net-sal-check', component:NetSalCheckComponent}
+   { path: 'net-sal-check', component:NetSalCheckComponent},
+   { path: 'list-box', component:ListBoxComponent},
 ];
 
 @NgModule({
