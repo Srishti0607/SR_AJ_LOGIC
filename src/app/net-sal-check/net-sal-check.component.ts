@@ -112,6 +112,7 @@ export class NetSalCheckComponent implements OnInit {
     }   
     else{
       tax.checked = false;
+      this.totalTax = this.totalTax - tax.val;
     }    
   }
 }
