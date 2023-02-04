@@ -10,7 +10,10 @@ import { LandingService } from '../services/landing.service';
 export class NetSalCheckComponent implements OnInit {
   taxObj: any = [];
   reactiveForm!: FormGroup;
+  reactiveForm2!: FormGroup;
   taxObjSelected: any = [];
+  totalTax: any = 0;
+  taxObj1: any = [];
 
   constructor(private landingSrv: LandingService) { }
 
@@ -21,6 +24,14 @@ export class NetSalCheckComponent implements OnInit {
       ]),
       netSal: new FormControl(0),
       allownceAmt: new FormControl(0),
+      taxVal: new FormControl('', [Validators.required]),
+    });
+    this.reactiveForm2 = new FormGroup({
+      salary1: new FormControl(0, [
+        this.validateSalary
+      ]),
+      netSal1: new FormControl(0),
+      allownceAmt1: new FormControl(0),
       taxVal: new FormControl('', [Validators.required]),
     });
     this.getTaxData();
@@ -42,7 +53,11 @@ export class NetSalCheckComponent implements OnInit {
     this.landingSrv.getTaxData().subscribe((data: any) => {
       if (data) {
        this.taxObj = data;
+       this.taxObj1 = JSON.parse(JSON.stringify(this.taxObj));
        this.taxObj.forEach(data => {
+        data['checked'] = false;
+      });
+      this.taxObj1.forEach(data => {
         data['checked'] = false;
       });
       }
@@ -56,6 +71,7 @@ export class NetSalCheckComponent implements OnInit {
         if(this.reactiveForm.get('salary').value > 0){
           alloanceVal = this.reactiveForm.get('allownceAmt').value + parseFloat((this.reactiveForm.get('salary').value * (tax.val/100)).toFixed(2));
           this.reactiveForm.get('allownceAmt').setValue(alloanceVal);
+          this.reactiveForm.get('netSal').setValue(parseFloat(this.reactiveForm.get('salary').value + this.reactiveForm.get('allownceAmt').value));
         }
         else{
           this.taxObjSelected.push(tax);
@@ -66,6 +82,7 @@ export class NetSalCheckComponent implements OnInit {
       if(this.reactiveForm.get('salary').value > 0){
         alloanceVal = this.reactiveForm.get('allownceAmt').value - parseFloat((this.reactiveForm.get('salary').value * (tax.val/100)).toFixed(2));
         this.reactiveForm.get('allownceAmt').setValue(alloanceVal);
+        this.reactiveForm.get('netSal').setValue(parseFloat(this.reactiveForm.get('salary').value + this.reactiveForm.get('allownceAmt').value));
       }
       else{
         let index = this.taxObj.findIndex((data, index) => data.val === tax.val);
@@ -80,9 +97,21 @@ export class NetSalCheckComponent implements OnInit {
       totalTax = totalTax + taxData.val;
     });
     this.reactiveForm.get('allownceAmt').setValue(parseFloat((this.reactiveForm.get('salary').value * (totalTax/100)).toFixed(2)));
+    this.reactiveForm.get('netSal').setValue(parseFloat(this.reactiveForm.get('salary').value + this.reactiveForm.get('allownceAmt').value));
   }
 
   calculateNetSal(){
-    this.reactiveForm.get('netSal').setValue(parseFloat(this.reactiveForm.get('salary').value + this.reactiveForm.get('allownceAmt').value));
+    this.reactiveForm2.get('allownceAmt1').setValue(parseFloat((this.reactiveForm2.get('salary1').value * (this.totalTax/100)).toFixed(2)));
+    this.reactiveForm2.get('netSal1').setValue(parseFloat(this.reactiveForm2.get('salary1').value + this.reactiveForm2.get('allownceAmt1').value));
+  }
+
+  getTotalTax(tax){
+    if(!tax.checked){
+      tax.checked = true;
+      this.totalTax = this.totalTax + tax.val;
+    }   
+    else{
+      tax.checked = false;
+    }    
   }
 }
