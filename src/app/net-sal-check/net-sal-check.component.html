@@ -1,0 +1,25 @@
+<h1>Net Salary Calculation</h1>
+<form [formGroup]="reactiveForm">
+<div>
+    <label for="Salary">Salary</label>
+    <input type="number" name="salary" formControlName="salary" (ngModelChange)="showAllowance();" />
+    <br/>
+    <span style="color:red" *ngIf="reactiveForm.hasError('greaterThanZeroRequired','salary')">Input salary required and greater than zero *</span>
+</div>
+<div>
+    <label for="Salary">Salary</label>
+    <div *ngFor="let tax of taxObj">
+        <input type="checkbox" name="tax" value="{{tax?.val}}" [checked]="tax?.checked" formControlName="taxVal" (change)="calculateAmt(tax);">{{tax?.name}}
+    </div>
+    <span style="color:red" *ngIf="reactiveForm.controls['taxVal'].errors?.required">Select Tax *</span>
+</div>
+<div>
+    <label for="Salary">Allowance Amount</label>
+    <input formControlName="allownceAmt" readonly />
+    <br/>
+    <button type="button" (click)="calculateNetSal()">Calculate</button>
+    <br/>
+    <label for="Salary">Net Salary</label>
+    <input formControlName="netSal" readonly />
+</div>
+</form>

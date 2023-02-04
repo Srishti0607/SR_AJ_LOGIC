@@ -34,6 +34,8 @@ import { BulkInsertComponent } from './bulk-insert/bulk-insert.component';
 import { BulkUpdateComponent } from './bulk-update/bulk-update.component';
 import { CrudOprComponent } from './crud-opr/crud-opr.component';
 import { NetSalRadioComponent } from './net-sal-radio/net-sal-radio.component';
+import { NetSalCheckComponent } from './net-sal-check/net-sal-check.component';
+import { ListBoxComponent } from './list-box/list-box.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { NetSalRadioComponent } from './net-sal-radio/net-sal-radio.component';
     BulkInsertComponent,
     BulkUpdateComponent,
     CrudOprComponent,
-    NetSalRadioComponent
+    NetSalRadioComponent,
+    NetSalCheckComponent,
+    ListBoxComponent
   ],
   imports: [
     BrowserModule,
