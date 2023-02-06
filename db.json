@@ -128,5 +128,39 @@
       "name": "PPF",
       "val": 7.5
     }
+  ],
+  "bulkInsert": [
+    {
+      "id": 1,
+      "check": false,
+      "CustName": "Srishti",
+      "CustPosition": "DEF",
+      "CustCity": "JGH",
+      "CustState": "IKO"
+    },
+    {
+      "id": 2,
+      "check": false,
+      "CustName": "Kameshwara",
+      "CustPosition": "Instructor",
+      "CustCity": "iHyderabad",
+      "CustState": "IOP"
+    },
+    {
+      "id": 3,
+      "check": false,
+      "CustName": "Mahesh",
+      "CustPosition": "kjhbv kjhg",
+      "CustCity": "iuyi",
+      "CustState": "jkbnnm"
+    },
+    {
+      "id": 4,
+      "check": false,
+      "CustName": "jhgui",
+      "CustPosition": "uy",
+      "CustCity": "iuhgjk",
+      "CustState": "Maharashtra"
+    }
   ]
 }

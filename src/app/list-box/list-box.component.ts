@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AlphaSortPipe } from '../pipes/custom.pipe';
 import { LandingService } from '../services/landing.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ListBoxComponent implements OnInit {
   isMultiple: boolean = true;
   finalObj: any = [];
 
-  constructor(private landingSrv: LandingService) { }
+  constructor(private landingSrv: LandingService,private alphaSorting:AlphaSortPipe) { }
 
   ngOnInit(): void {
     this.getTaxData();
@@ -33,7 +34,7 @@ export class ListBoxComponent implements OnInit {
   getTaxData() {
     this.landingSrv.getTaxData().subscribe((data: any) => {
       if (data) {
-        this.taxObj = data;
+        this.taxObj = this.alphaSorting.transform(data);
       }
     })
   }
@@ -41,12 +42,13 @@ export class ListBoxComponent implements OnInit {
   pushData(opr) {
     if (opr == 'R') {
       if (this.reactiveForm.get('initialList').value.length == 1) {
-        this.taxObj.splice(this.reactiveForm.get('initialList').value[0].split('-')[2], 1);
         let itemToPush = {
           "name": this.reactiveForm.get('initialList').value[0].split('-')[1],
           "val": this.reactiveForm.get('initialList').value[0].split('-')[0]
         }
         this.finalObj.push(itemToPush);
+        this.finalObj = this.alphaSorting.transform(this.finalObj);
+        this.taxObj.splice(this.reactiveForm.get('initialList').value[0].split('-')[2], 1);
         this.reactiveForm.get('initialList').setValue([]);
       } else {
         this.reactiveForm.get('initialList').value.forEach(data => {
@@ -57,10 +59,10 @@ export class ListBoxComponent implements OnInit {
             "val": data.split('-')[0]
           }
           this.finalObj.push(itemToPush);
+          this.finalObj = this.alphaSorting.transform(this.finalObj);
         });
         this.reactiveForm.get('initialList').setValue([]);
       }
-
     } else {
 
       if (this.reactiveForm.get('finalList').value.length == 1) {
@@ -70,6 +72,7 @@ export class ListBoxComponent implements OnInit {
           "val": this.reactiveForm.get('finalList').value[0].split('-')[0]
         }
         this.taxObj.push(itemToPush);
+        this.taxObj = this.alphaSorting.transform(this.taxObj);
         this.reactiveForm.get('finalList').setValue([]);
         this.finalObj.length == 0 ? (this.reactiveForm.get('allowance').setValue(0),this.reactiveForm.get('netSal').setValue(0)) : '';
       } else {
@@ -81,6 +84,7 @@ export class ListBoxComponent implements OnInit {
             "val": data.split('-')[0]
           }
           this.taxObj.push(itemToPush);
+          this.taxObj = this.alphaSorting.transform(this.taxObj);
         });
         this.reactiveForm.get('finalList').setValue([]);
         this.finalObj.length == 0 ? (this.reactiveForm.get('allowance').setValue(0),this.reactiveForm.get('netSal').setValue(0)) : '';

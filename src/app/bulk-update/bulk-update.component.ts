@@ -23,6 +23,10 @@ export class BulkUpdateComponent implements OnInit {
     this.customerForm = this.formBuilder.group({
       customerFormArray: this.formBuilder.array([]),
     });
+   this.getForm();
+  }
+
+  getForm(){
     this.subscriptionsList.push(
       this.landingSrv.getDataToUpdate().subscribe((data: any) => {
         if (data) {
@@ -39,25 +43,23 @@ export class BulkUpdateComponent implements OnInit {
     return this.formBuilder.group({
       id: [customerData.id],
       check:[false],
-      CustName: [customerData.customerName, Validators.required],
-      CustPosition: [customerData.position, Validators.required],
-      CustCity: [customerData.city, Validators.required],
-      CustState: [customerData.state, Validators.required]
+      CustName: [customerData.CustName, Validators.required],
+      CustPosition: [customerData.CustPosition, Validators.required],
+      CustCity: [customerData.CustCity, Validators.required],
+      CustState: [customerData.CustState, Validators.required]
     });
   }
 
   updateRecords(){
-    console.log(JSON.stringify(this.customerForm.value["customerFormArray"]));
-    this.subscriptionsList.push(
-      this.landingSrv.bulkUpdateData(JSON.stringify(this.customerForm.value["customerFormArray"])).subscribe((data: any) => {
-        this.customerForm = this.formBuilder.group({
-          customerFormArray: this.formBuilder.array([]),
-        });
-        this.snackBar.open('Data updated successfully!!', '', {
-          duration: 3000
-        });
-      })
-    );
+    this.customerForm.value["customerFormArray"].forEach(data => {            
+      this.subscriptionsList.push(
+        this.landingSrv.bulkUpdateData(data).subscribe((data: any) => {
+          this.snackBar.open('Data updated successfully!!', '', {
+            duration: 3000
+          });
+        })
+      );
+    });
   }
 
   onAllSelectionChange(event: any) {

@@ -21,7 +21,7 @@ import { InputListComponentComponent } from './input-list-component/input-list-c
 import {ComponentLoadDirective} from './directives/compLoader.directive'
 import {IfDirective} from './directives/structFunc.directive';
 import { LoadPipeComponent } from './load-pipe/load-pipe.component'
-import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe } from "./pipes/custom.pipe";
+import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe } from "./pipes/custom.pipe";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChildComponent } from './child/child.component';
 import {LifeCycleComponent} from './life-cycle/life-cycle.component';
@@ -50,6 +50,7 @@ import { ListBoxComponent } from './list-box/list-box.component';
     CapitalPipe,
     SearchPipe,
     ImpureSortPipe,
+    AlphaSortPipe,
     ChildComponent,
     LifeCycleComponent,
     SubtotalsRunningtotalsComponent,
@@ -84,7 +85,7 @@ import { ListBoxComponent } from './list-box/list-box.component';
   ],
   providers: [
     LandingService,
-    FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe
+    FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe
   ],
   bootstrap: [AppComponent],
 })

@@ -66,16 +66,14 @@ export class LandingService {
 
   //bulk Insert
   bulkInsertData(payload) {
-    console.log(payload)
-    let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
-    // let url = "https://fakestoreapi.com/users"
-    return this.http.post(url, payload);
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json');
+    let url = "http://localhost:3000/bulkInsert"
+    return this.http.post(url, payload,{headers});
   }
 
   bulkUpdateData(payload) {
-    console.log(payload)
-    let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
-    // let url = "https://fakestoreapi.com/users"
+    let url = "http://localhost:3000/bulkInsert/"+payload.id;
     return this.http.put(url, payload);
   }
 
@@ -88,7 +86,7 @@ export class LandingService {
 
   //get Data
   getDataToUpdate() {
-    let url = "https://apidemo20230129132543.azurewebsites.net/api/customer"
+    let url = "http://localhost:3000/bulkInsert"
     return this.http.get(url);
   }
 

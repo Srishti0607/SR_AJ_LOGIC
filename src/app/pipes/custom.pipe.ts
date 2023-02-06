@@ -53,3 +53,15 @@ export class ImpureSortPipe implements PipeTransform {
 
 }
 
+@Pipe({
+  name: 'alphaSort',
+  pure: false
+})
+export class AlphaSortPipe implements PipeTransform {
+
+  transform(array: any[], args?: any): any {
+    return array.slice().sort((a,b) => a.name.localeCompare(b.name));
+  }
+
+}
+

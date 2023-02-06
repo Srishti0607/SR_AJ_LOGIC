@@ -52,17 +52,20 @@ export class BulkInsertComponent implements OnInit {
   bulkInsert() {
     console.log(JSON.stringify(this.customerForm.value["customerFormArray"]));
     this.createXML();
-    this.subscriptionsList.push(
-      this.landingSrv.bulkInsertData(JSON.stringify(this.customerForm.value["customerFormArray"])).subscribe((data: any) => {
-        this.customerForm = this.formBuilder.group({
-          customerFormArray: this.formBuilder.array([]),
-        });
-        this.addNewRow();
-        this.snackBar.open('Data inserted successfully!!', '', {
-          duration: 3000
-        });
-      })
-    );
+    this.customerForm.value["customerFormArray"].forEach(data => {            
+      this.subscriptionsList.push(
+        this.landingSrv.bulkInsertData(data).subscribe((data: any) => {
+          this.customerForm = this.formBuilder.group({
+            customerFormArray: this.formBuilder.array([]),
+          });
+          this.addNewRow();
+          this.snackBar.open('Data inserted successfully!!', '', {
+            duration: 3000
+          });
+        })
+      );
+    });
+   
   }
 
   createXML(){
