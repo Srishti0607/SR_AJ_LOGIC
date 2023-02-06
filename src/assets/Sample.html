@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <form class="row g-3" [formGroup]="salaryForm">
+        <div class="col-md-6">
+            <label for="inputSalary" class="form-label">Salary</label>
+            <input type="number" class="form-control" formControlName="salary" placeholder="Enter Salary"
+            id="inputSalary" (change)="getNetSalary()">
+            <app-error-message *ngIf="!salaryForm.get('salary')?.pristine && salaryForm.get('salary')?.errors?.['required']" [errorMessage]="'Salary is required'"></app-error-message>
+        </div>
+        <div class="col-md-6">
+            <label for="inputAllowance" class="form-label">Allowance Amount</label>
+            <input type="number" class="form-control" formControlName="allowanceAmount" placeholder="Enter Allowance"
+            id="inputAllowance">
+            <app-error-message *ngIf="!salaryForm.get('salary')?.pristine && salaryForm.get('salary')?.errors?.['required']" [errorMessage]="'Allowance is required'"></app-error-message>
+        </div>
+        <div class="col-12">
+            <label for="inputAllowanceType" class="form-label">Allowance Type</label>
+            <div class="form-check" *ngFor="let item of salaryAllowanceTypes">            
+                <input class="form-check-input" type="radio" name="allowancetype" formControlName="allowancetype" [id]="item.name"
+                [value]="item.value" (change)="getNetSalary()">
+                <label class="form-check-label" for="exampleRadios1">
+                    {{item.name}}
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="inputNetSalary" class="form-label">Net Salary</label>
+            <input type="number" class="form-control" placeholder="Enter Net Salary" formControlName="netSalary" id="inputNetSalary">
+        </div>
+    </form>
+</div>
