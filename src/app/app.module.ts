@@ -36,6 +36,7 @@ import { CrudOprComponent } from './crud-opr/crud-opr.component';
 import { NetSalRadioComponent } from './net-sal-radio/net-sal-radio.component';
 import { NetSalCheckComponent } from './net-sal-check/net-sal-check.component';
 import { ListBoxComponent } from './list-box/list-box.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { ListBoxComponent } from './list-box/list-box.component';
     MatProgressSpinnerModule,
     NgxPaginationModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     LandingService,

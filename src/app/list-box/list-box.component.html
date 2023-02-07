@@ -1,27 +1,50 @@
-<form [formGroup]="reactiveForm">
-  <h1>List Box Implementation...</h1>
-  Salary<input type="number" formControlName="salary"/>
+<form [formGroup]="reactiveForm" class="container">
+  <h3>List Box Implementation...</h3>
+  <br/>
+  <div class="form-group row">
+    <label>Salary</label>
+    <div class="col-sm-2">
+    <input class="form-control" type="number" formControlName="salary"/>
+  </div>
+  </div>
+
   <br/>
   <br/>
-<div id="grid" class="parent">
-    <select name="initialList" formControlName="initialList" [multiple]="isMultiple" size="6">
-      <option *ngFor="let tax of taxObj;let i = index" value="{{tax?.val}}-{{tax?.name}}-{{i}}">{{tax?.name}}</option>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <select class="form-control" name="initialList" formControlName="initialList" [multiple]="isMultiple" size="6">
+          <option *ngFor="let tax of taxObj;let i = index" value="{{tax?.val}}-{{tax?.name}}-{{i}}">{{tax?.name}}</option>
+        </select>
+      </div>     
+      <div class="col-sm-auto">
+      <button type="button" class="btn btn-outline-primary" [disabled]="this.taxObj.length == 0 || this.reactiveForm.get('initialList').value.length == 0 || this.reactiveForm.get('initialList').value.length > 1" (click)="pushData('R')">></button><br/>
+      <button type="button" class="btn btn-outline-primary" [disabled]="this.finalObj.length == 0 || this.reactiveForm.get('finalList').value.length > 1 || this.reactiveForm.get('finalList').value.length == 0" (click)="pushData('L')"><</button><br />
+      <button type="button" class="btn btn-outline-primary" [disabled]="this.taxObj.length == 0 || this.reactiveForm.get('initialList').value.length == 0 || this.reactiveForm.get('initialList').value.length == 1" (click)="pushData('R')">>></button><br/>
+      <button type="button" class="btn btn-outline-primary" [disabled]="this.finalObj.length == 0 || this.reactiveForm.get('finalList').value.length == 0 || this.reactiveForm.get('finalList').value.length == 1" (click)="pushData('L')"><<</button><br />
+    </div>
+    <div class="col-sm">
+      <select class="form-control" name="finalList" formControlName="finalList" [multiple]="isMultiple" size="6">
+      <option>Please Insert</option>
+      <option *ngFor="let tax of finalObj;let i = index" value="{{tax?.val}}-{{tax?.name}}-{{i}}">{{tax?.name}}</option>
     </select>
-    <div>
-    <button type="button" [disabled]="this.taxObj.length == 0 || this.reactiveForm.get('initialList').value.length == 0 || this.reactiveForm.get('initialList').value.length > 1" (click)="pushData('R')">></button><br/>
-    <button type="button" [disabled]="this.finalObj.length == 0 || this.reactiveForm.get('finalList').value.length > 1 || this.reactiveForm.get('finalList').value.length == 0" (click)="pushData('L')"><</button><br />
-    <button type="button" [disabled]="this.taxObj.length == 0 || this.reactiveForm.get('initialList').value.length == 0 || this.reactiveForm.get('initialList').value.length == 1" (click)="pushData('R')">>></button><br/>
-    <button type="button" [disabled]="this.finalObj.length == 0 || this.reactiveForm.get('finalList').value.length == 0 || this.reactiveForm.get('finalList').value.length == 1" (click)="pushData('L')"><<</button><br />
+    </div>
   </div>
-  <div>
-    <select name="finalList" formControlName="finalList" [multiple]="isMultiple" size="6">
-    <option>Please Insert</option>
-    <option *ngFor="let tax of finalObj;let i = index" value="{{tax?.val}}-{{tax?.name}}-{{i}}">{{tax?.name}}</option>
-  </select>
   </div>
+<br/>
+<div class="form-group row">
+  <label>Net Allowance Amount</label>
+  <div class="col-sm-2">
+    <input class="form-control" type="number" formControlName="allowance" readonly/>
+</div>
 </div>
 <br/>
-Net Allowance Amount<input type="number" formControlName="allowance" readonly/><br/>
-Net Salary<input type="number" formControlName="netSal" readonly/><br/>
-<button type="button" (click)="calculateNetSal()" [disabled]="reactiveForm.get('salary').value == 0 || this.finalObj.length == 0">Calculate</button>
+<div class="form-group row">
+  <label>Net Salary</label>
+  <div class="col-sm-2">
+    <input class="form-control" type="number" formControlName="netSal" readonly/>
+</div>
+</div>
+<br/>
+<button class="btn btn-primary" type="button" (click)="calculateNetSal()" [disabled]="reactiveForm.get('salary').value == 0 || this.finalObj.length == 0">Calculate</button>
 </form>
