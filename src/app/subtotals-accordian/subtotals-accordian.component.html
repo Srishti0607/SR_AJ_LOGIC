@@ -1,5 +1,7 @@
-<button type="button" (click)="toggleAll()">Expand All</button>
-<button type="button" (click)="toggleAll()">Collapse All</button>
+<div class="container">
+    <br/>
+<button class="btn btn-primary" type="button" (click)="toggleAll()">Expand All</button>
+<button class="btn btn-primary" type="button" (click)="toggleAll()">Collapse All</button>
 <div style="width:97%" *ngFor="let order of orderDetObj;let i = index;">
     <div class="accordion" (click)="toggleAccordian($event, i)">
         <table border="1" id="customers">
@@ -37,3 +39,4 @@
 </div>
 <br/>
 <div style="float:right">Grand Total : {{grandTotal}}</div>
+</div>

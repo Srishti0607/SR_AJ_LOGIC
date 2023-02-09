@@ -1,55 +1,63 @@
-<h1>Net Salary Calculation</h1>
-<form [formGroup]="reactiveForm">
-    <div>
-        <label for="Salary">Salary</label>
-        <input type="number" name="salary" formControlName="salary" (ngModelChange)="showAllowance();" />
-        <br />
-        <span style="color:red" *ngIf="reactiveForm.hasError('greaterThanZeroRequired','salary')">Input salary required
-            and greater than zero *</span>
-    </div>
-    <div>
-        <label for="Salary">Salary</label>
-        <div *ngFor="let tax of taxObj">
-            <input type="checkbox" name="tax" value="{{tax?.val}}" [checked]="tax?.checked" formControlName="taxVal"
-                (change)="calculateAmt(tax);">{{tax?.name}}
-        </div>
-        <span style="color:red" *ngIf="reactiveForm.controls['taxVal'].errors?.required">Select Tax *</span>
-    </div>
-    <div>
-        <label for="Salary">Allowance Amount</label>
-        <input formControlName="allownceAmt" readonly />
-        <br />
-        <label for="Salary">Net Salary</label>
-        <input formControlName="netSal" readonly />
-    </div>
-</form>
-<br/>
-<form [formGroup]="reactiveForm2">
-    <h1>Net Salary Calculation on button</h1>
-    <div>
-        <div>
-            <label for="Salary">Salary</label>
-            <input type="number" name="salary" formControlName="salary1" />
-            <br/>
-            <span style="color:red" *ngIf="reactiveForm2.hasError('greaterThanZeroRequired','salary1')">Input salary required
+<div class="container">
+    <h4>Net Salary Calculation</h4>
+    <form [formGroup]="reactiveForm">
+        <div class="form-group row">
+            <label class="col-sm-2" for="Salary">Salary</label>
+            <input class="col-sm-2" type="number" name="salary" formControlName="salary"
+                (ngModelChange)="showAllowance();" />
+            <br />
+            <span style="color:red" *ngIf="reactiveForm.hasError('greaterThanZeroRequired','salary')">Input salary
+                required
                 and greater than zero *</span>
         </div>
-        <br />
-        <div *ngFor="let tax of taxObj1">
-            <input type="checkbox" name="tax" value="{{tax?.val}}" [checked]="tax?.checked" formControlName="taxVal"
-                (change)="getTotalTax(tax)">{{tax?.name}}
-        </div>
-        <br />
-        <div>
-            <div>
-                <label for="Salary">Allowance Amount</label>
-                <input formControlName="allownceAmt1" readonly />
-                <br />
-                <label for="Salary">Net Salary</label>
-                <input formControlName="netSal1" readonly />
+        <div class="form-group row">
+            <label class="col-sm-2" for="Salary">Salary</label>
+            <div class="btn-group-toggle" data-toggle="buttons" *ngFor="let tax of taxObj">
+                <input type="checkbox" name="tax" value="{{tax?.val}}" [checked]="tax?.checked" formControlName="taxVal"
+                    (change)="calculateAmt(tax);">{{tax?.name}}
             </div>
+            <span style="color:red" *ngIf="reactiveForm.controls['taxVal'].errors?.required">Select Tax *</span>
         </div>
-        <button type="button"  (click)="calculateNetSal()">Calculate</button>
+        <div class="form-group row">
+            <label class="col-sm-2" for="Salary">Allowance Amount</label>
+            <input class="col-sm-2" formControlName="allownceAmt" readonly />
+            <br />
+            <label class="col-sm-2" for="Salary">Net Salary</label>
+            <input class="col-sm-2" formControlName="netSal" readonly />
+        </div>
+    </form>
+    <br />
+    <form [formGroup]="reactiveForm2">
+        <h4>Net Salary Calculation on button</h4>
+        <div>
+            <div class="form-group row">
+                <label class="col-sm-2" for="Salary">Salary</label>
+                <input class="col-sm-2" type="number" name="salary" formControlName="salary1" />
+                <br />
+                <span style="color:red" *ngIf="reactiveForm2.hasError('greaterThanZeroRequired','salary1')">Input salary
+                    required
+                    and greater than zero *</span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label class="col-sm-2" for="Salary">Salary</label>
+                <div class="btn-group-toggle" data-toggle="buttons" *ngFor="let tax of taxObj1">
+                    <input class="col-sm-2" type="checkbox" name="tax" value="{{tax?.val}}" [checked]="tax?.checked"
+                        formControlName="taxVal" (change)="getTotalTax(tax)">{{tax?.name}}
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="Salary">Allowance Amount</label>
+                    <input class="col-sm-2" formControlName="allownceAmt1" readonly />
+                    <br />
+                    <label class="col-sm-2" for="Salary">Net Salary</label>
+                    <input class="col-sm-2" formControlName="netSal1" readonly />
+                </div>
+            </div>
+            <button class="btn btn-primary" type="button" (click)="calculateNetSal()">Calculate</button>
 
-    </div>
-</form>
+        </div>
+    </form>
+</div>

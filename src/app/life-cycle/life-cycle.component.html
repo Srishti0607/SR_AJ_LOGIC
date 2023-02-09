@@ -1,4 +1,5 @@
-<span>Check console Logs</span><br/>
+<div class="container">
+  <h4>Parent Hooks</h4>
 <span *ngIf="const">Life-Cycle Component: Constructor</span><br/>
 <span *ngIf="onChange">Life-Cycle Component: OnChanges</span><br/>
 <span *ngIf="init">Life-Cycle Component: OnInit</span><br/>
@@ -10,8 +11,9 @@
 <span *ngIf="destroy">Life-Cycle Component: OnDestroy</span><br/>
 
 <h2>Life Cycle Hooks</h2>
-    <button (click)="toggle()">Hide/Show Child</button>
+    <button class="btn btn-primary" (click)="toggle()">Hide/Show Child</button>
     <app-child
       *ngIf="displayChild"
       [message]="'Hello'">
     </app-child>
+  </div>

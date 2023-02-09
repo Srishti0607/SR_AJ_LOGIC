@@ -1,23 +1,26 @@
-<h1>Net Salary Calculation</h1>
+<div class="container">
+<h4>Net Salary Calculation</h4>
 <form [formGroup]="reactiveForm">
-<div>
-    <label for="Salary">Salary</label>
-    <input type="number" name="salary" formControlName="salary" (ngModelChange)="calculateAmt();" />
+<div class="form-group row">
+    <label class="col-sm-2" for="Salary">Salary</label>
+    <input class="col-sm-2" type="number" name="salary" formControlName="salary" (ngModelChange)="calculateAmt();" />
     <br/>
     <span style="color:red" *ngIf="reactiveForm.hasError('greaterThanZeroRequired','salary')">Input salary required and greater than zero *</span>
 </div>
-<div>
-    <label for="Salary">Salary</label>
-    <div *ngFor="let tax of taxObj">
+<div class="form-group row">
+    <label class="col-sm-2" for="Salary">Salary</label>
+    <div class="btn-group btn-group-toggle" *ngFor="let tax of taxObj">
         <input type="radio" name="tax" value="{{tax?.val}}" formControlName="taxVal" (change)="calculateAmt();">{{tax?.name}}
     </div>
     <span style="color:red" *ngIf="reactiveForm.controls['taxVal'].errors?.required">Select Tax *</span>
 </div>
-<div>
-    <label for="Salary">Allowance Amount</label>
-    <input formControlName="allownceAmt" readonly />
-    <br/>
-    <label for="Salary">Net Salary</label>
-    <input formControlName="netSal" readonly />
+<div class="form-group row">
+    <label class="col-sm-2" for="Salary">Allowance Amount</label>
+    <input class="col-sm-2" formControlName="allownceAmt" readonly />
+</div>
+<div class="form-group row">
+    <label class="col-sm-2" for="Salary">Net Salary</label>
+    <input class="col-sm-2" formControlName="netSal" readonly />
 </div>
 </form>
+</div>

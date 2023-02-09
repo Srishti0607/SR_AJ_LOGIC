@@ -26,7 +26,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
-      currencyCode: new FormControl(''),
+      currencyCode: new FormControl(),
       upperAlpha: new FormControl('A'),
       inputData: new FormControl(''),
       inputDataForInsertion: new FormControl(''),
@@ -35,8 +35,8 @@ export class LandingPageComponent implements OnInit {
       initialData: new FormControl(''),
       finalData: new FormControl(''),
       amount: new FormControl(''),
-      fromCurr: new FormControl(''),
-      toCurr: new FormControl('')
+      fromCurr: new FormControl(),
+      toCurr: new FormControl()
     });
     this.getCountryCodesData();
     this.initializeList();

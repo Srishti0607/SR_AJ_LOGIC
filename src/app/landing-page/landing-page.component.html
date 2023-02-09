@@ -1,67 +1,108 @@
-<form [formGroup]="reactiveForm">
-<div>
-  <select formControlName="currencyCode" placeholder="Select" appearance="outline">
-    <option *ngFor="let countryDet of countryDetObj" value="{{countryDet?.currencyCode}}">{{countryDet?.countryName}}</option>
-  </select>
-  <input type="text" [value]="reactiveForm.get('currencyCode').value" disabled>
-</div>
-<br/>
-<div>
-  <select placeholder="Select" appearance="outline" formControlName="upperAlpha">
-    <option *ngFor="let upLet of upperLetterObj" value="{{upLet}}">{{upLet}}</option>
-  </select>
-  <select placeholder="Select" appearance="outline">
-    <option *ngFor="let loLet of lowerLetterObj" value="{{loLet}}">{{loLet}}</option>
-  </select>
-  <select placeholder="Select" appearance="outline">
-    <option *ngFor="let num of numberObj" value="{{num}}">{{num}}</option>
-  </select>
-  <button type="button" [disabled]="upperLetterObj.length>0 || lowerLetterObj.length>0 || numberObj.length>0"  (click)="initializeList()">RESET LIST</button>
-</div>
-<br/>
-<div>
-  <input type="text" [value]="upperLetterObj?.length" disabled>
-  <input type="text" [value]="lowerLetterObj?.length" disabled>
-  <input type="text" [value]="numberObj?.length" disabled>
-  <button type="button" (click)="clearDetails()">CLEAR LIST</button>
-</div>
-<br/>
-<div>
-  <input type="text" placeholder="Enter Data To Delete" formControlName="inputData">
-  <button type="button" [disabled]="!reactiveForm.get('inputData').value" (click)="applyOperation('D')">DELETE ITEM</button>
-</div>
-<br/>
-<div>
-  <input type="text" placeholder="Enter Data To Insert" formControlName="inputDataForInsertion">
-  <input type="number" placeholder="Enter Data To Insert" formControlName="position">
-  <button type="button" [disabled]="!reactiveForm.get('inputDataForInsertion').value" (click)="insertItemInUpperList()">INSERT ITEM</button>
-</div>
-<br/>
-<div>
-  <input type="text" placeholder="Enter Data To Select" formControlName="selectDataForInsertion">
-  <button type="button" [disabled]="!reactiveForm.get('selectDataForInsertion').value" (click)="applyOperation('S')">SELECT ITEM</button>
-</div>
-<br/>
-<div>
-  <input type="text" placeholder="Enter Data To Update" formControlName="initialData">
-  <input type="text" placeholder="Enter Data To Update" formControlName="finalData">
-  <button type="button" [disabled]="!reactiveForm.get('initialData').value || !reactiveForm.get('finalData').value"(click)="applyOperation('U')">UPDATE ITEM</button>
-</div>
-<br/>
-<div>
-  <input type="number" placeholder="Amount" formControlName="amount">
-  <select formControlName="fromCurr" placeholder="Select" appearance="outline">
-    <option *ngFor="let curr of CurrencyObj" value="{{curr}}">{{curr}}</option>
-  </select>
-  <select formControlName="toCurr" placeholder="Select" appearance="outline">
-    <option *ngFor="let curr of CurrencyObj" value="{{curr}}">{{curr}}</option>
-  </select>
-  <button type="button" [disabled]="!reactiveForm.get('amount').value || !reactiveForm.get('fromCurr').value || !reactiveForm.get('toCurr').value || reactiveForm.get('fromCurr').value == reactiveForm.get('toCurr').value" (click)="convertCurrency()">CONVERT</button>
-</div>
-<br/>
-<div *ngIf="conversionResult">
-  <span>{{reactiveForm.get('amount').value}} {{reactiveForm.get('fromCurr').value}} =</span><br/>
-  <span>{{conversionResult}} {{reactiveForm.get('toCurr').value}}</span><br/>
-  <span>1 {{reactiveForm.get('fromCurr').value}} = {{baseAmt}} {{reactiveForm.get('toCurr').value}}</span>
-</div>
+<form [formGroup]="reactiveForm" class="container">
+  <h3>Landing Page !!</h3>
+  <div>
+    <div class="form-group row">
+    <label>Countries</label>
+    <select class="btn col-sm-10 dropdown-toggle btn-outline-info" data-toggle="dropdown" formControlName="currencyCode" placeholder="Select" appearance="outline">
+      <option *ngFor="let countryDet of countryDetObj" value="{{countryDet?.currencyCode}}-{{countryDet?.population}}-{{countryDet?.capital}}">{{countryDet?.countryName}}
+      </option>
+    </select>
+  </div>
+    <br/>
+    <div class="form-group row">
+      <label class="col-sm-2">Currency Code</label>
+      <input class="col-sm-2" type="text" [value]="reactiveForm.get('currencyCode').value?.split('-')[0]" disabled>
+    </div>
+    <br/>
+    <div class="form-group row">
+      <label class="col-sm-2">Population</label>
+      <input class="col-sm-2" type="text" [value]="reactiveForm.get('currencyCode').value?.split('-')[1] != undefined ? reactiveForm.get('currencyCode').value?.split('-')[1] : ''" disabled>
+    </div>
+    <br/>
+    <div class="form-group row">
+      <label class="col-sm-2">Capital</label>
+      <input class="col-sm-2" type="text" [value]="reactiveForm.get('currencyCode').value?.split('-')[2] != undefined ? reactiveForm.get('currencyCode').value?.split('-')[2] : ''" disabled>
+    </div>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <label class="col-sm-2">Upper Alphabets</label>
+    <select class="btn col-sm-2 btn-sm dropdown-toggle btn-outline-info" data-toggle="dropdown" placeholder="Select" appearance="outline" formControlName="upperAlpha">
+      <option *ngFor="let upLet of upperLetterObj" value="{{upLet}}">{{upLet}}</option>
+    </select>
+    <label class="col-sm-2">Lower Alphabets</label>
+    <select class="btn col-sm-2 btn-sm dropdown-toggle btn-outline-info" data-toggle="dropdown" placeholder="Select" appearance="outline">
+      <option *ngFor="let loLet of lowerLetterObj" value="{{loLet}}">{{loLet}}</option>
+    </select>
+    <label class="col-sm-2">Numbers</label>
+    <select class="col-sm-2 btn btn-sm dropdown-toggle btn-outline-info" data-toggle="dropdown" placeholder="Select" appearance="outline">
+      <option *ngFor="let num of numberObj" value="{{num}}">{{num}}</option>
+    </select>
+  </div>
+  <br />
+  <div class="form-group row">
+  <button class="btn btn-primary col-sm-2" type="button" [disabled]="upperLetterObj.length>0 || lowerLetterObj.length>0 || numberObj.length>0"
+    (click)="initializeList()">RESET LIST</button>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <label class="col-sm-2">Upper Count</label>
+    <input class="col-sm-2" type="text" [value]="upperLetterObj?.length" disabled>
+    <label class="col-sm-2">Lower Count</label>
+    <input class="col-sm-2" type="text" [value]="lowerLetterObj?.length" disabled>
+    <label class="col-sm-2">Upper Count</label>
+    <input class="col-sm-2" type="text" [value]="numberObj?.length" disabled>
+  </div>
+  <br />
+  <div class="form-group row">
+    <button class="col-sm-2 btn btn-primary" type="button" (click)="clearDetails()">CLEAR LIST</button>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <label class="col-sm-2">Enter Data To Delete</label>
+    <input class="col-sm-2" type="text" placeholder="Enter Data To Delete" formControlName="inputData">
+    <button class="col-sm-2 btn btn-primary" type="button" [disabled]="!reactiveForm.get('inputData').value" (click)="applyOperation('D')">DELETE
+      ITEM</button>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <label class="col-sm-2">Enter Data To Insert</label>
+    <input class="col-sm-2" type="text" placeholder="Enter Data To Insert" formControlName="inputDataForInsertion">
+    <label class="col-sm-2">Enter Position</label>
+    <input class="col-sm-2" type="number" placeholder="Enter Data To Insert" formControlName="position">
+    <button class="col-sm-2 btn btn-primary" type="button" [disabled]="!reactiveForm.get('inputDataForInsertion').value"
+      (click)="insertItemInUpperList()">INSERT ITEM</button>
+  </div>
+  <br />
+  <div class="form-group row">
+    <input class="col-sm-2" type="text" placeholder="Enter Data To Select" formControlName="selectDataForInsertion">
+    <button class="col-sm-2 btn btn-primary" type="button" [disabled]="!reactiveForm.get('selectDataForInsertion').value"
+      (click)="applyOperation('S')">SELECT ITEM</button>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <input class="col-sm-2" type="text" placeholder="Enter Data To Update" formControlName="initialData">
+    <input class="col-sm-2" type="text" placeholder="Enter Data To Update" formControlName="finalData">
+    <button class="col-sm-2 btn btn-primary" type="button" [disabled]="!reactiveForm.get('initialData').value || !reactiveForm.get('finalData').value"
+      (click)="applyOperation('U')">UPDATE ITEM</button>
+  </div>
+  <br />
+  <div class="form-group row">
+    <input class="col-sm-2" type="number" placeholder="Amount" formControlName="amount">
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" formControlName="fromCurr" placeholder="Select" appearance="outline">
+      <option *ngFor="let curr of countryDetObj" value="{{curr?.currencyCode}}">{{curr?.currencyCode}}</option>
+    </select>
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" formControlName="toCurr" placeholder="Select" appearance="outline">
+      <option *ngFor="let curr of countryDetObj" value="{{curr?.currencyCode}}">{{curr?.currencyCode}}</option>
+    </select>
+    <button type="button" class="col-sm-2 btn btn-primary"
+      [disabled]="!reactiveForm.get('amount').value || !reactiveForm.get('fromCurr').value || !reactiveForm.get('toCurr').value || reactiveForm.get('fromCurr').value == reactiveForm.get('toCurr').value"
+      (click)="convertCurrency()">CONVERT</button>
+  </div>
+  <br/>
+  <div *ngIf="conversionResult">
+    <span>{{reactiveForm.get('amount').value}} {{reactiveForm.get('fromCurr').value}} =</span><br />
+    <span>{{conversionResult}} {{reactiveForm.get('toCurr').value}}</span><br />
+    <span>1 {{reactiveForm.get('fromCurr').value}} = {{baseAmt}} {{reactiveForm.get('toCurr').value}}</span>
+  </div>
 </form>

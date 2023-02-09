@@ -1,13 +1,23 @@
-<h1>Input List Component Loaded Dynamically</h1>
-<br/>
+<h4>Input List Component Loaded Dynamically</h4>
+<br />
 <form [formGroup]="reactiveForm">
-<input dynamicDirective [numericOnly]="true" placeholder="Numeric Only" >
-<br/>
-<input placeholder="Alphabets Only" dynamicDirective [alphabetsOnly]="true" autocomplete="off" maxlength="10"/>
-<br/>
-<input placeholder="Alphabets and Numeric Only" dynamicDirective [alphaNumericOnly]="true" autocomplete="off" maxlength="10"/>
-<br/>
-<input id="showInput" type="checkbox" formControlName="showInput" />
-<label for="showInput">Show conditional header</label>
-<h2 *conditionalIf="reactiveForm.get('showInput').value">My conditional header</h2>
+    <div class="form-group row">
+        <input class="col-sm-2" dynamicDirective [numericOnly]="true" placeholder="Numeric Only">
+    </div>
+    <br />
+    <div class="form-group row">
+        <input class="col-sm-2" placeholder="Alphabets Only" dynamicDirective [alphabetsOnly]="true" autocomplete="off"
+            maxlength="10" />
+    </div>
+    <br />
+    <div class="form-group row">
+        <input class="col-sm-2" placeholder="Alphabets and Numeric Only" dynamicDirective [alphaNumericOnly]="true"
+            autocomplete="off" maxlength="10" />
+    </div>
+    <br />
+    <div class="form-group row">
+        <input class="col-sm-1" id="showInput" type="checkbox" formControlName="showInput" />
+        <label class="col-sm-2" for="showInput">Show conditional header</label>
+    </div>
+    <h4 class="col-sm-2" *conditionalIf="reactiveForm.get('showInput').value">My conditional header</h4>
 </form>

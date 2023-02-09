@@ -1,50 +1,59 @@
-<form [formGroup]="reactiveForm">
-<h1>Custom Pipes</h1>
-<br/>
-<span>{{userName}}</span>
-<br/>
-<div>
-<input type="number" formControlName="newDigit" matInput min="0" placeholder="Number" (keyup.enter)="addNewDigit()" #input />
-<button mat-raised-button (click)="addNewDigit()" color="primary">Add Digit</button>
-</div>
-
-<div>
-  <div>Impure Sort</div>
-<select placeholder="Select" appearance="outline">
-  <option *ngFor="let num of randomNumb | fieldsort" value="{{num}}">{{num}}</option>
-</select>
-<br/>
-<div>Pure Sort</div>
-<select placeholder="Select" appearance="outline">
-  <option *ngFor="let num of randomNumb | impureSort" value="{{num}}">{{num}}</option>
-</select>
-</div>
-<br/>
-<br/>
-<div>
-<input type="text" class="form-control" placeholder="Search" formControlName="query" id="listSearch">
-<table border="1" id="customers">
-  <tr>
-    <th>User<i (click)="onSortClick($event,'User')" class="my-icon fa fa-chevron-up"></i></th>
-    <th>Auth Id<i (click)="onSortClick($event,'AuthID')" class="my-icon fa fa-chevron-up"></i></th>
-    <th>Country<i (click)="onSortClick($event,'Mobile')" class="my-icon fa fa-chevron-up"></i></th>
-  </tr>
-  <tr *ngFor="let lock of locked | paginate: config | LockFilter:reactiveForm.get('query').value:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement">
-    <td>{{lock.User}}</td>
-    <td>{{lock.AuthID}}</td>
-    <td>{{lock.Mobile}}</td>
-  </tr>
-</table>
-<div>
-  <div> 
-    <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls> Items Per Page: <select formControlName="pageSize" placeholder="Select" appearance="outline" (change)="updateConfig()">
-    <option value="5" selected>5</option>
-    <option value="10">10</option>
-    <option value="15">15</option>
-  </select>
-</div>
-</div>
-
-<div>Length = {{filterMetadata.count}}</div>
-</div>
+<form [formGroup]="reactiveForm" class="container">
+  <div class="form-group row">
+    <h4>Custom Pipes</h4>
+  </div>
+  <br />
+  <div class="form-group row">
+    <label class="col-sm-2">Name</label>
+    <span class="col-sm-2">{{userName}}</span>
+  </div>
+  <br />
+  <div class="form-group row">
+    <input class="col-sm-2" type="number" formControlName="newDigit" matInput min="0" placeholder="Number"
+      (keyup.enter)="addNewDigit()" #input />
+    <button class="btn btn-primary col-sm-2" mat-raised-button (click)="addNewDigit()" color="primary">Add
+      Digit</button>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <div class="col-sm-2">Impure Sort</div>
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" placeholder="Select" appearance="outline">
+      <option *ngFor="let num of randomNumb | fieldsort" value="{{num}}">{{num}}</option>
+    </select>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <div class="col-sm-2">Pure Sort</div>
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" placeholder="Select" appearance="outline">
+      <option *ngFor="let num of randomNumb | impureSort" value="{{num}}">{{num}}</option>
+    </select>
+  </div>
+  <br/>
+  <div>
+    <input type="text" class="form-control" placeholder="Search" formControlName="query" id="listSearch">
+    <table border="1" id="customers">
+      <tr>
+        <th>User<i (click)="onSortClick($event,'User')" class="my-icon fa fa-chevron-up"></i></th>
+        <th>Auth Id<i (click)="onSortClick($event,'AuthID')" class="my-icon fa fa-chevron-up"></i></th>
+        <th>Country<i (click)="onSortClick($event,'Mobile')" class="my-icon fa fa-chevron-up"></i></th>
+      </tr>
+      <tr
+        *ngFor="let lock of locked | paginate: config | LockFilter:reactiveForm.get('query').value:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement">
+        <td>{{lock.User}}</td>
+        <td>{{lock.AuthID}}</td>
+        <td>{{lock.Mobile}}</td>
+      </tr>
+    </table>
+    <div>
+      <div class="form-group row">
+        <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls> Items Per Page: <select class="col-sm-2 dropdown-toggle btn-outline-info btn"
+          formControlName="pageSize" placeholder="Select" appearance="outline" (change)="updateConfig()">
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+      </div>
+    </div>
+    <div>Length = {{filterMetadata.count}}</div>
+  </div>
 </form>
