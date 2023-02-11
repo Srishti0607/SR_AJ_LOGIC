@@ -123,4 +123,8 @@ export class LandingService {
   getTaxData(){
     return this.http.get('http://localhost:3000/taxes')
   }
+
+  getCountryData(page,limit){
+    return this.http.get('http://localhost:3000/country?_page='+page+'&_limit='+limit);
+  }
 }

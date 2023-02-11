@@ -14,6 +14,8 @@ import { CrudOprComponent } from './crud-opr/crud-opr.component';
 import { NetSalRadioComponent } from './net-sal-radio/net-sal-radio.component';
 import { NetSalCheckComponent } from './net-sal-check/net-sal-check.component';
 import { ListBoxComponent } from './list-box/list-box.component';
+import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
+import { CookieHandlerComponent } from './cookie-handler/cookie-handler.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,9 @@ const routes: Routes = [
    { path: 'net-sal-radio', component:NetSalRadioComponent},
    { path: 'net-sal-check', component:NetSalCheckComponent},
    { path: 'list-box', component:ListBoxComponent},
+   { path: 'infinite-scroll', component:InfiniteScrollComponent},
+   { path: 'cookie-handler', component:CookieHandlerComponent},
+   
 ];
 
 @NgModule({

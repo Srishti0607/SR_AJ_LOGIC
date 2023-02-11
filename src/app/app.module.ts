@@ -37,6 +37,10 @@ import { NetSalRadioComponent } from './net-sal-radio/net-sal-radio.component';
 import { NetSalCheckComponent } from './net-sal-check/net-sal-check.component';
 import { ListBoxComponent } from './list-box/list-box.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
+import { CookieHandlerComponent } from './cookie-handler/cookie-handler.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CrudOprComponent,
     NetSalRadioComponent,
     NetSalCheckComponent,
-    ListBoxComponent
+    ListBoxComponent,
+    InfiniteScrollComponent,
+    CookieHandlerComponent
   ],
   imports: [
     BrowserModule,
@@ -83,11 +89,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    InfiniteScrollModule
   ],
   providers: [
     LandingService,
-    FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe
+    FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe,
+    CookieService
   ],
   bootstrap: [AppComponent],
 })
