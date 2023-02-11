@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LandingService } from '../services/landing.service';
+import { LandingService } from '../elements/landing.service';
 import { Subscription } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup } from '@angular/forms';
