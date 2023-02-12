@@ -1,7 +1,7 @@
 <div class="container"  infiniteScroll [infiniteScrollDistance]="0.5" (scrolled)="onScroll($event)">
     <h4>Infinite Scroll!!</h4>
         <table border="1" id="customers">
-            <tr>
+            <tr style="position: sticky; top: 0; z-index: 1; ">
                 <th>Country Name</th>
                 <th>Country code</th>
                 <th>Currency code</th>
