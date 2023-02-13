@@ -47,8 +47,8 @@
     <div>
       <div class="form-group row">
         <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls> Items Per Page: <select class="col-sm-2 dropdown-toggle btn-outline-info btn"
-          formControlName="pageSize" placeholder="Select" appearance="outline" (change)="updateConfig()">
-          <option value="5" selected>5</option>
+          formControlName="pageSize" placeholder="Select" appearance="outline" (click)="updateConfig()">
+          <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
         </select>

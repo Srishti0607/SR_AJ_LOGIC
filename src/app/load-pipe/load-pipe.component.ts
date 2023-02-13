@@ -32,7 +32,7 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
     this.reactiveForm = new FormGroup({
       newDigit: new FormControl(''),
       query: new FormControl(''),
-      pageSize: new FormControl('')
+      pageSize: new FormControl('5')
     });
     this.userName = this.capitalize.transform(this.userName);
     this.getRandomNumbers();
@@ -47,7 +47,7 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
   }
 
   updateConfig(){
-    this.reactiveForm.get('pageSize').setValue(this.config.itemsPerPage);
+    this.config.itemsPerPage= this.reactiveForm.get('pageSize').value;
   }
 
   onPageChange(e){
