@@ -16,6 +16,8 @@ import { NetSalCheckComponent } from './net-sal-check/net-sal-check.component';
 import { ListBoxComponent } from './list-box/list-box.component';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 import { CookieHandlerComponent } from './cookie-handler/cookie-handler.component';
+import { ChartsComponent } from './charts/charts.component';
+import { BehSubComponent } from './beh-sub/beh-sub.component';
 
 const routes: Routes = [
   {
@@ -39,6 +41,8 @@ const routes: Routes = [
    { path: 'list-box', component:ListBoxComponent},
    { path: 'infinite-scroll', component:InfiniteScrollComponent},
    { path: 'cookie-handler', component:CookieHandlerComponent},
+   { path: 'charts', component:ChartsComponent},
+   { path: 'behSub', component:BehSubComponent},
    
 ];
 

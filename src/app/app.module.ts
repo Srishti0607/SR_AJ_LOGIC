@@ -41,6 +41,9 @@ import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.compo
 import { CookieHandlerComponent } from './cookie-handler/cookie-handler.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { CookieService } from 'ngx-cookie-service';
+import { ChartsComponent } from './charts/charts.component';
+import { BehSubComponent } from './beh-sub/beh-sub.component';
+import { NgChartsModule } from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -69,7 +72,9 @@ import { CookieService } from 'ngx-cookie-service';
     NetSalCheckComponent,
     ListBoxComponent,
     InfiniteScrollComponent,
-    CookieHandlerComponent
+    CookieHandlerComponent,
+    ChartsComponent,
+    BehSubComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +95,8 @@ import { CookieService } from 'ngx-cookie-service';
     MatPaginatorModule,
     ReactiveFormsModule,
     NgbModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    NgChartsModule
   ],
   providers: [
     LandingService,

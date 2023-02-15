@@ -1,0 +1,56 @@
+[
+
+        {
+            "month": "JAN",
+            "totalEmployee":80,
+            "rejectedEmployee":10,
+            "onHold":5,
+            "onLeave":7,
+            "technical":11,
+            "nonTech":5
+        },
+        {
+            "month": "FEB",
+            "totalEmployee":10,
+            "rejectedEmployee":40,
+            "onHold":4,
+            "onLeave":5,
+            "technical":1,
+            "nonTech":9
+        },
+        {
+            "month": "MAR",
+            "totalEmployee":45,
+            "rejectedEmployee":5,
+            "onHold":3,
+            "onLeave":10,
+            "technical":9,
+            "nonTech":11
+        },
+        {
+            "month": "APR",
+            "totalEmployee":100,
+            "rejectedEmployee":100,
+            "onHold":1,
+            "onLeave":17,
+            "technical":10,
+            "nonTech":9
+        },
+        {
+            "month": "MAY",
+            "totalEmployee":0,
+            "rejectedEmployee":10,
+            "onHold":9,
+            "onLeave":1,
+            "technical":1,
+            "nonTech":9
+        },
+        {
+            "month": "JUN",
+            "totalEmployee":5,
+            "onHold":5,
+            "onLeave":5,
+            "technical":1,
+            "nonTech":8
+        }   
+]

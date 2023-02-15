@@ -1,0 +1,14 @@
+<div class="container" [formGroup]="reactiveForm">
+    <h4>Chart JS Implementation</h4>
+    <div class="form-group row">
+    <label>Chart Options</label>
+    <select class="btn col-sm-10 dropdown-toggle btn-outline-info" formControlName="chartSelected" (click)="updateGraphs()" data-toggle="dropdown" placeholder="Select" appearance="outline">
+      <option *ngFor="let chartDetails of chartOpt" value="{{chartDetails?.id}}">{{chartDetails?.name}}
+      </option>
+    </select>
+  </div>
+  <br/>
+  <div style="height: 300px!important" class="full-width">
+    <canvas id="drawChart">{{ chart }}</canvas>
+  </div>
+  </div>

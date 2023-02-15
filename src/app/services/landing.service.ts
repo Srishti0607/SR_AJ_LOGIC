@@ -127,4 +127,10 @@ export class LandingService {
   getCountryData(page,limit){
     return this.http.get('http://localhost:3000/country?_page='+page+'&_limit='+limit);
   }
+
+    //Call to datasource for getting list of chart details
+    getChartDetails() {
+      let url = "assets/Graph.json"
+      return this.http.get(url);
+    }
 }
