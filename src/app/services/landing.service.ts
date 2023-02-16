@@ -10,9 +10,9 @@ export class LandingService {
   private currencyDetBaseURL: string = 'https://api.exchangerate.host'
   private baseUrl: string = Config.baseURL;
   private employeeURL: string = this.baseUrl + 'Employees';
-  public captureCompany = new BehaviorSubject<any>([]);
+  public captureBeh = new BehaviorSubject<any>('');
   setCompany(data: any) {
-    this.captureCompany.next(data);
+    this.captureBeh.next(data);
   }
 
   constructor(private http: HttpClient) { }
@@ -140,7 +140,12 @@ export class LandingService {
     }
 
     getbehData(){
-      let url = "http://localhost:3000/behData";
+      let url = "https://fakestoreapi.com/products/categories";
+      return this.http.get(url);
+    }
+
+    getbehCategoryData(category){
+      let url = "https://fakestoreapi.com/products/category/"+category;
       return this.http.get(url);
     }
 }

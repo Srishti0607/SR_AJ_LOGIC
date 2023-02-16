@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { LandingService } from '../services/landing.service';
 
 @Component({
@@ -6,14 +7,24 @@ import { LandingService } from '../services/landing.service';
   templateUrl: './view-company.component.html',
   styleUrls: ['./view-company.component.css']
 })
-export class ViewCompanyComponent implements OnInit {
-  companyObj: any = []
+export class ViewBehComponent implements OnInit {
+  public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
+  categoryObj: any = []
 
   constructor(private landingSrv: LandingService) { }
 
   ngOnInit(): void {
-    this.landingSrv.captureCompany.subscribe(res => {
-      this.companyObj = res;
+    this.landingSrv.captureBeh.subscribe(res => {
+      if(res != null){
+        this.subscriptionsList.push(
+          this.landingSrv.getbehCategoryData(res).subscribe((data: any) => {
+            if (data) {
+              this.categoryObj = [];
+              this.categoryObj = data;
+            }
+          })
+        );
+      }
     });
   }
 

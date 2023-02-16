@@ -10,30 +10,30 @@ import { LandingService } from '../services/landing.service';
 })
 export class BehSubComponent implements OnInit {
   public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
-  companyObj: any = [];
+  behObj: any = [];
   reactiveForm!: FormGroup;
 
   constructor(private landingSrv: LandingService) { }
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
-      currencyCode: new FormControl([])
+      behData: new FormControl()
     });
-    this.getCountryCodesData();
+    this.behSub();
   }
 
-  getCountryCodesData() {
+  behSub() {
     this.subscriptionsList.push(
       this.landingSrv.getbehData().subscribe((data: any) => {
         if (data) {
-          this.companyObj = data;
+          this.behObj = data;
         }
       })
     );
   }
 
-  updateInputs(){    
-    
+  updateInputs(){   
+    this.landingSrv.setCompany(this.reactiveForm.get('behData').value);    
   }
 
 }

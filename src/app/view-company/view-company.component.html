@@ -1,15 +1,16 @@
 <div class="container">
-    <table border="1" id="customers">
+  <h4>Category Data Will be Shown Below once Category Selected!!</h4>
+    <table border="1" id="customers" *ngIf="categoryObj.length != 0">
         <tr>
-          <th>Company Name</th>
-          <th>Company Code</th>
-          <th>Active/In Active</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Description</th>
         </tr>
         <tr
-          *ngFor="let comp of companyObj">
-          <td>{{lock.companyName}}</td>
-          <td>{{lock.companyCoden}}</td>
-          <td>{{lock.Mobile}}</td>
+          *ngFor="let cat of categoryObj">
+          <td>{{cat.title}}</td>
+          <td>{{cat.price}}</td>
+          <td>{{cat.description}}</td>        
         </tr>
       </table>
 </div>

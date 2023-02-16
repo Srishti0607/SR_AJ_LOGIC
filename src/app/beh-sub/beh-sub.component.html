@@ -1,24 +1,14 @@
 <div class="cobtainer"  [formGroup]="reactiveForm">
     <h4>Behaviour Subject</h4>
     <div class="form-group row">
-        <label>Countries</label>
-        <select class="btn col-sm-10 dropdown-toggle btn-outline-info" formControlName="comp" (click)="updateInputs()" data-toggle="dropdown" placeholder="Select" appearance="outline">
-          <option *ngFor="let company of companyObj" [ngValue]="company">{{company.companyName}}
+        <label>Categories</label>
+        <select class="btn col-sm-10 dropdown-toggle btn-outline-info" formControlName="behData" (click)="updateInputs()" data-toggle="dropdown" placeholder="Select" appearance="outline">
+          <option *ngFor="let beh of behObj" [ngValue]="beh">{{beh}}
           </option>
         </select>
       </div>
-      <table border="1" id="customers">
-        <tr>
-          <th>Company Name</th>
-          <th>Company Code</th>
-          <th>Active/In Active</th>
-        </tr>
-        <tr
-          *ngFor="">
-          <td>{{lock.User}}</td>
-          <td>{{lock.AuthID}}</td>
-          <td>{{lock.Mobile}}</td>
-        </tr>
-      </table>
+</div>
+<div class="form-group row">
+  <app-view-company></app-view-company>
 </div>
 
