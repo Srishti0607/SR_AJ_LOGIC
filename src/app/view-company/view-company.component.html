@@ -1,0 +1,15 @@
+<div class="container">
+    <table border="1" id="customers">
+        <tr>
+          <th>Company Name</th>
+          <th>Company Code</th>
+          <th>Active/In Active</th>
+        </tr>
+        <tr
+          *ngFor="let comp of companyObj">
+          <td>{{lock.companyName}}</td>
+          <td>{{lock.companyCoden}}</td>
+          <td>{{lock.Mobile}}</td>
+        </tr>
+      </table>
+</div>

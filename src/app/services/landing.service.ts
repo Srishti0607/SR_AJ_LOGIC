@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Config } from '../config';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ export class LandingService {
   private currencyDetBaseURL: string = 'https://api.exchangerate.host'
   private baseUrl: string = Config.baseURL;
   private employeeURL: string = this.baseUrl + 'Employees';
+  public captureCompany = new BehaviorSubject<any>([]);
+  setCompany(data: any) {
+    this.captureCompany.next(data);
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -131,6 +136,11 @@ export class LandingService {
     //Call to datasource for getting list of chart details
     getChartDetails() {
       let url = "assets/Graph.json"
+      return this.http.get(url);
+    }
+
+    getbehData(){
+      let url = "http://localhost:3000/behData";
       return this.http.get(url);
     }
 }

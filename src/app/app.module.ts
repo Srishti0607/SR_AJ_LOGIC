@@ -44,6 +44,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ChartsComponent } from './charts/charts.component';
 import { BehSubComponent } from './beh-sub/beh-sub.component';
 import { NgChartsModule } from "ng2-charts";
+import { ViewCompanyComponent } from './view-company/view-company.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { NgChartsModule } from "ng2-charts";
     InfiniteScrollComponent,
     CookieHandlerComponent,
     ChartsComponent,
-    BehSubComponent
+    BehSubComponent,
+    ViewCompanyComponent
   ],
   imports: [
     BrowserModule,
