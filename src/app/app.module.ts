@@ -47,6 +47,7 @@ import { NgChartsModule } from "ng2-charts";
 import { ViewBehComponent } from './view-company/view-company.component';
 import { TextareaFormComponent } from './textarea-form/textarea-form.component';
 import { TemplateTextareaFormComponent } from './template-textarea-form/template-textarea-form.component';
+import { FormBuilderComponent } from './form-builder/form-builder.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { TemplateTextareaFormComponent } from './template-textarea-form/template
     BehSubComponent,
     ViewBehComponent,
     TextareaFormComponent,
-    TemplateTextareaFormComponent
+    TemplateTextareaFormComponent,
+    FormBuilderComponent
   ],
   imports: [
     BrowserModule,
