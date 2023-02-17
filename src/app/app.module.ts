@@ -45,6 +45,8 @@ import { ChartsComponent } from './charts/charts.component';
 import { BehSubComponent } from './beh-sub/beh-sub.component';
 import { NgChartsModule } from "ng2-charts";
 import { ViewBehComponent } from './view-company/view-company.component';
+import { TextareaFormComponent } from './textarea-form/textarea-form.component';
+import { TemplateTextareaFormComponent } from './template-textarea-form/template-textarea-form.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { ViewBehComponent } from './view-company/view-company.component';
     CookieHandlerComponent,
     ChartsComponent,
     BehSubComponent,
-    ViewBehComponent
+    ViewBehComponent,
+    TextareaFormComponent,
+    TemplateTextareaFormComponent
   ],
   imports: [
     BrowserModule,

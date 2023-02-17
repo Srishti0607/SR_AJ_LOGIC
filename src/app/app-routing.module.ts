@@ -18,6 +18,8 @@ import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.compo
 import { CookieHandlerComponent } from './cookie-handler/cookie-handler.component';
 import { ChartsComponent } from './charts/charts.component';
 import { BehSubComponent } from './beh-sub/beh-sub.component';
+import { TextareaFormComponent } from './textarea-form/textarea-form.component';
+import { TemplateTextareaFormComponent } from './template-textarea-form/template-textarea-form.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,8 @@ const routes: Routes = [
    { path: 'cookie-handler', component:CookieHandlerComponent},
    { path: 'charts', component:ChartsComponent},
    { path: 'behSub', component:BehSubComponent},
+   { path: 'textarea-form', component:TextareaFormComponent},
+   { path: 'template-textarea-form', component:TemplateTextareaFormComponent}
    
 ];
 

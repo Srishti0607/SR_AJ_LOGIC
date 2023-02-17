@@ -1,0 +1,54 @@
+<div class="container">
+    <h4>Reactive Driven Form</h4>
+    <form [formGroup]="reactiveForm">
+        <div class="form-control row">          
+            <div class="form-control row">
+              <label>Product ID</label>
+              <textarea type="text" rows="2" dynamicDirective [numericOnly]="true" formControlName="productId"></textarea>
+              <span style="color:red" *ngIf="reactiveForm.hasError('required','productId')">Product ID Required</span>
+              <span style="color:red" *ngIf="reactiveForm.hasError('min','productId')">Product ID Must be greater than 100</span>
+            </div>
+            <br />
+            <div class="form-control row">
+              <label>Product Name</label>
+              <textarea type="text" dynamicDirective [alphabetsOnly]="true" formControlName="productName" ></textarea>
+              <span style="color:red" *ngIf="reactiveForm.hasError('required','productName')">Product Name Required</span>
+              <span style="color:red" *ngIf="reactiveForm.controls['productName'].hasError('minlength')">Minimum Length of name should be 5</span>
+            </div>
+            <br />
+            <div class="form-control row">
+              <label>Cost</label>
+              <textarea type="text" rows="2" dynamicDirective [numericOnly]="true" formControlName="cost" ></textarea>
+              <span style="color:red" *ngIf="reactiveForm.hasError('required','cost')">Cost Required</span>
+              <span style="color:red" *ngIf="reactiveForm.hasError('min','cost')">Cost Must be greater than 500</span>
+            </div>
+            <br />
+            <div class="form-control row">
+              <label>Quantity</label>
+              <textarea type="text" rows="2" dynamicDirective [numericOnly]="true" formControlName="quantity" ></textarea>
+              <span style="color:red" *ngIf="reactiveForm.hasError('required','quantity')">Quantity Required</span>
+              <span style="color:red" *ngIf="reactiveForm.hasError('min','quantity')">Quantity Must be greater than 5</span> 
+              <span style="color:red" *ngIf="reactiveForm.hasError('max','quantity')">Max Quantity must be 20 </span>                           
+            </div>
+            <br />
+            <div class="form-control row">
+              <label>Bill Amount</label>
+              <textarea formControlName="billAmt" ></textarea>               
+            </div>
+            <br />
+            <div class="form-control row">
+              <label>Discount</label>
+              <textarea formControlName="discount" ></textarea>   
+            </div>
+            <br/>
+            <div class="form-control row">
+              <label>Net Bill Amount</label>
+              <textarea formControlName="netBillAmt" ></textarea>   
+            </div>
+            <br/>
+            <div class="form-control row">
+              <button type="button" [disabled]="!reactiveForm.valid" (click)="calculateVal()">Calculate</button>
+            </div>
+          </div>
+      </form>
+</div>

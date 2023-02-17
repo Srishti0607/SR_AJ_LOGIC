@@ -1,0 +1,49 @@
+<div class="container">
+    <h4>Template Driven Form</h4>
+    <form>
+      <div class="form-control row">          
+          <div class="form-control row">
+            <label>Product ID</label>
+            <textarea name="productId" type="number" dynamicDirective [numericOnly]="true" rows="2" [(ngModel)]="productId" (focus)="validate('productId')" (ngModelChange)="validate('productId')" required></textarea>
+            <span style="color:red" *ngIf="productFlag">{{productMsg}}</span>
+          </div>
+          <br />
+          <div class="form-control row">
+            <label>Product Name</label>
+            <textarea name="productName" type="text" dynamicDirective [alphabetsOnly]="true" minlength="5" [(ngModel)]="productName" (focus)="validate('productName')" (ngModelChange)="validate('productName')" required></textarea>
+            <span style="color:red" *ngIf="productNameFlag">{{productNameMsg}}</span>
+        </div>
+          <br />
+          <div class="form-control row">
+            <label>Cost</label>
+            <textarea name="cost" type="text" dynamicDirective [numericOnly]="true" rows="2" [(ngModel)]="cost" (focus)="validate('cost')" (ngModelChange)="validate('cost')" required></textarea>
+            <span style="color:red" *ngIf="costFlag">{{costMsg}}</span>
+          </div>
+          <br />
+          <div class="form-control row">
+            <label>Quantity</label>
+            <textarea name="qty" type="text" rows="2" dynamicDirective [numericOnly]="true" [(ngModel)]="quantity" (focus)="validate('qty')" (ngModelChange)="validate('qty')"></textarea>  
+            <span style="color:red" *ngIf="qtyFlag">{{qtyMsg}}</span>           
+          </div>
+          <br />
+          <div class="form-control row">
+            <label>Bill Amount</label>
+            <textarea name="billAmt" disabled="true" [(ngModel)]="billAmt"></textarea>           
+          </div>
+          <br />
+          <div class="form-control row">
+            <label>Discount</label>
+            <textarea name="discount" disabled="true" [(ngModel)]="discount"></textarea> 
+          </div>
+          <br/>
+          <div class="form-control row">
+            <label>Net Bill Amount</label>
+            <textarea name="netBillAmt" disabled="true" [(ngModel)]="netBillAmt"></textarea>  
+          </div>
+          <br/>
+          <div class="form-control row">
+            <button type="button" (click)="calculateVal()" [disabled]="checkBtnDisable()">Calculate</button>
+          </div>
+        </div>
+    </form>
+</div>
