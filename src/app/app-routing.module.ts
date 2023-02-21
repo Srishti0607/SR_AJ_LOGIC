@@ -21,6 +21,7 @@ import { BehSubComponent } from './beh-sub/beh-sub.component';
 import { TextareaFormComponent } from './textarea-form/textarea-form.component';
 import { TemplateTextareaFormComponent } from './template-textarea-form/template-textarea-form.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
+import { PromiseObservableComponent } from './promise-observable/promise-observable.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,8 @@ const routes: Routes = [
    { path: 'behSub', component:BehSubComponent},
    { path: 'textarea-form', component:TextareaFormComponent},
    { path: 'template-textarea-form', component:TemplateTextareaFormComponent},
-   { path: 'form-builder', component:FormBuilderComponent}
+   { path: 'form-builder', component:FormBuilderComponent},
+   { path: 'promise-observable', component: PromiseObservableComponent}
    
 ];
 

@@ -29,13 +29,57 @@ export class TemplateTextareaFormComponent implements OnInit {
 
   validate(opr){
     if(opr == 'productId'){
-      (!this.productId)? (this.productFlag = true, this.productMsg = 'Product Id is Mandatory') : this.productId < 100 ? (this.productFlag = true, this.productMsg = 'Product ID should be greater than 100'): (this.productFlag = false,this.productMsg = '');
+      if(!this.productId){
+        this.productFlag = true;
+        this.productMsg = 'Product Id is Mandatory';
+      }else{
+        if(this.productId < 100){
+          this.productFlag = true;
+          this.productMsg = 'Product ID should be greater than 100';
+        }else{
+          this.productFlag = false;
+          this.productMsg = '';
+        }
+      }
     }else if(opr == 'productName'){
-      (!this.productName) ? (this.productNameFlag = true, this.productNameMsg = 'Product Name is Mandatory') : this.productName.length < 5 ? (this.productNameFlag = true, this.productNameMsg = 'Product Name Must be greater than 5'): (this.productNameFlag = false,this.productNameMsg = '');
+      if(!this.productName){
+        this.productNameFlag = true;
+         this.productNameMsg = 'Product Name is Mandatory';
+      }else{
+        if(this.productName.length < 5){
+          this.productNameFlag = true;
+           this.productNameMsg = 'Product Name Length Must be greater than 5';
+        }else{
+          this.productNameFlag = false;
+          this.productNameMsg = '';
+        }
+      }
     }else if(opr == 'cost'){
-      (!this.cost) ? (this.costFlag = true, this.costMsg = 'Cost is Mandatory') : this.cost < 500 ? (this.costFlag = true, this.costMsg = 'Cost Must be greater than 500'): (this.costFlag = false,this.costMsg = '');
+      if(!this.cost){
+        this.costFlag = true;
+        this.costMsg = 'Cost is Mandatory';
+      }else{
+        if(this.cost < 500){
+          this.costFlag = true;
+          this.costMsg = 'Cost Must be greater than 500';
+        }else{
+          this.costFlag = false;
+          this.costMsg = '';
+        }
+      }
     }else {
-      (!this.quantity) ? (this.qtyFlag = true, this.qtyMsg = 'Cost is Mandatory') : this.quantity < 5 || this.quantity > 20 ? (this.qtyFlag = true, this.qtyMsg = 'Quantity must be greater than 5 and less than 20'): (this.qtyFlag = false,this.qtyMsg = '');
+      if(!this.quantity){
+        this.qtyFlag = true;
+         this.qtyMsg = 'Cost is Mandatory';
+      }else{
+        if(this.quantity < 5 || this.quantity > 20){
+          this.qtyFlag = true;
+          this.qtyMsg = 'Quantity must be greater than 5 and less than 20';
+        }else{
+          this.qtyFlag = false;
+          this.qtyMsg = '';
+        }
+      }
     }
   }
 

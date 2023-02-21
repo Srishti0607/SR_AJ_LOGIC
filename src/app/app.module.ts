@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {LandingService} from './services/landing.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -48,6 +48,14 @@ import { ViewBehComponent } from './view-company/view-company.component';
 import { TextareaFormComponent } from './textarea-form/textarea-form.component';
 import { TemplateTextareaFormComponent } from './template-textarea-form/template-textarea-form.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
+import {LoadingSpinnerService } from './services/loading-spinner.service';
+import { HrssInterceptor } from "./hrssInterceptor";
+import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { PromiseObservableComponent } from './promise-observable/promise-observable.component';
+export const interceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
+];
 
 @NgModule({
   declarations: [
@@ -82,7 +90,9 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
     ViewBehComponent,
     TextareaFormComponent,
     TemplateTextareaFormComponent,
-    FormBuilderComponent
+    FormBuilderComponent,
+    LoadingSpinnerComponent,
+    PromiseObservableComponent
   ],
   imports: [
     BrowserModule,
@@ -104,12 +114,15 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
     ReactiveFormsModule,
     NgbModule,
     InfiniteScrollModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxSpinnerModule
   ],
   providers: [
     LandingService,
     FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe,
-    CookieService
+    CookieService,
+    LoadingSpinnerService,
+    interceptorProviders
   ],
   bootstrap: [AppComponent],
 })

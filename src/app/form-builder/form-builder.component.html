@@ -22,7 +22,7 @@
         </div>
         <br/>
         <div class="form-group">
-            <button type="submit" [disabled]="!reactiveForm.valid" class="btn btn-success" (click)="showTable = true;">Show Details</button>
+            <button type="submit" [disabled]="!reactiveForm.valid" class="btn btn-success" (click)="showDetails()">Show Details</button>
         </div>
         </form>
         <br/>
@@ -34,10 +34,10 @@
               <th>List Of Books</th>
             </tr>
             <tr>
-              <td>{{reactiveForm.get('libraryName').value}}</td>
-              <td>{{reactiveForm.get('address').value}}</td>
-              <td>{{reactiveForm.get('librarianName').value}}</td> 
-              <td>{{reactiveForm.get('books').value}}</td>       
+              <td>{{inventory.getName()}}</td>
+              <td>{{inventory.getAddress()}}</td>
+              <td>{{inventory.getLibrarianName()}}</td> 
+              <td>{{inventory.getBooks()}}</td>       
             </tr>
           </table>
         

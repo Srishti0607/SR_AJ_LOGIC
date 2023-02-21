@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { InventoryClass } from '../inventory.model';
 
 @Component({
   selector: 'app-form-builder',
@@ -9,6 +10,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class FormBuilderComponent implements OnInit {
   reactiveForm:FormGroup;
   showTable: boolean = false;
+  inventory : InventoryClass;
 
   constructor(private fb: FormBuilder) { }
 
@@ -29,6 +31,12 @@ export class FormBuilderComponent implements OnInit {
 
   addBooks(){
     this.books.push(this.fb.control(''));
+  }
+
+  showDetails(){
+    this.showTable = true;
+    this.inventory = this.reactiveForm.value;
+    this.inventory = new InventoryClass(this.reactiveForm.get('libraryName').value,this.reactiveForm.get('address').value,this.reactiveForm.get('librarianName').value,this.reactiveForm.get('books').value)
   }
 
 }
