@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { AppRouteChangeService } from './services/app-route-change.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component, ViewChild } from '@angular/core';
 export class AppComponent {
   // title = 'sample-application';
 
-  constructor() {
+  constructor(public route: AppRouteChangeService) {
     console.log('setting apm obj');
   }
 

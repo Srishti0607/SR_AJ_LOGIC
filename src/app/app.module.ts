@@ -53,6 +53,9 @@ import { HrssInterceptor } from "./hrssInterceptor";
 import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PromiseObservableComponent } from './promise-observable/promise-observable.component';
+import { ParameterRoutingComponent } from './parameter-routing/parameter-routing.component';
+import { ViewProductComponent } from './view-product/view-product.component';
+import {AppRouteChangeService} from './services/app-route-change.service';
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
 ];
@@ -92,7 +95,9 @@ export const interceptorProviders = [
     TemplateTextareaFormComponent,
     FormBuilderComponent,
     LoadingSpinnerComponent,
-    PromiseObservableComponent
+    PromiseObservableComponent,
+    ParameterRoutingComponent,
+    ViewProductComponent
   ],
   imports: [
     BrowserModule,
@@ -122,8 +127,9 @@ export const interceptorProviders = [
     FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe,
     CookieService,
     LoadingSpinnerService,
-    interceptorProviders
+    interceptorProviders,
+    AppRouteChangeService
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

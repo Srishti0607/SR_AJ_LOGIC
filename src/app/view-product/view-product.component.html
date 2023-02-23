@@ -1,0 +1,17 @@
+<div class="container">
+  <div>Hi {{name}}</div>
+      <table border="1" id="customers" *ngIf="categoryObj.length != 0">
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+          </tr>
+          <tr
+            *ngFor="let cat of categoryObj">
+            <td>{{cat.title}}</td>
+            <td>{{cat.price}}</td>
+            <td>{{cat.description}}</td>        
+          </tr>
+        </table>
+        <button type="button"  [routerLink]="['/parameterized']">Back</button>
+  </div>

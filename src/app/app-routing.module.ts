@@ -22,6 +22,8 @@ import { TextareaFormComponent } from './textarea-form/textarea-form.component';
 import { TemplateTextareaFormComponent } from './template-textarea-form/template-textarea-form.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { PromiseObservableComponent } from './promise-observable/promise-observable.component';
+import { ParameterRoutingComponent } from './parameter-routing/parameter-routing.component';
+import { ViewProductComponent } from './view-product/view-product.component';
 
 const routes: Routes = [
   {
@@ -50,8 +52,11 @@ const routes: Routes = [
    { path: 'textarea-form', component:TextareaFormComponent},
    { path: 'template-textarea-form', component:TemplateTextareaFormComponent},
    { path: 'form-builder', component:FormBuilderComponent},
-   { path: 'promise-observable', component: PromiseObservableComponent}
-   
+   { path: 'promise-observable', component: PromiseObservableComponent},
+   { path: 'parameterized', component: ParameterRoutingComponent},
+   { path: 'product/:category/:isNameAvailable/:name', component: ViewProductComponent},
+   { path: 'productWithName/:category', component: ViewProductComponent}
+  
 ];
 
 @NgModule({
