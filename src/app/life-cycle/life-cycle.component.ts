@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-life-cycle',
@@ -22,8 +23,15 @@ OnDestroy  {
   afterViewInit: boolean = false;
   afterViewChecked: boolean = false;
   destroy: boolean = false;
+  val: any;
 
-  constructor() {
+  constructor(activeRoute: ActivatedRoute) {
+    activeRoute.pathFromRoot.forEach(route => route.params.subscribe(params=>{
+      console.log(params['val'])
+      if(params["val"]!='' && params["val"] != null && params['val']!= undefined){
+        this.val = JSON.parse(params["val"]);
+      }
+    }))
     console.log("Life-Cycle Component: Constructor");
     this.const = true;
    }

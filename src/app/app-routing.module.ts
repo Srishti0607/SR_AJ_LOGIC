@@ -24,6 +24,8 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { PromiseObservableComponent } from './promise-observable/promise-observable.component';
 import { ParameterRoutingComponent } from './parameter-routing/parameter-routing.component';
 import { ViewProductComponent } from './view-product/view-product.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RoutingFeaturesComponent } from './routing-features/routing-features.component';
 
 const routes: Routes = [
   {
@@ -34,7 +36,7 @@ const routes: Routes = [
    { path: 'landing', component: LandingPageComponent },
    { path: 'custom-directive', component: LoadDirectiveComponent },
    { path: 'custom-pipe', component: LoadPipeComponent },
-   { path: 'life-cycle', component: LifeCycleComponent },
+   { path: 'life-cycle/:val', component: LifeCycleComponent },
    { path: 'orders', component: SubtotalsRunningtotalsComponent },
    { path: 'orders-accordian', component: SubtotalsAccordianComponent },
    { path: 'multi-level', component: MultiLevelAccordianComponent},
@@ -54,8 +56,13 @@ const routes: Routes = [
    { path: 'form-builder', component:FormBuilderComponent},
    { path: 'promise-observable', component: PromiseObservableComponent},
    { path: 'parameterized', component: ParameterRoutingComponent},
-   { path: 'product/:category/:isNameAvailable/:name', component: ViewProductComponent},
-   { path: 'productWithName/:category', component: ViewProductComponent}
+   { path: 'productWithName/:category/:isNameAvailable/:name', component: ViewProductComponent},
+   { path: 'product/:category', component: ViewProductComponent},
+   { path: 'routing-features', component: RoutingFeaturesComponent,
+  children: [
+    { path: 'life-cycle/:val', component: LifeCycleComponent },
+  ]},
+   { path: '**', component: NotFoundComponent}
   
 ];
 

@@ -1,4 +1,5 @@
 <div class="container">
+  <div *ngIf="!val">
   <h4>Parent Hooks</h4>
 <span *ngIf="const">Life-Cycle Component: Constructor</span><br/>
 <span *ngIf="onChange">Life-Cycle Component: OnChanges</span><br/>
@@ -16,4 +17,22 @@
       *ngIf="displayChild"
       [message]="'Hello'">
     </app-child>
+  </div>
+  <div *ngIf="val">
+    <div class="form-group row">
+      <label class="col-sm-2">Currency Code</label>
+      <input class="col-sm-2" type="text" value="{{val?.currencyCode}}" disabled>
+    </div>
+    <br/>
+    <div class="form-group row">
+      <label class="col-sm-2">Population</label>
+      <input class="col-sm-2" type="text" value="{{val?.population}}" disabled>
+    </div>
+    <br/>
+    <div class="form-group row">
+      <label class="col-sm-2">Capital</label>
+      <input class="col-sm-2" type="text" value="{{val?.capital}}" disabled>
+    </div>
+
+  </div>
   </div>

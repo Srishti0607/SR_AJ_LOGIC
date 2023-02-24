@@ -6,7 +6,7 @@
         </tr>
         <tr *ngFor="let beh of behObj">
             <td>{{beh}}</td>
-            <td><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/product',beh]"></i> <br/><button type="button" [routerLink]="['/productWithName',beh,true,'Kameshwara']">Route With Name</button></td>            
+            <td><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/product',beh]"></i> <br/><button type="button" class="btn btn-primary" [routerLink]="['/productWithName',beh,true,'Kameshwara']">Route With Name</button></td>            
         </tr>
     </table>
 </div>

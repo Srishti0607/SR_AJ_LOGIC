@@ -56,6 +56,8 @@ import { PromiseObservableComponent } from './promise-observable/promise-observa
 import { ParameterRoutingComponent } from './parameter-routing/parameter-routing.component';
 import { ViewProductComponent } from './view-product/view-product.component';
 import {AppRouteChangeService} from './services/app-route-change.service';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RoutingFeaturesComponent } from './routing-features/routing-features.component';
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
 ];
@@ -97,7 +99,9 @@ export const interceptorProviders = [
     LoadingSpinnerComponent,
     PromiseObservableComponent,
     ParameterRoutingComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    NotFoundComponent,
+    RoutingFeaturesComponent
   ],
   imports: [
     BrowserModule,

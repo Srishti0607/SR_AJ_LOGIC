@@ -1,0 +1,16 @@
+<div class="container">
+    <h3>Routing Features</h3>
+    <button type="button" class="btn btn-primary" [routerLink]="['/Kameshwara']">If No Routing Path present</button>
+    <h4>Child Routes With Styling</h4>
+    <div class="form-group row">
+        <label>Countries</label>
+        <select class="btn col-sm-10 dropdown-toggle btn-outline-info" (click)="updateInputs()" [(ngModel)]="data" data-toggle="dropdown"  placeholder="Select" appearance="outline">
+          <option *ngFor="let countryDet of countryDetObj" [ngValue]="countryDet">{{countryDet?.countryName}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+
+</div>
