@@ -58,6 +58,9 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import {AppRouteChangeService} from './services/app-route-change.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RoutingFeaturesComponent } from './routing-features/routing-features.component';
+import {RouterGuardService} from './routerGuards.service';
+import { RouterGuardChildService } from './routerGuardsChild.service';
+import RouterDeactivateGuardService from './routerDeactivateGuard.service';
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
 ];
@@ -132,7 +135,10 @@ export const interceptorProviders = [
     CookieService,
     LoadingSpinnerService,
     interceptorProviders,
-    AppRouteChangeService
+    AppRouteChangeService,
+    RouterGuardService,
+    RouterGuardChildService,
+    RouterDeactivateGuardService
   ],
   bootstrap: [AppComponent]
 })

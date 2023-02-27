@@ -11,6 +11,7 @@ export class LandingService {
   private baseUrl: string = Config.baseURL;
   private employeeURL: string = this.baseUrl + 'Employees';
   public captureBeh = new BehaviorSubject<any>('');
+  parameterizedCalled: boolean = false;
   setCompany(data: any) {
     this.captureBeh.next(data);
   }

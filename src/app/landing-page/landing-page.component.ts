@@ -156,7 +156,10 @@ export class LandingPageComponent implements OnInit {
     let det = this.reactiveForm.get('currencyCode').value;
     this.reactiveForm.get('code').setValue(det.currencyCode);
     this.reactiveForm.get('population').setValue(det.population);
-    this.reactiveForm.get('capital').setValue(det.capital);
-    
+    this.reactiveForm.get('capital').setValue(det.capital);    
+  }
+
+  canDeactivate(){
+    return this.reactiveForm.get('currencyCode').value.length > 0
   }
 }

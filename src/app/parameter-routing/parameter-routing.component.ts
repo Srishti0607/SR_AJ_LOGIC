@@ -11,7 +11,9 @@ export class ParameterRoutingComponent implements OnInit {
   public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
   behObj: any = [];
 
-  constructor(private landingSrv: LandingService) { }
+  constructor(private landingSrv: LandingService) { 
+    this.landingSrv.parameterizedCalled = true;
+  }
 
   ngOnInit(): void {
     this.subscriptionsList.push(
