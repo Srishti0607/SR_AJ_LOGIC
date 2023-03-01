@@ -61,6 +61,8 @@ import { RoutingFeaturesComponent } from './routing-features/routing-features.co
 import {RouterGuardService} from './routerGuards.service';
 import { RouterGuardChildService } from './routerGuardsChild.service';
 import RouterDeactivateGuardService from './routerDeactivateGuard.service';
+import {ProductscatalogComponent} from './productscatalog/productscatalog.component';
+import {FilterComponent} from './filter/filter.component';
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
 ];
@@ -104,7 +106,9 @@ export const interceptorProviders = [
     ParameterRoutingComponent,
     ViewProductComponent,
     NotFoundComponent,
-    RoutingFeaturesComponent
+    RoutingFeaturesComponent,
+    ProductscatalogComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

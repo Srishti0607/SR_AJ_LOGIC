@@ -29,6 +29,7 @@ import { RoutingFeaturesComponent } from './routing-features/routing-features.co
 import { RouterGuardService } from './routerGuards.service';
 import { RouterGuardChildService } from './routerGuardsChild.service'
 import RouterDeactivateGuardService from './routerDeactivateGuard.service';
+import { ProductscatalogComponent } from './productscatalog/productscatalog.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'landing', component: LandingPageComponent,
-    canDeactivate: [RouterDeactivateGuardService]
+    // canDeactivate: [RouterDeactivateGuardService]
   },
   { path: 'custom-directive', component: LoadDirectiveComponent },
   { path: 'custom-pipe', component: LoadPipeComponent },
@@ -79,7 +80,9 @@ const routes: Routes = [
       { path: 'life-cycle/:val', component: LifeCycleComponent },
     ]
   },
+  { path: 'bug', component: ProductscatalogComponent },
   { path: '**', component: NotFoundComponent }
+  
 
 ];
 
