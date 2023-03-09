@@ -30,6 +30,7 @@ import { RouterGuardService } from './routerGuards.service';
 import { RouterGuardChildService } from './routerGuardsChild.service'
 import RouterDeactivateGuardService from './routerDeactivateGuard.service';
 import { ProductscatalogComponent } from './productscatalog/productscatalog.component';
+import { CheckTemplateComponent } from './check-template/check-template.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,7 @@ const routes: Routes = [
     ]
   },
   { path: 'bug', component: ProductscatalogComponent },
+  { path: 'check-template', component: CheckTemplateComponent },
   { path: '**', component: NotFoundComponent }
   
 

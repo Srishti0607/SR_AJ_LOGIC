@@ -1,0 +1,59 @@
+<div class="container">
+    <h4>Net Salary Calculation</h4>
+        <div class="form-group row">
+            <label class="col-sm-2" for="Salary">Salary</label>
+            <input class="col-sm-2" type="number" name="salary" [(ngModel)]="salary"
+                (ngModelChange)="showAllowance();" />
+            <br />
+            <span style="color:red" *ngIf="salary == 0 && salary == ''">Input salary
+                required
+                and greater than zero *</span>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2" for="Salary">Salary</label>
+            <div class="btn-group-toggle" data-toggle="buttons" *ngFor="let tax of taxObj">
+                <input type="checkbox" name="tax" value="{{tax?.val}}" [checked]="tax?.checked"
+                    (change)="calculateAmt($event,tax);">{{tax?.name}}
+            </div>
+            <span style="color:red" *ngIf="taxObjSelected.length == 0">Select Tax *</span>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2" for="Salary">Allowance Amount</label>
+            <input class="col-sm-2" [(ngModel)]="allownceAmt" readonly />
+            <br />
+            <label class="col-sm-2" for="Salary">Net Salary</label>
+            <input class="col-sm-2" [(ngModel)]="netSal" readonly />
+        </div>
+    <br />
+        <h4>Net Salary Calculation on button</h4>
+        <div>
+            <div class="form-group row">
+                <label class="col-sm-2" for="Salary">Salary</label>
+                <input class="col-sm-2" type="number" name="salary" [(ngModel)]="salary1"/>
+                <br />
+                <span style="color:red" *ngIf="salary1 == 0 && salary1 == ''">Input salary
+                    required
+                    and greater than zero *</span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label class="col-sm-2" for="Salary">Salary</label>
+                <div class="btn-group-toggle" data-toggle="buttons" *ngFor="let tax of taxObj1">
+                    <input class="col-sm-2" type="checkbox" name="tax" value="{{tax?.val}}" [checked]="tax?.checked" 
+                    (change)="getTotalTax($event,tax)">{{tax?.name}}
+                </div>
+            </div>
+            <br />
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="Salary">Allowance Amount</label>
+                    <input class="col-sm-2" [(ngModel)]="allownceAmt1" readonly />
+                    <br />
+                    <label class="col-sm-2" for="Salary">Net Salary</label>
+                    <input class="col-sm-2" [(ngModel)]="netSal1" readonly />
+                </div>
+            </div>
+            <button class="btn btn-primary" type="button" (click)="calculateNetSal()">Calculate</button>
+
+        </div>
+</div>
