@@ -46,9 +46,9 @@ export class NetSalRadioComponent implements OnInit {
   }
 
   calculateAmt(){
-    if(this.reactiveForm.get('taxVal').value){
+    if(this.reactiveForm.get('taxVal').value.split('-')[1]){
       if(this.reactiveForm.get('salary').value > 0){
-        this.reactiveForm.get('allownceAmt').setValue(parseFloat((this.reactiveForm.get('salary').value * (this.reactiveForm.get('taxVal').value/100)).toFixed(2)));
+        this.reactiveForm.get('allownceAmt').setValue(parseFloat((this.reactiveForm.get('salary').value * (this.reactiveForm.get('taxVal').value.split('-')[1]/100)).toFixed(2)));
         this.reactiveForm.get('netSal').setValue(parseFloat(this.reactiveForm.get('salary').value + this.reactiveForm.get('allownceAmt').value));
       }
       else{

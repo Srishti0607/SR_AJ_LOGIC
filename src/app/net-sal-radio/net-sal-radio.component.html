@@ -10,7 +10,7 @@
 <div class="form-group row">
     <label class="col-sm-2" for="Salary">Salary</label>
     <div class="btn-group btn-group-toggle" *ngFor="let tax of taxObj">
-        <input type="radio" name="tax" value="{{tax?.val}}" formControlName="taxVal" (change)="calculateAmt();">{{tax?.name}}
+        <input type="radio" name="tax" value="{{tax?.name}}-{{tax?.val}}" formControlName="taxVal" (change)="calculateAmt();">{{tax?.name}}
     </div>
     <span style="color:red" *ngIf="reactiveForm.controls['taxVal'].errors?.required">Select Tax *</span>
 </div>
