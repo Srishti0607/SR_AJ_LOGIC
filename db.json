@@ -117,16 +117,24 @@
   ],
   "taxes": [
     {
-      "name": "HRA",
-      "val": 10
+      "name": "PPF",
+      "val": 7.5
+    },
+    {
+      "name": "EPPF",
+      "val": 7.5
+    },
+    {
+      "name": "VPF",
+      "val": 7.5
     },
     {
       "name": "CGHS",
       "val": 30
     },
     {
-      "name": "PPF",
-      "val": 7.5
+    "name": "HRA",
+    "val": 10
     }
   ],
   "bulkInsert": [
