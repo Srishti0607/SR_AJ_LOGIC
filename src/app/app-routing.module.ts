@@ -31,6 +31,7 @@ import { RouterGuardChildService } from './routerGuardsChild.service'
 import RouterDeactivateGuardService from './routerDeactivateGuard.service';
 import { ProductscatalogComponent } from './productscatalog/productscatalog.component';
 import { CheckTemplateComponent } from './check-template/check-template.component';
+import { ExportFilesComponent } from './export-files/export-files.component';
 
 const routes: Routes = [
   {
@@ -70,7 +71,7 @@ const routes: Routes = [
     path: 'productWithName/:category/:isNameAvailable/:name', component: ViewProductComponent,
     canActivate: [RouterGuardService]
   },
-  {
+{
     path: 'product/:category', component: ViewProductComponent,
     canActivate: [RouterGuardService]
   },
@@ -83,6 +84,7 @@ const routes: Routes = [
   },
   { path: 'bug', component: ProductscatalogComponent },
   { path: 'check-template', component: CheckTemplateComponent },
+  { path: 'export', component: ExportFilesComponent },
   { path: '**', component: NotFoundComponent }
   
 

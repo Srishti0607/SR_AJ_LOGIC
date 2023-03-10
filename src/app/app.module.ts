@@ -64,6 +64,7 @@ import RouterDeactivateGuardService from './routerDeactivateGuard.service';
 import {ProductscatalogComponent} from './productscatalog/productscatalog.component';
 import {FilterComponent} from './filter/filter.component';
 import { CheckTemplateComponent } from './check-template/check-template.component';
+import { ExportFilesComponent } from './export-files/export-files.component';
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
 ];
@@ -110,7 +111,8 @@ export const interceptorProviders = [
     RoutingFeaturesComponent,
     ProductscatalogComponent,
     FilterComponent,
-    CheckTemplateComponent
+    CheckTemplateComponent,
+    ExportFilesComponent
   ],
   imports: [
     BrowserModule,
