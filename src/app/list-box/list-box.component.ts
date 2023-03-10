@@ -64,7 +64,6 @@ export class ListBoxComponent implements OnInit {
         this.reactiveForm.get('initialList').setValue([]);
       }
     } else {
-
       if (this.reactiveForm.get('finalList').value.length == 1) {
         this.finalObj.splice(this.reactiveForm.get('finalList').value[0].split('-')[2], 1);
         let itemToPush = {
@@ -77,7 +76,7 @@ export class ListBoxComponent implements OnInit {
         this.finalObj.length == 0 ? (this.reactiveForm.get('allowance').setValue(0),this.reactiveForm.get('netSal').setValue(0)) : '';
       } else {
         this.reactiveForm.get('finalList').value.forEach(data => {
-          let index = this.finalObj.findIndex((data1, index) => parseInt(data1.val) === parseInt(data.split('-')[0]));
+          let index = this.finalObj.findIndex((data1, index) => data1.name === data.split('-')[1]);
           this.finalObj.splice(index, 1)
           let itemToPush = {
             "name": data.split('-')[1],
