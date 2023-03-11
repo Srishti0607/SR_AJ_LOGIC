@@ -16,15 +16,15 @@ export class SubtotalsAccordianComponent implements OnInit {
 
   constructor(private landingSrv: LandingService) { }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.getSubTotals();
     this.getOrderDetails();
   }
 
-  getSubTotals(){
+  getSubTotals() {
     this.subscriptionsList.push(
       this.landingSrv.getTotalData().subscribe((data: any) => {
-        if (data) {         
+        if (data) {
           this.subTotals = data;
         }
       })
@@ -32,36 +32,34 @@ export class SubtotalsAccordianComponent implements OnInit {
 
   }
 
-  getOrderDetails(){
+  getOrderDetails() {
     this.subscriptionsList.push(
       this.landingSrv.getOrderData().subscribe((data: any) => {
-        if (data) {         
+        if (data) {
           let orderId;
-          data.forEach(order => {   
-            if(orderId == order.ORDERID){
+          data.forEach(order => {
+            if (orderId == order.ORDERID) {
               this.detailsArray.push(order);
-            }else{              
-              if(this.detailsArray.length != 0){
-                let totalVal = 0;
-                this.subTotals.forEach(total => {  
-                  if(total.orderid == order.ORDERID){
+            } else {
+              let totalVal = 0;
+                this.subTotals.forEach(total => {
+                  if (total.orderid == order.ORDERID) {
                     totalVal = totalVal + total.GrandTotal;
                     this.grandTotal = this.grandTotal + totalVal;
-                  } 
+                  }
                 });
+                this.detailsArray = [];
+                orderId = order.ORDERID;
+                this.detailsArray.push(order);
                 let ele = {
                   "isActive": false,
                   "orderId": order.ORDERID,
                   "orderDate": order.ORDERDATE,
-                  "companyName":order.COMPANYNAME,
-                  "subTotal":totalVal,
+                  "companyName": order.COMPANYNAME,
+                  "subTotal": totalVal,
                   [order.ORDERID]: this.detailsArray
                 }
-                this.orderDetObj.push(ele);
-                this.detailsArray = [];
-              }
-              orderId = order.ORDERID;
-              this.detailsArray.push(order);
+                this.orderDetObj.push(ele);  
             }
           });
         }
@@ -77,21 +75,15 @@ export class SubtotalsAccordianComponent implements OnInit {
     } else {
       this.orderDetObj[index].isActive = true;
     }
-    // const panel = element.nextElementSibling;
-    // if (panel.style.maxHeight) {
-    //   panel.style.maxHeight = null;
-    // } else {
-    //   panel.style.maxHeight = panel.scrollHeight + "px";
-    // }
   }
 
-  toggleAll(){
-    this.orderDetObj.forEach(orderDet => {  
+  toggleAll() {
+    this.orderDetObj.forEach(orderDet => {
       if (orderDet['isActive']) {
         orderDet['isActive'] = false;
       } else {
         orderDet['isActive'] = true;
-      }      
+      }
     });
 
   }
