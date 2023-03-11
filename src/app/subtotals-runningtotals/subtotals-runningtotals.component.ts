@@ -25,25 +25,35 @@ export class SubtotalsRunningtotalsComponent implements OnInit {
         if (data) {
           // this.orderDetObj = data;   
           let runningAmt = 0; 
-          let orderId = 0; 
+          let orderId = 0;
+          let runningOrderTotal = 0; 
+          let billAmt = 0;
           data.forEach(order => {     
             if(orderId == 0){
               orderId = order.ORDERID;
               runningAmt = runningAmt + order.BILLAMOUNT;
-              this.pushData(order,runningAmt);            
+              runningOrderTotal = runningOrderTotal + order.BILLAMOUNT;
+              billAmt = billAmt + order.BILLAMOUNT;
+              this.pushData(order,runningAmt,runningOrderTotal);            
             }else{
               if(orderId == order.ORDERID){
                 runningAmt = runningAmt + order.BILLAMOUNT;
-                this.pushData(order,runningAmt);                                          
+                runningOrderTotal = runningOrderTotal + order.BILLAMOUNT;
+                billAmt = billAmt + order.BILLAMOUNT;
+                this.pushData(order,runningAmt,runningOrderTotal);                                          
               }else{
-                this.pushData('',runningAmt)
+                runningOrderTotal = 0;
+                this.pushData('',billAmt,runningOrderTotal)
+                billAmt = 0;
                 orderId = order.ORDERID;
                 runningAmt = runningAmt + order.BILLAMOUNT;
-                this.pushData(order,runningAmt);    
+                runningOrderTotal = runningOrderTotal + order.BILLAMOUNT;
+                billAmt = billAmt + order.BILLAMOUNT;
+                this.pushData(order,runningAmt,runningOrderTotal);    
               }
             }
           });
-          this.pushData('',runningAmt);
+          this.pushData('',billAmt,runningOrderTotal);
           
           
         }
@@ -52,7 +62,7 @@ export class SubtotalsRunningtotalsComponent implements OnInit {
 
   }
 
-  pushData(order,runningAmt){  
+  pushData(order,amt,runningOrderTotal){  
     if(order == ''){
       let dataToPush =   {
         "ORDERID":'',
@@ -61,11 +71,12 @@ export class SubtotalsRunningtotalsComponent implements OnInit {
         "PRODUCTNAME":'',
         "UNITPRICE":'',
         "QUANTITY":'',
-        "BILLAMOUNT":runningAmt,
+        "BILLAMOUNT":amt,
         "RUNNINGAMT": '',
         "RUNNINGTOTAL": ''
       }
       this.orderDetObj.push(dataToPush);
+      this.grandTotal = this.grandTotal + amt;
     }else{
     let dataToPush =   {
       "ORDERID":order.ORDERID,
@@ -75,11 +86,10 @@ export class SubtotalsRunningtotalsComponent implements OnInit {
       "UNITPRICE":order.UNITPRICE,
       "QUANTITY":order.QUANTITY,
       "BILLAMOUNT":order.BILLAMOUNT,
-      "RUNNINGAMT": runningAmt,
-      "RUNNINGTOTAL": runningAmt
+      "RUNNINGAMT": amt,
+      "RUNNINGTOTAL": runningOrderTotal
     }
     this.orderDetObj.push(dataToPush);
   }
-  this.grandTotal = this.grandTotal + runningAmt;
 }
 }
