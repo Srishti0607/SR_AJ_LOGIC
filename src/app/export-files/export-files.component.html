@@ -1,5 +1,5 @@
 <div class="container" #TABLE>
-    <table border="1" id="customers">
+    <table border="1" id="customers" style="width:60%">
         <tr>
           <th>Country code</th>
           <th>Continent Name</th>
@@ -19,4 +19,11 @@
       </table>
       <br/>
       <button class="btn btn-primary" (click)="export()">Export as Excel</button>
+      <button class="btn btn-primary" (click)="exportPDF()">Export as PDF</button>
+      <button class="btn btn-primary" (click)="downloadCSV()">Export as CSV</button>
+      <button class="btn btn-primary" (click)="exportPNG()">Export as PNG</button>
+      <button class="btn btn-primary" (click)="exportTxt()">Export as TXT</button>
+      <button class="btn btn-primary" (click)="exportJson()">Export as JSON</button>
+      <button class="btn btn-primary" (click)="downloadDoc()">Export as Word</button>
+
     </div>

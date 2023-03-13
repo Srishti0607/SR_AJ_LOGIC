@@ -65,6 +65,7 @@ import {ProductscatalogComponent} from './productscatalog/productscatalog.compon
 import {FilterComponent} from './filter/filter.component';
 import { CheckTemplateComponent } from './check-template/check-template.component';
 import { ExportFilesComponent } from './export-files/export-files.component';
+import { ExportAsModule } from 'ngx-export-as';
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
 ];
@@ -135,7 +136,8 @@ export const interceptorProviders = [
     NgbModule,
     InfiniteScrollModule,
     NgChartsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ExportAsModule
   ],
   providers: [
     LandingService,
