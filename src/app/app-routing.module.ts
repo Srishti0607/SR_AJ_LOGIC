@@ -33,6 +33,7 @@ import { ProductscatalogComponent } from './productscatalog/productscatalog.comp
 import { CheckTemplateComponent } from './check-template/check-template.component';
 import { ExportFilesComponent } from './export-files/export-files.component';
 import { CustomCalendarComponent } from './custom-calendar/custom-calendar.component';
+import { NewOrderAccordianComponent } from './new-order-accordian/new-order-accordian.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,7 @@ const routes: Routes = [
   { path: 'check-template', component: CheckTemplateComponent },
   { path: 'export', component: ExportFilesComponent },
   { path: 'custom-calendar', component: CustomCalendarComponent },
+  { path: 'new-order-accordian', component: NewOrderAccordianComponent },
   { path: '**', component: NotFoundComponent }
   
 

@@ -1,0 +1,46 @@
+<div class="container">
+    <br/>
+<button class="btn btn-primary" type="button" (click)="toggleAll(1)">Expand All</button>
+<button class="btn btn-primary" type="button" (click)="toggleAll(2)">Collapse All</button>
+<div style="width:97%" *ngFor="let order of orderDetObj;let i = index;">
+    <div class="accordion">
+        <table border="1" id="customers">
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Company Name</th>
+                <th style="width:70%"></th>
+            </tr>
+            <tr>
+                <td>{{order.ORDERID}}</td>
+                <td>{{order.ORDERDATE | date: 'medium'}}</td>
+                <td>{{order.COMPANYNAME}} <i *ngIf="order['orderDetails']?.length != 0" (click)="appendTd($event,i)" class="my-icon fa fa-solid fa-plus"></i></td>
+                <td>
+                    <div *ngIf="order.isActive">
+                        <table border="1" id="customers">
+                            <tr>
+                
+                                <th>Product Name</th>
+                                <th>User Price</th>
+                                <th>Quantity</th>
+                                <th>Bill Amount</th>
+                            </tr>
+                            <tr *ngFor="let orderDet of order['orderDetails']">
+                                <td>{{orderDet.PRODUCTNAME}}</td>
+                                <td>{{orderDet.UNITPRICE | currency:'USD'}}</td>
+                                <td>{{orderDet.QUANTITY}}</td>
+                                <td>{{orderDet.BILLAMOUNT | currency:'USD'}}</td>
+                            </tr>
+                        </table>
+                        <div style="float:right">Sub Total : {{order.GrandTotal}}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+   
+    <br/>
+</div>
+<br/>
+<div style="float:right">Grand Total : {{grandTotal}}</div>
+</div>

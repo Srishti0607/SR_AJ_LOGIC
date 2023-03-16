@@ -36,6 +36,12 @@ export class LandingService {
     return this.http.get(url);
   }
 
+   //Get New Order details from JSON
+   getNewOrderData() {
+    let url = "assets/accordian-order.json"
+    return this.http.get(url);
+  }
+
   //Get currency conversion rate
   getCurrencyData(sourceCurr: string) {
     return this.http.get(this.currencyDetBaseURL + '/latest?base=' + sourceCurr);
