@@ -66,6 +66,8 @@ import {FilterComponent} from './filter/filter.component';
 import { CheckTemplateComponent } from './check-template/check-template.component';
 import { ExportFilesComponent } from './export-files/export-files.component';
 import { ExportAsModule } from 'ngx-export-as';
+import { CustomCalendarComponent } from './custom-calendar/custom-calendar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
 ];
@@ -113,7 +115,8 @@ export const interceptorProviders = [
     ProductscatalogComponent,
     FilterComponent,
     CheckTemplateComponent,
-    ExportFilesComponent
+    ExportFilesComponent,
+    CustomCalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -137,7 +140,8 @@ export const interceptorProviders = [
     InfiniteScrollModule,
     NgChartsModule,
     NgxSpinnerModule,
-    ExportAsModule
+    ExportAsModule,
+    FlexLayoutModule
   ],
   providers: [
     LandingService,

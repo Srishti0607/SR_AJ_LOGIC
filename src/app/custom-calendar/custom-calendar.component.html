@@ -1,0 +1,29 @@
+<div class="calendar-container mt-5">
+    <div #calendar>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="15px"
+            class="cal-date-picker">
+            <div fxLayoutAlign="start center" fxLayoutAlign.xs="start stretch" fxLayoutGap="15px">
+                <!-- <mat-icon class="arrow-circle" (click)="prevMonth()"
+                    [ngClass]="{'disabled':navigateBeforeDisabled()}">navigate_before</mat-icon> -->
+
+    
+                <!-- <mat-icon class="arrow-circle" (click)="nextMonth()">navigate_next</mat-icon> --> 
+            </div>
+        </div>
+        <div class="week-header">
+            <div class="week-day" *ngFor="let name of namesOfDays">
+                {{ name }}
+            </div>
+        </div>
+        <div class="week" *ngFor="let week of weeks"> 
+            <div *ngFor="let day of week" [ngClass]="{'today': day.today, 'selected': day.selected}"  (click)="day.mDate != '' ? selectDate(day) : ''" class="day word-break-all">
+            <ng-container *ngIf="day?.mDate.format('MMMM') == currentDate?.format('MMMM')">
+                <p class="big-font" [style]="{ color: day.colorCode }" *ngIf="day.mDate != ''">
+                    {{ day.mDate.date() }}
+                </p>
+                <p *ngIf="day.reminder != ''">{{day.reminder}}</p>
+            </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

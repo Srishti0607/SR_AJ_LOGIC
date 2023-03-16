@@ -32,6 +32,7 @@ import RouterDeactivateGuardService from './routerDeactivateGuard.service';
 import { ProductscatalogComponent } from './productscatalog/productscatalog.component';
 import { CheckTemplateComponent } from './check-template/check-template.component';
 import { ExportFilesComponent } from './export-files/export-files.component';
+import { CustomCalendarComponent } from './custom-calendar/custom-calendar.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,7 @@ const routes: Routes = [
   { path: 'bug', component: ProductscatalogComponent },
   { path: 'check-template', component: CheckTemplateComponent },
   { path: 'export', component: ExportFilesComponent },
+  { path: 'custom-calendar', component: CustomCalendarComponent },
   { path: '**', component: NotFoundComponent }
   
 
