@@ -3,7 +3,8 @@
     <button [disabled]="!orderFlag || orderDetFlag" class="btn btn-primary" type="button" (click)="toggleAll(2);orderDetFlag=true;">Expand Orders Details</button>
     <button class="btn btn-primary" [disabled]="!orderDetFlag" type="button" (click)="toggleAll(4);orderDetFlag=false;">Collapse Orders Details</button>  
     <button class="btn btn-primary" [disabled]="!orderFlag || orderDetFlag" type="button" (click)="toggleAll(3);orderFlag = false">Collapse Orders</button> 
-<table border="1" style="width:100%" id="customers">
+    <textarea rows="5" cols="50" class="col-sm-2" dynamicDirective [alphaNumericOnly]="true" [allowSpace]="true" autocomplete="off" maxlength="10"></textarea>
+    <table border="1" style="width:100%" id="customers">
     <tbody style="width:100%">
         <tr>
             <th style="width:10%">Employee ID</th>
