@@ -1,4 +1,8 @@
 <div class="container">
+    <button class="btn btn-primary" [disabled]="orderFlag"  type="button" (click)="toggleAll(1);orderFlag = true">Expand Orders</button>
+    <button [disabled]="!orderFlag || orderDetFlag" class="btn btn-primary" type="button" (click)="toggleAll(2);orderDetFlag=true;">Expand Orders Details</button>
+    <button class="btn btn-primary" [disabled]="!orderDetFlag" type="button" (click)="toggleAll(4);orderDetFlag=false;">Collapse Orders Details</button>  
+    <button class="btn btn-primary" [disabled]="!orderFlag || orderDetFlag" type="button" (click)="toggleAll(3);orderFlag = false">Collapse Orders</button> 
 <table border="1" style="width:100%" id="customers">
     <tbody style="width:100%">
         <tr>
@@ -10,7 +14,7 @@
         <tr *ngFor="let employee of employeeDetails; let i = index" [attr.id]="employee.EmployeeID">
             <td> {{ employee.EmployeeID }} </td>
             <td> {{ employee.firstname }} </td>
-            <td> {{ employee.lastname }} <i *ngIf="employee['order']?.length != 0" (click)="appendTd($event,i,'','E')" class="my-icon fa fa-solid fa-plus"></i></td>
+            <td> {{ employee.lastname }} <i id="Id-{{employee.EmployeeID}}" *ngIf="employee['order']?.length != 0" (click)="appendTd($event,i,'','E')" class="my-icon fa fa-solid fa-plus"></i></td>
             <td *ngIf="employee.isActive">
                 <table border="1">
                     <tbody>
@@ -23,7 +27,7 @@
                         <tr *ngFor="let order of employee['order']; let j = index">
                             <td> {{ order.orderid }} </td>
                             <td> {{ order.orderdate | date: 'medium'}} </td>
-                            <td> {{ order.CompanyName }} <i *ngIf="order['orderDetails']?.length != 0" (click)="appendTd($event,i,j,'O')" class="my-icon fa fa-solid fa-plus"></i></td>     
+                            <td> {{ order.CompanyName }} <i id="Id-{{order.orderid}}" *ngIf="order['orderDetails']?.length != 0" (click)="appendTd($event,i,j,'O')" class="my-icon fa fa-solid fa-plus"></i></td>     
                             <td *ngIf="order.isActive"> 
                                 <table border="1" *ngIf="order['orderDetails']?.length != 0">
                                     <tbody>
