@@ -38,7 +38,7 @@
         <th>Country<i (click)="onSortClick($event,'Mobile')" class="my-icon fa fa-chevron-up"></i></th>
       </tr>
       <tr
-        *ngFor="let lock of locked | paginate: config | LockFilter:reactiveForm.get('query').value:filterMetadata; let i = index; let first = first; let last = last;trackBy: trackElement">
+        *ngFor="let lock of locked | paginate: config | LockFilter:reactiveForm.get('query').value:filterMetadata:columnVal:sortDir; let i = index; let first = first; let last = last;trackBy: trackElement">
         <td>{{lock.User}}</td>
         <td>{{lock.AuthID}}</td>
         <td>{{lock.Mobile}}</td>

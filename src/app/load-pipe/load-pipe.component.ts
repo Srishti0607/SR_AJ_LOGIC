@@ -16,7 +16,7 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
   userName: string = 'kameswara'
   public search:any = '';
   locked: any[] = [];
-  filterMetadata = { count: 0 };
+  filterMetadata = { count: 0,value:[] };
   filtre: string;
   sortDir = 1;
   startIndex = 0;
@@ -26,6 +26,7 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
     currentPage: 1,
     totalItems: this.locked.length
   };
+  columnVal:string = '';
   constructor(private capitalize:CapitalPipe, private landingSrv: LandingService) { }
 
   ngOnInit(): void {
@@ -40,10 +41,10 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
       this.landingSrv.getUsers().subscribe((data: any) => {
         if (data) {
           this.locked = data;
+          this.sortArr('User','');
         }
       })
     );
-  this.sortArr('User');
   }
 
   updateConfig(){
@@ -72,7 +73,9 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
     this.randomNumb.push(this.reactiveForm.get('newDigit').value);
   }
 
-  onSortClick(event:any,column: any){
+  onSortClick(event:any,column: string){
+   this.columnVal = column;
+    
     let target = event.currentTarget,
       classList = target.classList;
 
@@ -85,30 +88,39 @@ export class LoadPipeComponent implements OnInit,AfterViewInit {
       classList.remove('fa-chevron-down');
       this.sortDir=1;
     }
-    this.sortArr(column);
+    // this.sortArr(column,'paginated');
 
   }
 
-  sortArr(colName:any){
-    this.locked.sort((a,b)=>{
-      a= a[colName].toLowerCase();
-      b= b[colName].toLowerCase();
-      return a.localeCompare(b) * this.sortDir;
-    });
+  sortArr(colName:any,opr){
+    // if(opr == 'paginated'){
+    //   console.log(this.filterMetadata.value);
+    //   (this.filterMetadata.value).sort((a,b)=>{
+    //     a= a[colName].toLowerCase();
+    //     b= b[colName].toLowerCase();
+    //     return a.localeCompare(b) * this.sortDir;
+    //   });
+
+    // }else{
+      console.log(this.locked);
+      (this.locked).sort((a,b)=>{
+        a= a[colName].toLowerCase();
+        b= b[colName].toLowerCase();
+        return a.localeCompare(b) * this.sortDir;
+      });
+    // }
+    
   }
 
   getIndex(pageIndex){
     this.startIndex = pageIndex * 5;
    this.endIndex = this.startIndex + 5;
-   console.log(this.startIndex);
   }
   prevIndex(length){
     this.startIndex = length * 0;
-    console.log(this.startIndex)
   }
   nextIndex(endIndex){
     this.endIndex++
-    console.log(this.endIndex)
   }
 
     getArrayLenght(length){
