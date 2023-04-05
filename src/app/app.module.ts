@@ -21,7 +21,7 @@ import { InputListComponentComponent } from './input-list-component/input-list-c
 import {ComponentLoadDirective} from './directives/compLoader.directive'
 import {IfDirective} from './directives/structFunc.directive';
 import { LoadPipeComponent } from './load-pipe/load-pipe.component'
-import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe } from "./pipes/custom.pipe";
+import { FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe,ConvertPipe } from "./pipes/custom.pipe";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChildComponent } from './child/child.component';
 import {LifeCycleComponent} from './life-cycle/life-cycle.component';
@@ -87,6 +87,7 @@ export const interceptorProviders = [
     SearchPipe,
     ImpureSortPipe,
     AlphaSortPipe,
+    ConvertPipe,
     ChildComponent,
     LifeCycleComponent,
     SubtotalsRunningtotalsComponent,
@@ -147,14 +148,14 @@ export const interceptorProviders = [
   ],
   providers: [
     LandingService,
-    FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe,
+    FieldAscSortPipe,CapitalPipe,SearchPipe,ImpureSortPipe,AlphaSortPipe,ConvertPipe,
     CookieService,
     LoadingSpinnerService,
     interceptorProviders,
     AppRouteChangeService,
     RouterGuardService,
     RouterGuardChildService,
-    RouterDeactivateGuardService
+    RouterDeactivateGuardService,
   ],
   bootstrap: [AppComponent]
 })

@@ -77,3 +77,13 @@ export class AlphaSortPipe implements PipeTransform {
 
 }
 
+@Pipe({
+  name: 'convert'
+})
+export class ConvertPipe implements PipeTransform {
+  transform(value: any, args?: any): any {
+   let convertedVal = value * args;
+    return convertedVal;
+  }
+}
+

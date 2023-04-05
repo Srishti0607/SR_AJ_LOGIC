@@ -3,6 +3,7 @@ import { LandingService } from '../services/landing.service';
 import { Subscription } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ConvertPipe } from '../pipes/custom.pipe';
 
 
 @Component({
@@ -18,11 +19,13 @@ export class LandingPageComponent implements OnInit {
   numberObj: any = []; //Store upper alphabets
   CurrencyObj: any = ['INR', 'USD', 'GBP', 'AUD', 'CAD']; //stores currency
   conversionResult: any;// stores converted result of currency
+  currencyVal:any;
   conversionFlag: boolean = false; //show/hide spinner
   baseAmt: any; //store base amount
+  baseAmt1: any;
   reactiveForm!: FormGroup;
 
-  constructor(private landingSrv: LandingService, private snackBar: MatSnackBar) { }
+  constructor(private landingSrv: LandingService, private snackBar: MatSnackBar, private converterpipe: ConvertPipe) { }
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
@@ -39,7 +42,10 @@ export class LandingPageComponent implements OnInit {
       toCurr: new FormControl(),
       code: new FormControl(),
       population: new FormControl(),
-      capital: new FormControl()
+      capital: new FormControl(),
+      amount1: new FormControl(''),
+      fromCurr1: new FormControl(),
+      toCurr1: new FormControl(),
     });
     this.getCountryCodesData();
     this.initializeList();
@@ -161,5 +167,18 @@ export class LandingPageComponent implements OnInit {
 
   canDeactivate(){
     return this.reactiveForm.get('currencyCode').value.length > 0
+  }
+
+  convertCurrencyUsingPipe(){
+    this.subscriptionsList.push(
+      this.landingSrv.getCurrencyData(this.reactiveForm.get('fromCurr1').value).subscribe((data: any) => {
+        if (data) {
+          this.currencyVal = false;
+          this.baseAmt1 = data.rates[this.reactiveForm.get('toCurr1').value];
+          this.currencyVal = this.converterpipe.transform(this.reactiveForm.get('amount1').value, data.rates[this.reactiveForm.get('toCurr1').value]);
+        }
+      })
+    );
+   
   }
 }

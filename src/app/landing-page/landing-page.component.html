@@ -105,4 +105,23 @@
     <span>{{conversionResult}} {{reactiveForm.get('toCurr').value}}</span><br />
     <span>1 {{reactiveForm.get('fromCurr').value}} = {{baseAmt}} {{reactiveForm.get('toCurr').value}}</span>
   </div>
+  <br/>
+  <div class="form-group row">
+    <input class="col-sm-2" type="number" placeholder="Amount" formControlName="amount1">
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" formControlName="fromCurr1" placeholder="Select" appearance="outline">
+      <option *ngFor="let curr of countryDetObj" value="{{curr?.currencyCode}}">{{curr?.currencyCode}}</option>
+    </select>
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" formControlName="toCurr1" placeholder="Select" appearance="outline">
+      <option *ngFor="let curr of countryDetObj" value="{{curr?.currencyCode}}">{{curr?.currencyCode}}</option>
+    </select>
+    <button type="button" class="col-sm-2 btn btn-primary"
+      [disabled]="!reactiveForm.get('amount1').value || !reactiveForm.get('fromCurr1').value || !reactiveForm.get('toCurr1').value || reactiveForm.get('fromCurr1').value == reactiveForm.get('toCurr1').value"
+      (click)="convertCurrencyUsingPipe()">CONVERT</button>
+  </div>
+  <br/>
+  <div *ngIf="currencyVal">
+    <span>{{reactiveForm.get('amount1').value}} {{reactiveForm.get('fromCurr1').value}} =</span><br />
+    <span>{{currencyVal}} {{reactiveForm.get('toCurr1').value}}</span><br />
+    <span>1 {{reactiveForm.get('fromCurr1').value}} = {{baseAmt1}} {{reactiveForm.get('toCurr1').value}}</span>
+  </div>
 </form>
