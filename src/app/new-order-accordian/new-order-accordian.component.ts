@@ -47,10 +47,22 @@ export class NewOrderAccordianComponent implements OnInit {
     if (opr == 1) {
       this.orderDetObj.forEach(orderDet => {
         orderDet['isActive'] = true;
+        let target: HTMLElement;
+        let classList: any
+        target = document.getElementById('Id-' + orderDet['ORDERID'])
+        classList = target.classList;
+        classList.add('fa-minus');
+        classList.remove('fa-plus');
       });
     } else {
       this.orderDetObj.forEach(orderDet => {
         orderDet['isActive'] = false;
+        let target: HTMLElement;
+        let classList: any
+        target = document.getElementById('Id-' + orderDet['ORDERID'])
+        classList = target.classList;
+        classList.remove('fa-minus');
+        classList.add('fa-plus');
       });
 
     }

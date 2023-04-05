@@ -14,7 +14,7 @@
             <tr>
                 <td>{{order.ORDERID}}</td>
                 <td>{{order.ORDERDATE | date: 'medium'}}</td>
-                <td>{{order.COMPANYNAME}} <i *ngIf="order['orderDetails']?.length != 0" (click)="appendTd($event,i)" class="my-icon fa fa-solid fa-plus"></i></td>
+                <td>{{order.COMPANYNAME}} <i *ngIf="order['orderDetails']?.length != 0"  id="Id-{{order.ORDERID}}" (click)="appendTd($event,i)" class="my-icon fa fa-solid fa-plus"></i></td>
                 <td>
                     <div *ngIf="order.isActive">
                         <table border="1" id="customers">
