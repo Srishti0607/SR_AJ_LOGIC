@@ -73,13 +73,21 @@ export class LandingService {
 
   //get data to delete
   getDataToDelete() {
-    let url = "assets/EMP_DET.json"
+    let url = "http://localhost:3000/radioData"
     return this.http.get(url);
   }
 
+  deleteRadioData(id){
+    return this.http.delete('http://localhost:3000/radioData/'+id)
+  }
+
   getDataToDeleteCheck() {
-    let url = "assets/EMP_DET_CHECKED.json"
+    let url = "http://localhost:3000/checkedData"
     return this.http.get(url);
+  }
+
+  deleteCheckData(id){
+    return this.http.delete('http://localhost:3000/checkedData/'+id)
   }
 
   //bulk Insert

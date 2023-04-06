@@ -133,8 +133,8 @@
       "val": 30
     },
     {
-    "name": "HRA",
-    "val": 10
+      "name": "HRA",
+      "val": 10
     }
   ],
   "bulkInsert": [
@@ -2215,6 +2215,136 @@
     {
       "companyName": "DEF Pvt Ltd",
       "companyCode": "def"
+    }
+  ],
+  "radioData": [
+    {
+      "id": 1,
+      "EmployeeID": 1,
+      "lastname": "Davolio",
+      "firstname": "Nancy"
+    },
+    {
+      "id": 2,
+      "EmployeeID": 2,
+      "lastname": "Fuller",
+      "firstname": "Andrew"
+    },
+    {
+      "id": 3,
+      "EmployeeID": 3,
+      "lastname": "Leverling",
+      "firstname": "Janet"
+    },
+    {
+      "id": 4,
+      "EmployeeID": 4,
+      "lastname": "Peacock",
+      "firstname": "Margaret"
+    },
+    {
+      "id": 5,
+      "EmployeeID": 5,
+      "lastname": "Buchanan",
+      "firstname": "Steven"
+    },
+    {
+      "id": 6,
+      "EmployeeID": 6,
+      "lastname": "Suyama",
+      "firstname": "Michael"
+    },
+    {
+      "id": 7,
+      "EmployeeID": 7,
+      "lastname": "King",
+      "firstname": "Robert"
+    },
+    {
+      "id": 8,
+      "EmployeeID": 8,
+      "lastname": "Callahan",
+      "firstname": "Laura"
+    },
+    {
+      "id": 9,
+      "EmployeeID": 9,
+      "lastname": "Dodsworth",
+      "firstname": "Anne"
+    }
+  ],
+  "checkedData": [
+    {
+      "id":1,
+      "EmployeeID": 1,
+      "lastname": "Davolio",
+      "firstname": "Nancy",
+      "title": "Miss Delhi",
+      "titleCourtsey": "Mrs"
+    },
+    {
+      "id":2,
+      "EmployeeID": 2,
+      "lastname": "Fuller",
+      "firstname": "Andrew",
+      "title": "Miss Beauty",
+      "titleCourtsey": "Mrs"
+    },
+    {
+      "id":3,
+      "EmployeeID": 3,
+      "lastname": "Leverling",
+      "firstname": "Janet",
+      "title": "Miss pacific",
+      "titleCourtsey": "Mrs"
+    },
+    {
+      "id":4,
+      "EmployeeID": 4,
+      "lastname": "Peacock",
+      "firstname": "Margaret",
+      "title": "Miss Hong Kong",
+      "titleCourtsey": "Mrs"
+    },
+    {
+      "id":5,
+      "EmployeeID": 5,
+      "lastname": "Buchanan",
+      "firstname": "Steven",
+      "title": "Miss India",
+      "titleCourtsey": "Mrs"
+    },
+    {
+      "id":6,
+      "EmployeeID": 6,
+      "lastname": "Suyama",
+      "firstname": "Michael",
+      "title": "Miss Africa",
+      "titleCourtsey": "Mrs"
+    },
+    {
+      "id":7,
+      "EmployeeID": 7,
+      "lastname": "King",
+      "firstname": "Robert",
+      "title": "Miss Universe",
+      "titleCourtsey": "Mrs"
+    },
+    {
+      "id":8,
+      "EmployeeID": 8,
+      "lastname": "Callahan",
+      "firstname": "Laura",
+      "title": "Mr Universe",
+      "titleCourtsey": "Mr"
+    },
+    {
+      "id":9,
+      "EmployeeID": 9,
+      "lastname": "Dodsworth",
+      "firstname": "Anne",
+      "title": "Miss Universe",
+      "titleCourtsey": "Mrs"
     }
   ]
 }

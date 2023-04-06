@@ -51,9 +51,14 @@ export class BulkDeleteComponent implements OnInit {
   deleteOnRadio() {
     let id = this.dataToDelObj[this.itemSelectedFromRadio].EmployeeID;
     this.dataToDelObj.splice(this.itemSelectedFromRadio, 1);
-    this.snackBar.open('Employee with id: '+id + ' deleted successfully!!', '', {
-      duration: 3000
-    });
+    this.subscriptionsList.push(
+      this.landingSrv.deleteRadioData(id).subscribe((data: any) => {
+        this.snackBar.open('Employee with id: '+id + ' deleted successfully!!', '', {
+          duration: 3000
+        });
+      })
+    );
+  
   }
 
   onAllSelectionChange() {   
@@ -90,6 +95,12 @@ export class BulkDeleteComponent implements OnInit {
       const objIdRef = this.dataToDelCheckBoxObj.find(ele => ele.EmployeeID === id);
       objIdRef && this.dataToDelCheckBoxObj.splice(this.dataToDelCheckBoxObj.indexOf(objIdRef), 1);
     }
+    this.idObj.forEach(data => {
+      this.subscriptionsList.push(
+        this.landingSrv.deleteCheckData(data).subscribe((data: any) => {
+        })
+      );
+    });
     this.strCSVId = this.idObj.join(',');
     this.snackBar.open('Employee with ids: '+this.strCSVId + ' deleted successfully!!', '', {
       duration: 3000
