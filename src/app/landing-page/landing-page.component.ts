@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { LandingService } from '../services/landing.service';
 import { Subscription } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,7 +9,8 @@ import { ConvertPipe } from '../pipes/custom.pipe';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css']
+  styleUrls: ['./landing-page.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingPageComponent implements OnInit {
   public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
@@ -24,6 +25,7 @@ export class LandingPageComponent implements OnInit {
   baseAmt: any; //store base amount
   baseAmt1: any;
   reactiveForm!: FormGroup;
+  filterMetadata = { count: 0,value:0 };
 
   constructor(private landingSrv: LandingService, private snackBar: MatSnackBar, private converterpipe: ConvertPipe) { }
 
@@ -46,6 +48,7 @@ export class LandingPageComponent implements OnInit {
       amount1: new FormControl(''),
       fromCurr1: new FormControl(),
       toCurr1: new FormControl(),
+      currConverted: new FormControl()
     });
     this.getCountryCodesData();
     this.initializeList();
@@ -169,16 +172,11 @@ export class LandingPageComponent implements OnInit {
     return this.reactiveForm.get('currencyCode').value.length > 0
   }
 
-  convertCurrencyUsingPipe(){
-    this.subscriptionsList.push(
-      this.landingSrv.getCurrencyData(this.reactiveForm.get('fromCurr1').value).subscribe((data: any) => {
-        if (data) {
-          this.currencyVal = false;
-          this.baseAmt1 = data.rates[this.reactiveForm.get('toCurr1').value];
-          this.currencyVal = this.converterpipe.transform(this.reactiveForm.get('amount1').value, data.rates[this.reactiveForm.get('toCurr1').value]);
-        }
-      })
-    );
-   
+  setInput(){
+    // this.amt = this.reactiveForm.get('amount1').value;
+  }
+
+  checkUpdatedValue(eve){
+    console.log(eve);
   }
 }

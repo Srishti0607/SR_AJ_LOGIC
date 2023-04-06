@@ -47,6 +47,12 @@ export class LandingService {
     return this.http.get(this.currencyDetBaseURL + '/latest?base=' + sourceCurr);
   }
 
+  //get rates
+  getRates() {
+    let url = "assets/Rates.json"
+    return this.http.get(url);
+  }
+
   //get Order List
   getOrderList() {
     let url = "assets/Orders.json"
