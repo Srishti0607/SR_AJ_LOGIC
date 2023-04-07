@@ -31,12 +31,28 @@ export class SearchPipe implements PipeTransform {
     searchText ? sortOn = '' : sortOn = sortOn;
     if (!items) return [];
     if (!sortOn) { } else {
-      items.sort((a, b) => {
-        a = a[sortOn].toLowerCase();
-        b = b[sortOn].toLowerCase();
-        return a.localeCompare(b) * sortDir;
-      });
-      return items;
+      if (sortOn == 'User') {
+        items.sort((a, b) => {
+          a = a[sortOn].toLowerCase();
+          b = b[sortOn].toLowerCase();
+          return a.localeCompare(b) * sortDir;
+        });
+        return items;
+      } else {
+        if (sortDir == 1) {
+          items.sort((a, b) => {
+            return a[sortOn] - b[sortOn]
+          });
+          return items;
+        } else {
+          items.sort((a, b) => {
+            return b[sortOn] - a[sortOn]
+          });
+          return items;
+
+        }
+
+      }
     }
 
     if (!searchText) {
@@ -85,19 +101,50 @@ export class AlphaSortPipe implements PipeTransform {
 export class ConvertPipe implements PipeTransform {
 
   constructor(private landingSrv: LandingService) { }
-  transform(value: any,filterMetadata: any, from: any, to: any): any {
+  transform(value: any, filterMetadata: any, from: any, to: any): any {
     let rate;
-    if (!value || !from || !to) { return 0;} else {
+    if (!value || !from || !to) { return 0; } else {
       this.landingSrv.getRates().subscribe((data: any) => {
         if (data) {
           rate = data[0][from][0][to];
           let val = rate * value;
           filterMetadata.count = 0;
-          filterMetadata.value = (rate*value);
+          filterMetadata.value = (rate * value);
           return val;
         }
       })
     }
+  }
+}
+
+@Pipe({
+  name: 'orderBy'
+})
+
+export class OrderByPipe implements PipeTransform {
+
+  transform(items: any[], userColName: string, sortUser: string, authColName: string, sortAuth: string, mobileColName: string, sortMobile: string, colClicked: string): any {
+    if (colClicked == 'User') {
+      items.sort((a, b) => {
+        a = a[userColName].toLowerCase();
+        b = b[userColName].toLowerCase();
+        let sortDir = sortUser == 'asc' ? 1 : -1;
+        return a.localeCompare(b) * sortDir;
+      });
+      return items;
+    } else if (colClicked == 'Auth') {
+      items.sort((a, b) => {
+        return sortAuth == 'asc' ? a[authColName] - b[authColName] : b[authColName] - a[authColName];
+      });
+      return items;
+    } else {
+      items.sort((a, b) => {
+        return sortMobile == 'asc' ? a[mobileColName] - b[mobileColName] : b[mobileColName] - a[mobileColName];
+      });
+      return items;
+    }
+
+
   }
 }
 

@@ -56,4 +56,30 @@
     </div>
     <div>Length = {{filterMetadata.count}}</div>
   </div>
+  <br/>
+  <h1>Sorting using OrderBy pipe</h1>
+  <table border="1" id="customers">
+    <tr>
+      <th>User<i (click)="updateSortVal($event,'User')" class="my-icon fa fa-chevron-up"></i></th>
+      <th>Auth Id<i (click)="updateSortVal($event,'AuthID')" class="my-icon fa fa-chevron-up"></i></th>
+      <th>Mobile<i (click)="updateSortVal($event,'Mobile')" class="my-icon fa fa-chevron-up"></i></th>
+    </tr>
+    <tr
+      *ngFor="let lock of locked | paginate: config | orderBy:'User':sortUser:'AuthID':sortAuth:'Mobile':sortMobile:colClicked; let i = index; let first = first; let last = last;trackBy: trackElement">
+      <td>{{lock.User}}</td>
+      <td>{{lock.AuthID}}</td>
+      <td>{{lock.Mobile}}</td>
+    </tr>
+  </table>
+  <div>
+    <div class="form-group row">
+      <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls> Items Per Page: <select class="col-sm-2 dropdown-toggle btn-outline-info btn"
+        formControlName="pageSize" placeholder="Select" appearance="outline" (click)="updateConfig()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+    </div>
+  </div>
+  <div>Length = {{filterMetadata.count}}</div>
 </form>
