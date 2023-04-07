@@ -30,6 +30,12 @@ export class LandingService {
     return this.http.get(url);
   }
 
+   //Get users
+   getEmp() {
+    let url = "assets/EMP.json"
+    return this.http.get(url);
+  }
+
   //Get Order details from JSON
   getOrderData() {
     let url = "assets/Orders_Details.json"

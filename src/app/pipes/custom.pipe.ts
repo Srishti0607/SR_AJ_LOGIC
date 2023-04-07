@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { orderBy } from 'lodash';
 import { LandingService } from '../services/landing.service';
 import { ToWords } from 'to-words';
+import multiColumnSort from 'multi-column-sort';
 
 @Pipe({
   name: 'capital',
@@ -124,28 +125,14 @@ export class ConvertPipe implements PipeTransform {
 
 export class OrderByPipe implements PipeTransform {
 
-  transform(items: any[], userColName: string, sortUser: string, authColName: string, sortAuth: string, mobileColName: string, sortMobile: string, colClicked: string): any {
-    if (colClicked == 'User') {
-      items.sort((a, b) => {
-        a = a[userColName].toLowerCase();
-        b = b[userColName].toLowerCase();
-        let sortDir = sortUser == 'asc' ? 1 : -1;
-        return a.localeCompare(b) * sortDir;
-      });
-      return items;
-    } else if (colClicked == 'Auth') {
-      items.sort((a, b) => {
-        return sortAuth == 'asc' ? a[authColName] - b[authColName] : b[authColName] - a[authColName];
-      });
-      return items;
-    } else {
-      items.sort((a, b) => {
-        return sortMobile == 'asc' ? a[mobileColName] - b[mobileColName] : b[mobileColName] - a[mobileColName];
-      });
-      return items;
-    }
+  transform(items: any[], sortObj: any[]): any {
+    items = multiColumnSort(
+      items,
+      sortObj
+    )
 
-  }  
+    return items;
+  }
 }
 
 @Pipe({
@@ -155,18 +142,18 @@ export class OrderByPipe implements PipeTransform {
 export class NumberToWordsPipe implements PipeTransform {
 
   transform(value: any): any {
-    if (value && isInteger(value)){
+    if (value && isInteger(value)) {
       const toWords = new ToWords();
-      return toWords.convert(value,{ currency: true });
+      return toWords.convert(value, { currency: true });
     }
-     
-  return value; 
+
+    return value;
   }
 
-  
+
 }
 
-const isInteger = function(x: any) {
+const isInteger = function (x: any) {
   return x % 1 === 0;
 }
 

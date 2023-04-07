@@ -1,0 +1,12 @@
+[
+    {"Ecode":1,"Ename": "Aakash", "Salary": 5000, "DepartmentName": "HR"},
+    {"Ecode":2,"Ename": "Bravo", "Salary": 6000, "DepartmentName": "HR"},
+    {"Ecode":3,"Ename": "Carl Hooper", "Salary": 5000, "DepartmentName": "HR"},
+    {"Ecode":4,"Ename": "Karthik", "Salary": 7000, "DepartmentName": "Sales"},
+    {"Ecode":5,"Ename": "Evander", "Salary": 7500, "DepartmentName": "Sales"},
+    {"Ecode":6,"Ename": "Tyson", "Salary": 7000, "DepartmentName": "Sales"},
+    {"Ecode":7,"Ename": "Connors", "Salary": 8000, "DepartmentName": "Admin"},
+    {"Ecode":8,"Ename": "Nick", "Salary": 8600, "DepartmentName": "Admin"},
+    {"Ecode":9,"Ename": "Nate", "Salary": 8000, "DepartmentName": "Admin"},
+    {"Ecode":10,"Ename": "Chad Mendis", "Salary": 5000, "DepartmentName": "Networking"}  
+]  

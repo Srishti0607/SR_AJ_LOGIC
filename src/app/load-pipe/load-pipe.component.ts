@@ -27,10 +27,12 @@ export class LoadPipeComponent implements OnInit, AfterViewInit {
     totalItems: this.locked.length
   };
   columnVal: string = '';
-  sortUser: string = 'asc';
-  sortAuth: string = 'asc';
-  sortMobile: string = 'asc';
-  colClicked:string = 'User';
+  employee: any = []
+  sortObj = {
+    DepartmentName: 'ASC',
+    Salary: 'DESC',
+    Ename: 'ASC'
+  }
   constructor(private capitalize: CapitalPipe, private landingSrv: LandingService) { }
 
   ngOnInit(): void {
@@ -47,6 +49,14 @@ export class LoadPipeComponent implements OnInit, AfterViewInit {
         if (data) {
           this.locked = data;
           this.sortArr('User', '');
+        }
+      })
+    );
+
+    this.subscriptionsList.push(
+      this.landingSrv.getEmp().subscribe((data: any) => {
+        if (data) {
+          this.employee = data;
         }
       })
     );
@@ -94,47 +104,6 @@ export class LoadPipeComponent implements OnInit, AfterViewInit {
       this.sortDir = 1;
     }
     // this.sortArr(column,'paginated');
-
-  }
-
-  updateSortVal(event: any, column: string) {
-    let target = event.currentTarget,
-      classList = target.classList;
-
-    if (column == 'User') {
-      if (classList.contains('fa-chevron-up')) {
-        classList.remove('fa-chevron-up');
-        classList.add('fa-chevron-down');
-        this.sortUser = 'desc';
-      } else {
-        classList.add('fa-chevron-up');
-        classList.remove('fa-chevron-down');
-        this.sortUser = 'asc';
-      }
-      this.colClicked = 'User';
-    } else if(column == 'AuthID'){
-      if (classList.contains('fa-chevron-up')) {
-        classList.remove('fa-chevron-up');
-        classList.add('fa-chevron-down');
-        this.sortAuth = 'desc';
-      } else {
-        classList.add('fa-chevron-up');
-        classList.remove('fa-chevron-down');
-        this.sortAuth = 'asc';
-      }
-      this.colClicked = 'Auth';
-    }else {
-      if (classList.contains('fa-chevron-up')) {
-        classList.remove('fa-chevron-up');
-        classList.add('fa-chevron-down');
-        this.sortMobile = 'desc';
-      } else {
-        classList.add('fa-chevron-up');
-        classList.remove('fa-chevron-down');
-        this.sortMobile = 'asc';
-      }
-      this.colClicked = 'Mobile';
-    }
 
   }
 
