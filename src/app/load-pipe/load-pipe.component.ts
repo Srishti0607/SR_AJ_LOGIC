@@ -37,7 +37,8 @@ export class LoadPipeComponent implements OnInit, AfterViewInit {
     this.reactiveForm = new FormGroup({
       newDigit: new FormControl(''),
       query: new FormControl(''),
-      pageSize: new FormControl('5')
+      pageSize: new FormControl('5'),
+      num: new FormControl('')
     });
     this.userName = this.capitalize.transform(this.userName);
     this.getRandomNumbers();

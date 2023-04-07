@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { orderBy } from 'lodash';
 import { LandingService } from '../services/landing.service';
+import { ToWords } from 'to-words';
 
 @Pipe({
   name: 'capital',
@@ -144,7 +145,28 @@ export class OrderByPipe implements PipeTransform {
       return items;
     }
 
+  }  
+}
 
+@Pipe({
+  name: 'numberToWords'
+})
+
+export class NumberToWordsPipe implements PipeTransform {
+
+  transform(value: any): any {
+    if (value && isInteger(value)){
+      const toWords = new ToWords();
+      return toWords.convert(value,{ currency: true });
+    }
+     
+  return value; 
   }
+
+  
+}
+
+const isInteger = function(x: any) {
+  return x % 1 === 0;
 }
 

@@ -82,4 +82,9 @@
     </div>
   </div>
   <div>Length = {{filterMetadata.count}}</div>
+  <h1>Sorting using OrderBy pipe</h1>
+  <p>
+    Type a currency <input type="text" formControlName="num" /><br />  
+    {{ reactiveForm.get('num').value | numberToWords }}
+  </p>
 </form>
