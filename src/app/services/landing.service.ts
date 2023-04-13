@@ -175,4 +175,32 @@ export class LandingService {
       let url = "https://fakestoreapi.com/products/category/"+category;
       return this.http.get(url);
     }
+
+    postCalendarData(payload){
+      const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json');
+    let url = "http://localhost:3000/calendar"
+    return this.http.post(url,payload,{headers});
+    }
+
+    updateCalendarData(payload){     
+      const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+      let url = "http://localhost:3000/calendar/"+payload.id;
+      return this.http.put(url,payload,{headers});
+    }
+
+    deleteCalendarData(payload){     
+      const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+      let url = "http://localhost:3000/calendar/"+payload.id;
+      return this.http.delete(url);
+    }
+
+    getCalendarData(){     
+      const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+      let url = "http://localhost:3000/calendar";
+      return this.http.get(url);
+    }
 }

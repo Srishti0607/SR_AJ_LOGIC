@@ -1,13 +1,31 @@
-<div class="calendar-container mt-5">
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form #myform="ngForm">
+        <div class="form-group">
+          <h1>{{title}}</h1>
+          <label class="col-form-label">Reminder</label>
+          <input type="text" ngModel class="form-control" [(ngModel)]="reminderVal">
+        </div>
+        <div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+        <button type="submit" class="btn btn-primary" (click)="addReminder()">Send Reminder</button>
+        <button type="submit" class="btn btn-primary" (click)="editReminder()">Edit message</button>
+        <button type="submit" class="btn btn-primary" (click)="deleteReminder()">Delete</button>
+      </div>
+      </form>
+    </div>  
+  </div>
+<div class="calendar-container mt-5 mx-auto ">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button type="button" class="btn btn-outline-primary" (click)="changeMonth('P')"><</button><br/>    
+    <span class="display-date bold">{{currentMonth}}</span>
+    <button type="button" class="btn btn-outline-primary" (click)="changeMonth('N')">></button><br />
+</div>
     <div #calendar>
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutGap="15px"
             class="cal-date-picker">
             <div fxLayoutAlign="start center" fxLayoutAlign.xs="start stretch" fxLayoutGap="15px">
-                <!-- <mat-icon class="arrow-circle" (click)="prevMonth()"
-                    [ngClass]="{'disabled':navigateBeforeDisabled()}">navigate_before</mat-icon> -->
-
-    
-                <!-- <mat-icon class="arrow-circle" (click)="nextMonth()">navigate_next</mat-icon> --> 
             </div>
         </div>
         <div class="week-header">
