@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="week" *ngFor="let week of weeks"> 
-            <div *ngFor="let day of week" [ngClass]="{'today': day.today, 'selected': day.selected}"  (click)="day.mDate != '' ? selectDate(day) : ''" class="day word-break-all">
+            <div *ngFor="let day of week" [ngClass]="{'today': day.today, 'selected': day.selected , 'bkcolour': day.background}"  (click)="day.mDate != '' ? selectDate(day) : ''" class="day word-break-all">
             <ng-container *ngIf="day?.mDate.format('MMMM') == currentDate?.format('MMMM')">
                 <p class="big-font" [style]="{ color: day.colorCode }" *ngIf="day.mDate != ''">
                     {{ day.mDate.date() }}

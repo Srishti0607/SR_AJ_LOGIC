@@ -19,7 +19,11 @@
   }  
   .calendar-container .week {
     display: flex;
-  }  
+  } 
+  
+  .bkcolour {
+    background: burlywood!important;
+  }
  .day {
     padding: 5px;
     background: var(--color-white) 0% 0% no-repeat padding-box;

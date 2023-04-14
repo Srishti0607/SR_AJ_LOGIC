@@ -84,7 +84,8 @@ export class CustomCalendarComponent implements OnInit {
         today: this.isToday(newDate), // boolean true/false
         selected: this.isSelected(newDate), //boolean true/false
         mDate: newDate,
-        reminder: this.reminderObj[rem]?.reminder
+        reminder: this.reminderObj[rem]?.reminder,
+        background: this.reminderObj[rem] ? true : false
       };
     });
   }
@@ -107,7 +108,7 @@ export class CustomCalendarComponent implements OnInit {
 
   selectDate(day) {   
     this.day = day;
-    day.reminder != '' ? this.reminderVal = day.reminder : this.reminderVal = '';
+    day.reminder != '' ? this.reminderVal = day.reminder : this.reminderVal = '';    
     console.log(this.reminderVal);
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
@@ -131,6 +132,7 @@ export class CustomCalendarComponent implements OnInit {
     this.subscriptionsList.push(
       this.landingSrv.postCalendarData(payload).subscribe((data: any) => {
         this.day.reminder = this.reminderVal;
+        this.day.background = true;
         this.reminderVal = '';
       })
     );
