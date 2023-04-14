@@ -1,6 +1,6 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close" (click)="closeModal()">&times;</span>
       <form #myform="ngForm">
         <div class="form-group">
           <h1>{{title}}</h1>
@@ -19,7 +19,7 @@
 <div class="calendar-container mt-5 mx-auto ">
   <div fxLayout="row" fxLayoutAlign="center center">
     <button type="button" class="btn btn-outline-primary" (click)="changeMonth('P')"><</button><br/>    
-    <span class="display-date bold">{{currentMonth}}</span>
+    <span class="display-date bold">{{monthYr}}</span>
     <button type="button" class="btn btn-outline-primary" (click)="changeMonth('N')">></button><br />
 </div>
     <div #calendar>

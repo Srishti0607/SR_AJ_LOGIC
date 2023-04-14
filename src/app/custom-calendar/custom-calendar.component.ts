@@ -21,6 +21,7 @@ export class CustomCalendarComponent implements OnInit {
   day: any = [];
   reminderVal: any = '';
   reminderObj: any = [];
+  monthYr: any;
 
   constructor(private landingSrv: LandingService) { }
 
@@ -40,6 +41,7 @@ export class CustomCalendarComponent implements OnInit {
     this.currentDate = moment(); // get today's date (moment)
     this.selectedDate = moment(this.currentDate).format("DD/MM/YYYY"); // format current date
     this.currentMonth = moment(this.currentDate).format("MMMM"); // format current date and get month (Eg:-August)
+    this.monthYr = moment(this.currentDate).format("MMMM-YYYY")
     this.generateCalendarByFillingDates();
 
   }
@@ -76,7 +78,7 @@ export class CustomCalendarComponent implements OnInit {
       let rem;
       const newDate = moment(firstDayOfGrid).date(date);
       if(newDate.format('MMMM') == this.currentDate?.format('MMMM')){
-        rem = this.reminderObj.findIndex((remData: any) =>  remData.id == newDate.format('MM')+newDate.format('DD'));
+        rem = this.reminderObj.findIndex((remData: any) =>  remData.id == newDate.format('MM')+newDate.format('DD')+newDate.format('YYYY'));
       }
       return {        
         today: this.isToday(newDate), // boolean true/false
@@ -109,7 +111,7 @@ export class CustomCalendarComponent implements OnInit {
     console.log(this.reminderVal);
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
-    this.title = day.mDate.format('MM/DD/YYYY');    
+    this.title = day.mDate.format('DD-MMM-YYYY');    
   }
 
   closeModal() {
@@ -124,7 +126,7 @@ export class CustomCalendarComponent implements OnInit {
     let payload = {
       date: this.day.mDate,
       reminder: this.reminderVal,
-      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')
+      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')+this.day.mDate.format('YYYY')
     }
     this.subscriptionsList.push(
       this.landingSrv.postCalendarData(payload).subscribe((data: any) => {
@@ -140,7 +142,7 @@ export class CustomCalendarComponent implements OnInit {
     let payload = {
       date: this.day.mDate,
       reminder: this.reminderVal,
-      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')
+      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')+this.day.mDate.format('YYYY')
     }
     this.subscriptionsList.push(
       this.landingSrv.updateCalendarData(payload).subscribe((data: any) => {
@@ -156,7 +158,7 @@ export class CustomCalendarComponent implements OnInit {
     let payload = {
       date: this.day.mDate,
       reminder: this.reminderVal,
-      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')
+      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')+this.day.mDate.format('DD')
     }
     this.subscriptionsList.push(
       this.landingSrv.deleteCalendarData(payload).subscribe((data: any) => {
@@ -174,10 +176,12 @@ export class CustomCalendarComponent implements OnInit {
         if(opr == 'N'){
           this.currentDate = moment(this.currentDate).add(1,'months'); // get today's date (moment)    
           this.currentMonth = moment(this.currentDate).format("MMMM"); // format current date and get month (Eg:-August)
+          this.monthYr = moment(this.currentDate).format("MMMM-YYYY")
           this.generateCalendarByFillingDates();
         }else{
           this.currentDate = moment(this.currentDate).subtract(1,'months'); // get today's date (moment)      
           this.currentMonth = moment(this.currentDate).format("MMMM"); // format current date and get month (Eg:-August)
+          this.monthYr = moment(this.currentDate).format("MMMM-YYYY")
           this.generateCalendarByFillingDates();
         }
       },
