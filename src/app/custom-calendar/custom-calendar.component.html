@@ -5,13 +5,35 @@
         <div class="form-group">
           <h1>{{title}}</h1>
           <label class="col-form-label">Reminder</label>
-          <input type="text" ngModel class="form-control" [(ngModel)]="reminderVal">
+          <input type="text" class="form-control" name="reminder" [(ngModel)]="reminderVal">
+          <label class="col-form-label">From Time</label>
+          <input type="time" name="fromTimeData" [(ngModel)]="fromTime">
+          <label class="col-form-label">End Time</label>
+          <input type="time" name="endTimeData" [(ngModel)]="endTime">
         </div>
         <div>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
-        <button type="submit" class="btn btn-primary" (click)="addReminder()">Send Reminder</button>
-        <button type="submit" class="btn btn-primary" (click)="editReminder()">Edit message</button>
-        <button type="submit" class="btn btn-primary" (click)="deleteReminder()">Delete</button>
+        <button type="submit" class="btn btn-primary" (click)="addReminder()">Send Reminder</button>       
+      </div>
+      <div *ngIf="day['reminder']?.length != 0">
+        <table border="1" id="customers">
+          <tr>
+            <th>Reminder</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Action</th>
+          </tr>
+          <tr
+            *ngFor="let data of day['reminder'] ; let i = index;">
+            <td>{{data.reminder}}</td>
+            <td>{{data.fromTime}}</td>
+            <td>{{data.endTime}}</td>
+            <td>
+              <button type="submit" class="btn btn-primary" [disabled]="data.isEdit == false" (click)="editReminder(data)">Edit</button>
+              <button type="submit" class="btn btn-primary" [disabled]="data.isDelete == false" (click)="deleteReminder(data)">Delete</button>
+            </td>
+          </tr>
+        </table>
       </div>
       </form>
     </div>  
@@ -39,7 +61,11 @@
                 <p class="big-font" [style]="{ color: day.colorCode }" *ngIf="day.mDate != ''">
                     {{ day.mDate.date() }}
                 </p>
-                <p *ngIf="day.reminder != ''">{{day.reminder}}</p>
+                <div *ngIf="day['reminder']?.length != 0">
+                  <p *ngFor="let rem of day['reminder']">
+                    {{rem.reminder}}
+                  </p>
+                </div>               
             </ng-container>
             </div>
         </div>

@@ -22,19 +22,23 @@ export class CustomCalendarComponent implements OnInit {
   reminderVal: any = '';
   reminderObj: any = [];
   monthYr: any;
+  fromTime: any;
+  endTime: any;
+  editFlag: boolean = false;
+  reminderId: any;
 
   constructor(private landingSrv: LandingService) { }
 
   ngOnInit(): void {
     this.subscriptionsList.push(
       this.landingSrv.getCalendarData().subscribe((data: any) => {
-        this.reminderObj = data; 
-        this.setCalendar();     
+        this.reminderObj = data;
+        this.setCalendar();
       },
-      (err)=> {       
-      })
-    );     
-   
+        (err) => {
+        })
+    );
+
   }
 
   setCalendar() {
@@ -59,7 +63,6 @@ export class CustomCalendarComponent implements OnInit {
   }
 
   fillDates(currentMoment: moment.Moment) {
-   
     const firstOfMonth = moment(currentMoment).startOf("month").day(); //week's day on 1st of month
     const lastOfMonth = moment(currentMoment).endOf("month").day(); //week's day on last of month
     const firstDayOfGrid = moment(currentMoment)
@@ -77,15 +80,16 @@ export class CustomCalendarComponent implements OnInit {
     ).map((date) => {
       let rem;
       const newDate = moment(firstDayOfGrid).date(date);
-      if(newDate.format('MMMM') == this.currentDate?.format('MMMM')){
-        rem = this.reminderObj.findIndex((remData: any) =>  remData.id == newDate.format('MM')+newDate.format('DD')+newDate.format('YYYY'));
+      if (newDate.format('MMMM') == this.currentDate?.format('MMMM')) {
+        rem = this.reminderObj.findIndex((remData: any) => remData.id == newDate.format('MM') + newDate.format('DD') + newDate.format('YYYY'));
       }
-      return {        
+      return {
         today: this.isToday(newDate), // boolean true/false
         selected: this.isSelected(newDate), //boolean true/false
         mDate: newDate,
-        reminder: this.reminderObj[rem]?.reminder,
-        background: this.reminderObj[rem] ? true : false
+        reminder: this.reminderObj[rem] ? this.reminderObj[rem].reminder : [],
+        background: this.reminderObj[rem] ? true : false,       
+        id: newDate.format('MM') + newDate.format('DD') + newDate.format('YYYY')
       };
     });
   }
@@ -106,13 +110,11 @@ export class CustomCalendarComponent implements OnInit {
     return this.selectedDate === moment(date).format("DD/MM/YYYY");
   }
 
-  selectDate(day) {   
+  selectDate(day) {
     this.day = day;
-    day.reminder != '' ? this.reminderVal = day.reminder : this.reminderVal = '';    
-    console.log(this.reminderVal);
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
-    this.title = day.mDate.format('DD-MMM-YYYY');    
+    this.title = day.mDate.format('DD-MMM-YYYY');
   }
 
   closeModal() {
@@ -122,74 +124,123 @@ export class CustomCalendarComponent implements OnInit {
   }
 
   addReminder() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
-    let payload = {
-      date: this.day.mDate,
-      reminder: this.reminderVal,
-      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')+this.day.mDate.format('YYYY')
+    let payload;
+    if (!this.editFlag) {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";
+      let obj = [];
+      let dataToPush = {
+        reminder: this.reminderVal,
+        fromTime: this.fromTime,
+        endTime: this.endTime,
+        id:this.day['id']+this.fromTime
+      }
+      if(this.day['reminder'].length != 0){
+        this.day['reminder'].push(dataToPush);      
+        this.subscriptionsList.push(
+          this.landingSrv.updateCalendarData(this.day).subscribe((data: any) => {         
+            this.reminderVal = '';
+            this.fromTime = '';
+            this.endTime = '';
+            this.editFlag = false;
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+          })
+        );
+      }else{
+        obj.push(dataToPush)
+        payload = {
+          date: this.day.mDate,
+          reminder: obj,
+          id: this.day.mDate.format('MM') + this.day.mDate.format('DD') + this.day.mDate.format('YYYY')
+        }
+        this.subscriptionsList.push(
+          this.landingSrv.postCalendarData(payload).subscribe((data: any) => {
+            this.day.reminder.push(dataToPush);
+            this.day.background = true;
+            this.reminderVal = '';
+            this.fromTime = '';
+            this.endTime = '';
+          })
+        );
+      }    
+    } else {
+      this.day['reminder'].forEach(det => { 
+        if(det.id == this.reminderId){
+          det.reminder = this.reminderVal;
+          det.fromTime = this.fromTime;
+          det.endTime = this.endTime;
+        }   
+      });
+      this.subscriptionsList.push(
+        this.landingSrv.updateCalendarData(this.day).subscribe((data: any) => {         
+          this.reminderVal = '';
+          this.fromTime = '';
+          this.endTime = '';
+          this.editFlag = false;         
+          var modal = document.getElementById("myModal");
+          modal.style.display = "none";
+        })
+      );
     }
-    this.subscriptionsList.push(
-      this.landingSrv.postCalendarData(payload).subscribe((data: any) => {
-        this.day.reminder = this.reminderVal;
-        this.day.background = true;
-        this.reminderVal = '';
-      })
-    );
   }
 
-  editReminder(){
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
-    let payload = {
-      date: this.day.mDate,
-      reminder: this.reminderVal,
-      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')+this.day.mDate.format('YYYY')
-    }
-    this.subscriptionsList.push(
-      this.landingSrv.updateCalendarData(payload).subscribe((data: any) => {
-        this.day.reminder = this.reminderVal;
-        this.reminderVal = '';
-      })
-    );
+  editReminder(data) {
+    this.reminderVal = data.reminder;
+    this.fromTime = data.fromTime;
+    this.endTime = data.endTime;
+    this.editFlag = true;
+    this.reminderId = data.id
   }
 
-  deleteReminder(){
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
-    let payload = {
-      date: this.day.mDate,
-      reminder: this.reminderVal,
-      id: this.day.mDate.format('MM')+this.day.mDate.format('DD')+this.day.mDate.format('DD')
-    }
-    this.subscriptionsList.push(
-      this.landingSrv.deleteCalendarData(payload).subscribe((data: any) => {
-        this.day.reminder = '';
+  deleteReminder(data) {
+    if(this.day['reminder'].length > 1){
+     let id = this.day['reminder'].findIndex((det: any) => det.id == data.id);
+     this.day['reminder'].splice(id,1);    
+     this.subscriptionsList.push(
+      this.landingSrv.updateCalendarData(this.day).subscribe((data: any) => {         
         this.reminderVal = '';
+        this.fromTime = '';
+        this.endTime = '';
+        this.editFlag = false;        
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";       
       })
     );
+    }else if(this.day['reminder'].length == 1){     
+      this.subscriptionsList.push(
+        this.landingSrv.deleteCalendarData(this.day.id).subscribe((data: any) => {
+          var modal = document.getElementById("myModal");
+          modal.style.display = "none";
+          this.day.reminder = '';
+          this.reminderVal = '';
+          this.day.background = false;
+          console.log(this.day);
+        })
+      );
+    }else{}
   }
 
-  changeMonth(opr){
+  changeMonth(opr) {
     this.reminderObj = [];
     this.subscriptionsList.push(
       this.landingSrv.getCalendarData().subscribe((data: any) => {
-        this.reminderObj = data; 
-        if(opr == 'N'){
-          this.currentDate = moment(this.currentDate).add(1,'months'); // get today's date (moment)    
+        this.reminderObj = data;
+        if (opr == 'N') {
+          this.currentDate = moment(this.currentDate).add(1, 'months'); // get today's date (moment)    
           this.currentMonth = moment(this.currentDate).format("MMMM"); // format current date and get month (Eg:-August)
           this.monthYr = moment(this.currentDate).format("MMMM-YYYY")
           this.generateCalendarByFillingDates();
-        }else{
-          this.currentDate = moment(this.currentDate).subtract(1,'months'); // get today's date (moment)      
+        } else {
+          this.currentDate = moment(this.currentDate).subtract(1, 'months'); // get today's date (moment)      
           this.currentMonth = moment(this.currentDate).format("MMMM"); // format current date and get month (Eg:-August)
           this.monthYr = moment(this.currentDate).format("MMMM-YYYY")
           this.generateCalendarByFillingDates();
         }
       },
-      (err)=> {       
-      })
-    );    
+        (err) => {
+        })
+    );
 
   }
 

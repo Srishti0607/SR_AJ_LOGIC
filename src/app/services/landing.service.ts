@@ -193,7 +193,7 @@ export class LandingService {
     deleteCalendarData(payload){     
       const headers = new HttpHeaders()
       .set('Content-Type', 'application/json');
-      let url = "http://localhost:3000/calendar/"+payload.id;
+      let url = "http://localhost:3000/calendar/"+payload;
       return this.http.delete(url);
     }
 
