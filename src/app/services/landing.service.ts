@@ -24,6 +24,12 @@ export class LandingService {
     return this.http.get(url);
   }
 
+    //Call to datasource for getting list of Country names with currency codes
+    getCountryStateCityDetails() {
+      let url = "assets/country-state-city.json"
+      return this.http.get(url);
+    }
+
   //Get users
   getUsers() {
     let url = "assets/USERS.json"

@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Cascadig Dropdowns</h1>
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" placeholder="Select"
+        appearance="outline" [(ngModel)]="countrySelected" (change)="storeStateValue()">
+        <option value="NA">Please Select</option>
+        <option *ngFor="let country of countryDetails" value="{{country.CountryName}}">{{country.CountryName}}</option>
+    </select>
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" placeholder="Select"
+        appearance="outline" [(ngModel)]="stateSelected" [disabled]="countrySelected == 'NA'" (change)="storeCityValue()">
+        <option value="NA">Please Select</option>
+        <option *ngFor="let state of stateDetails" value="{{state.StateName}}">{{state.StateName}}</option>
+    </select>
+    <select class="btn col-sm-2 dropdown-toggle btn-outline-info" placeholder="Select"
+        appearance="outline" [(ngModel)]="citySelected" [disabled]="countrySelected == 'NA' || stateSelected == 'NA'">
+        <option value="NA">Please Select</option>
+        <option *ngFor="let city of cityDetails" value="{{city}}">{{city}}</option>
+    </select>
+    <button class="btn btn-primary col-sm-2" type="button" [disabled]="countrySelected == 'NA' || stateSelected == 'NA' || citySelected == 'NA'"
+        (click)="submitData()">SUBMIT</button>
+
+</div>

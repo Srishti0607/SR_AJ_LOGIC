@@ -69,6 +69,7 @@ import { ExportAsModule } from 'ngx-export-as';
 import { CustomCalendarComponent } from './custom-calendar/custom-calendar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NewOrderAccordianComponent } from './new-order-accordian/new-order-accordian.component';
+import { CascadingDropdownComponent } from './cascading-dropdown/cascading-dropdown.component';
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
@@ -122,7 +123,8 @@ export const interceptorProviders = [
     CheckTemplateComponent,
     ExportFilesComponent,
     CustomCalendarComponent,
-    NewOrderAccordianComponent
+    NewOrderAccordianComponent,
+    CascadingDropdownComponent
   ],
   imports: [
     BrowserModule,

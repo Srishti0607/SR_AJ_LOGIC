@@ -34,6 +34,7 @@ import { CheckTemplateComponent } from './check-template/check-template.componen
 import { ExportFilesComponent } from './export-files/export-files.component';
 import { CustomCalendarComponent } from './custom-calendar/custom-calendar.component';
 import { NewOrderAccordianComponent } from './new-order-accordian/new-order-accordian.component';
+import { CascadingDropdownComponent } from './cascading-dropdown/cascading-dropdown.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,7 @@ const routes: Routes = [
   { path: 'export', component: ExportFilesComponent },
   { path: 'custom-calendar', component: CustomCalendarComponent },
   { path: 'new-order-accordian', component: NewOrderAccordianComponent },
+  { path: 'cascading-dropdowns', component: CascadingDropdownComponent },
   { path: '**', component: NotFoundComponent }
   
 
