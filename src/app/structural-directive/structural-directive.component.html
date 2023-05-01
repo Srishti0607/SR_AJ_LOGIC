@@ -1,0 +1,20 @@
+<form class="container">
+    <h1>Eg:1 Custom Structural </h1>
+    <p *hideAfter="2000; then placeholder">Hello {{name}}!</p>
+    <ng-template #placeholder>
+        <p>Hello XYZ</p>
+    </ng-template>
+    <h1>Eg:2 Custom Structure</h1>
+    <p *repeatItself="10">I am being repeated...</p>
+    <h1>Eg:3Custom ngIf</h1>
+    <p *appCustomIf="condition">
+        (A) This is displayed because the condition is false.
+    </p>
+    <p *appCustomIf="!condition">
+        (B) This is displayed because the condition is true.
+    </p>
+    <h1>Eg:4 Custom ngFor</h1>
+    <div *customNgFor="let det from obj; let index=index">
+        {{obj[det]}}
+    </div>
+</form>

@@ -70,6 +70,8 @@ import { CustomCalendarComponent } from './custom-calendar/custom-calendar.compo
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NewOrderAccordianComponent } from './new-order-accordian/new-order-accordian.component';
 import { CascadingDropdownComponent } from './cascading-dropdown/cascading-dropdown.component';
+import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
+import { CustomIfDirective, MyStructDirective, NgForObjectDirective, RepeatDirective } from './custom-if.directive';
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
@@ -124,7 +126,12 @@ export const interceptorProviders = [
     ExportFilesComponent,
     CustomCalendarComponent,
     NewOrderAccordianComponent,
-    CascadingDropdownComponent
+    CascadingDropdownComponent,
+    StructuralDirectiveComponent,
+    CustomIfDirective,
+    NgForObjectDirective,
+    MyStructDirective,
+    RepeatDirective
   ],
   imports: [
     BrowserModule,
