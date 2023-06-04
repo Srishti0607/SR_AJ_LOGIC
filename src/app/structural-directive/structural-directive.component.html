@@ -14,7 +14,17 @@
         (B) This is displayed because the condition is true.
     </p>
     <h1>Eg:4 Custom ngFor</h1>
-    <div *customNgFor="let det from obj; let index=index">
-        {{obj[det]}}
-    </div>
+    <table border="1" id="customers">
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Description</th>
+        </tr>
+        <tr
+        *customNgFor="let det from obj; let index=index">
+          <td>{{obj[det].EmployeeID}}</td>
+          <td>{{obj[det].firstname}}</td>
+          <td>{{obj[det].lastname}}</td>        
+        </tr>
+      </table>
 </form>
