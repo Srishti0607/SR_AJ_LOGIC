@@ -1,0 +1,40 @@
+<form class="container">
+    <h1 style="text-align: center;">First Example </h1>
+    <h4>Normal Syntax</h4>
+    <span>Signal Value: {{valueTotal}}</span><br />
+    <button class="btn btn-primary" type="button" (click)="computeAgain()">Compute Again</button><br />
+    <span>Computed Signal Value: {{valueTotal}}</span>
+    <h4>Signal Syntax</h4>
+    <span>Signal Value: {{signalTotal()}}</span><br />
+    <button class="btn btn-primary" type="button" (click)="computeSignalAgain()">Compute Again</button><br />
+    <span>Computed Signal Value: {{signalTotal()}}</span>
+    <br />
+    <h1 style="text-align: center;">Second Example</h1>
+    <div>{{ message() }}</div>
+    <div>
+        <input type="text" [ngModel]="name()" (ngModelChange)="name.set($event)" />
+    </div>
+    <div>
+        <button class="btn btn-primary" (click)="name.set('World')">Hello World!</button>
+        <button class="btn btn-primary" (click)="name.set('Angular')">Hello Angular!</button>
+        <button class="btn btn-primary" (click)="name.set('Signals')">Hello Signals!</button>
+    </div>
+    <br />
+    <h1 style="text-align: center;"> Difference Between Set,Update,Mutate (Writable Signals)</h1>
+    <div><span>{{count()}}</span></div>
+    <div>
+        <button class="btn btn-primary" (click)="count.set(0)">Count Set</button>
+        <button class="btn btn-primary" (click)="updateCount()">Count Update</button>
+    </div>
+    <h4>Mutate</h4>
+    <div><span>Name: {{bookDet()[0].name}}, Price: {{bookDet()[0].price}} </span></div>
+    <button class="btn btn-primary" (click)="objMutate()">Mutate</button>
+    <br/>
+    <h1 style="text-align: center;">Computable Signals Example</h1>
+    <span>Number is {{numberVal()}} and it is {{compute()}}</span>
+    <h1 style="text-align: center;"> Logging count value using effect()</h1>
+    <div *ngFor="let eventCount of eventObj"><span>{{eventCount}}</span></div><br/>
+    <br/>
+    <h1 style="text-align: center;">Signals and RxJS interoperability</h1>
+    <div><span>Check Console Logs</span></div>
+</form>

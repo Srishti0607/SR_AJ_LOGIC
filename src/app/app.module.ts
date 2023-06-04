@@ -72,6 +72,7 @@ import { NewOrderAccordianComponent } from './new-order-accordian/new-order-acco
 import { CascadingDropdownComponent } from './cascading-dropdown/cascading-dropdown.component';
 import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
 import { CustomIfDirective, MyStructDirective, NgForObjectDirective, RepeatDirective } from './custom-if.directive';
+import { SignalsComponent } from './signals/signals.component';
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
@@ -131,7 +132,8 @@ export const interceptorProviders = [
     CustomIfDirective,
     NgForObjectDirective,
     MyStructDirective,
-    RepeatDirective
+    RepeatDirective,
+    SignalsComponent
   ],
   imports: [
     BrowserModule,

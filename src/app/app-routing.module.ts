@@ -36,6 +36,7 @@ import { CustomCalendarComponent } from './custom-calendar/custom-calendar.compo
 import { NewOrderAccordianComponent } from './new-order-accordian/new-order-accordian.component';
 import { CascadingDropdownComponent } from './cascading-dropdown/cascading-dropdown.component';
 import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
+import { SignalsComponent } from './signals/signals.component';
 
 const routes: Routes = [
   {
@@ -93,6 +94,7 @@ const routes: Routes = [
   { path: 'new-order-accordian', component: NewOrderAccordianComponent },
   { path: 'cascading-dropdowns', component: CascadingDropdownComponent },
   { path: 'structural-directive', component:  StructuralDirectiveComponent},
+  { path: 'signals', component:  SignalsComponent},
   { path: '**', component: NotFoundComponent }
   
 
