@@ -18,7 +18,7 @@ export class SignalsComponent implements OnInit {
     return `Hello ${this.name()}!`;
   });
   count = signal(10);
-  bookDet = signal([{name: 'Learn Signals', price: 'Rs 100'}]);
+  bookDet = signal([{name: 'Learn Signals', price: 100},{name: 'Learn Angular', price: 200},{name: 'Learn NodeJS', price: 300}]);
   eventObj: any = [];
   loggingEffectForCount = effect(() => {
     console.log(`The count is: ${this.count()}`);
@@ -52,15 +52,21 @@ export class SignalsComponent implements OnInit {
   }
 
   objMutate(){
-    this.bookDet.mutate(value => {
-      // Change the first TODO in the array to 'done: true' without replacing it.
-      value[0].price = 'Rs 500';
+    this.bookDet().forEach((value:any,index:any) => {
+      this.bookDet.mutate(data => {
+        data[index].price = value.price + 50;
+      });
     });
+   
   }
 
   compute(){
    return computed(() => this.numberVal() % 2 === 0) ? 'Even' : 'Odd'
   }
 
+}
+
+function value(value: { name: string; price: number; }, index: number, array: { name: string; price: number; }[]): void {
+  throw new Error('Function not implemented.');
 }
 

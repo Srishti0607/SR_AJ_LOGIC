@@ -27,7 +27,7 @@
         <button class="btn btn-primary" (click)="updateCount()">Count Update</button>
     </div>
     <h4>Mutate</h4>
-    <div><span>Name: {{bookDet()[0].name}}, Price: {{bookDet()[0].price}} </span></div>
+    <div *ngFor="let det of bookDet()"><span>Name: {{det.name}}, Price: {{det.price}} </span></div><br/>
     <button class="btn btn-primary" (click)="objMutate()">Mutate</button>
     <br/>
     <h1 style="text-align: center;">Computable Signals Example</h1>
