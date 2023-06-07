@@ -37,6 +37,8 @@ import { NewOrderAccordianComponent } from './new-order-accordian/new-order-acco
 import { CascadingDropdownComponent } from './cascading-dropdown/cascading-dropdown.component';
 import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
 import { SignalsComponent } from './signals/signals.component';
+import {  } from './signals/signals.component';
+import { SignalBehSubComponent } from './signal-beh-sub/signal-beh-sub.component';
 
 const routes: Routes = [
   {
@@ -95,6 +97,7 @@ const routes: Routes = [
   { path: 'cascading-dropdowns', component: CascadingDropdownComponent },
   { path: 'structural-directive', component:  StructuralDirectiveComponent},
   { path: 'signals', component:  SignalsComponent},
+  { path: 'signal-beh-sub', component: SignalBehSubComponent},
   { path: '**', component: NotFoundComponent }
   
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Config } from '../config';
 import { BehaviorSubject } from 'rxjs';
@@ -12,6 +12,7 @@ export class LandingService {
   private employeeURL: string = this.baseUrl + 'Employees';
   public captureBeh = new BehaviorSubject<any>('');
   parameterizedCalled: boolean = false;
+  captureSignal= signal('');
   setCompany(data: any) {
     this.captureBeh.next(data);
   }

@@ -73,6 +73,7 @@ import { CascadingDropdownComponent } from './cascading-dropdown/cascading-dropd
 import { StructuralDirectiveComponent } from './structural-directive/structural-directive.component';
 import { CustomIfDirective, MyStructDirective, NgForObjectDirective, RepeatDirective } from './custom-if.directive';
 import { SignalsComponent } from './signals/signals.component';
+import { SignalBehSubComponent } from './signal-beh-sub/signal-beh-sub.component';
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
@@ -133,7 +134,8 @@ export const interceptorProviders = [
     NgForObjectDirective,
     MyStructDirective,
     RepeatDirective,
-    SignalsComponent
+    SignalsComponent,
+    SignalBehSubComponent
   ],
   imports: [
     BrowserModule,

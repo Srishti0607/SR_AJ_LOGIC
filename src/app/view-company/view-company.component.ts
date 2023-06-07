@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LandingService } from '../services/landing.service';
 
@@ -10,10 +10,16 @@ import { LandingService } from '../services/landing.service';
 export class ViewBehComponent implements OnInit {
   public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
   categoryObj: any = []
+  signalCategoryObj: any = [];
+  captureSignalValue = signal('');
 
-  constructor(private landingSrv: LandingService) { }
+  constructor(private landingSrv: LandingService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.captureSignalValue.set(this.landingSrv.captureSignal());
+    console.log('View signal',this.landingSrv.captureSignal())
     this.landingSrv.captureBeh.subscribe(res => {
       if(res != null){
         this.subscriptionsList.push(
@@ -26,6 +32,16 @@ export class ViewBehComponent implements OnInit {
         );
       }
     });
+    if(this.captureSignalValue() != ''){
+      this.subscriptionsList.push(
+        this.landingSrv.getbehCategoryData(this.captureSignalValue()).subscribe((data: any) => {
+          if (data) {
+            this.categoryObj = [];
+            this.categoryObj = data;
+          }
+        })
+      );
+    }
   }
 
 }
