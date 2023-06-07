@@ -1,12 +1,16 @@
-import { Component,OnInit,computed,effect,signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component,OnInit,computed,effect,signal } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
+import { Subscription } from 'rxjs';
+import { LandingService } from '../services/landing.service';
 
 @Component({
   selector: 'app-signals',
   templateUrl: './signals.component.html',
-  styleUrls: ['./signals.component.css']
+  styleUrls: ['./signals.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignalsComponent implements OnInit {
+  public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
   valueFrom: number = 1;
   valueTo: number = 2;
   valueTotal: number;
@@ -28,7 +32,7 @@ export class SignalsComponent implements OnInit {
   counter$: any = toObservable(this.counter);
   readonly numberVal = signal(1000);
 
-  constructor(){}
+  constructor(private landingSrv: LandingService){}
 
   ngOnInit(){
     this.valueTotal = this.valueFrom + this.valueTo;
@@ -63,10 +67,6 @@ export class SignalsComponent implements OnInit {
   compute(){
    return computed(() => this.numberVal() % 2 === 0) ? 'Even' : 'Odd'
   }
-
 }
 
-function value(value: { name: string; price: number; }, index: number, array: { name: string; price: number; }[]): void {
-  throw new Error('Function not implemented.');
-}
 

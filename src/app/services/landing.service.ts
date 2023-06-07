@@ -12,7 +12,7 @@ export class LandingService {
   private employeeURL: string = this.baseUrl + 'Employees';
   public captureBeh = new BehaviorSubject<any>('');
   parameterizedCalled: boolean = false;
-  captureSignal= signal('');
+  captureSignal = signal('');
   setCompany(data: any) {
     this.captureBeh.next(data);
   }

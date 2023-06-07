@@ -33,7 +33,6 @@ export class SignalBehSubComponent {
   }
 
   updateInputs(){    
-    console.log('Hi',this.reactiveForm.get('behData').value) 
     this.landingSrv.captureSignal.set(this.reactiveForm.get('behData').value);
   }
 
