@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Chart } from 'chart.js';
 import { Subscription } from 'rxjs';
 import { LandingService } from '../services/landing.service';
+import { StandaloneComponentComponent } from '../standalone-component/standalone-component.component';
 
 @Component({
   selector: 'app-charts',

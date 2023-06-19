@@ -40,6 +40,7 @@ import { SignalsComponent } from './signals/signals.component';
 import {  } from './signals/signals.component';
 import { SignalBehSubComponent } from './signal-beh-sub/signal-beh-sub.component';
 import { ProvidersComponent } from './providers/providers.component';
+import { StandaloneComponentComponent } from './standalone-component/standalone-component.component';
 
 const routes: Routes = [
   {
@@ -100,6 +101,7 @@ const routes: Routes = [
   { path: 'signals', component:  SignalsComponent},
   { path: 'signal-beh-sub', component: SignalBehSubComponent},
   { path: 'providers', component: ProvidersComponent},
+  { path: 'standalone', component: StandaloneComponentComponent},
   { path: '**', component: NotFoundComponent }
   
 

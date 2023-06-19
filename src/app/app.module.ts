@@ -145,7 +145,7 @@ export function factoryMethod() {
     RepeatDirective,
     SignalsComponent,
     SignalBehSubComponent,
-    ProvidersComponent
+    ProvidersComponent,
   ],
   imports: [
     BrowserModule,
