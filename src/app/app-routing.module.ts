@@ -39,6 +39,7 @@ import { StructuralDirectiveComponent } from './structural-directive/structural-
 import { SignalsComponent } from './signals/signals.component';
 import {  } from './signals/signals.component';
 import { SignalBehSubComponent } from './signal-beh-sub/signal-beh-sub.component';
+import { ProvidersComponent } from './providers/providers.component';
 
 const routes: Routes = [
   {
@@ -98,6 +99,7 @@ const routes: Routes = [
   { path: 'structural-directive', component:  StructuralDirectiveComponent},
   { path: 'signals', component:  SignalsComponent},
   { path: 'signal-beh-sub', component: SignalBehSubComponent},
+  { path: 'providers', component: ProvidersComponent},
   { path: '**', component: NotFoundComponent }
   
 
