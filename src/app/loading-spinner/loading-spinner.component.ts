@@ -31,9 +31,9 @@ export class LoadingSpinnerComponent implements OnInit {
           this.startTime = new Date().getTime();
         }
         if (typeof this.intervalObject == "undefined") {
-          this.intervalObject = window.setInterval(function () {
-            self.setDisplayText();
-          }, 1000);
+          // this.intervalObject = window.setInterval(function () {
+          //   self.setDisplayText();
+          // }, 1000);
         }
       } else {
         this.objLoaderStatus = false;
@@ -41,7 +41,7 @@ export class LoadingSpinnerComponent implements OnInit {
         this.loadingText = "";
         this.startTime = 0;
         if (typeof this.intervalObject != "undefined") {
-          window.clearInterval(this.intervalObject);
+          // window.clearInterval(this.intervalObject);
           this.intervalObject = undefined;
         }
       }

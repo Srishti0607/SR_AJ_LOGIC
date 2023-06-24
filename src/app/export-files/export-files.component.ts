@@ -4,7 +4,7 @@ import { LandingService } from '../services/landing.service';
 import * as XLSX from 'xlsx';
 import { jsPDF } from "jspdf";
 import { ExportToCsv } from 'export-to-csv';
-import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
+// import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 // import { saveAs } from 'file-saver';
 // import htmlDocx from 'html-docx-js/dist/html-docx';
 
@@ -16,22 +16,24 @@ import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 export class ExportFilesComponent implements OnInit {
   public subscriptionsList: Subscription[] = []; // to unsubscribe API calls
   countryDetObj: any = []; //store country details getting from service
-  exportAsConfig: ExportAsConfig = {
-    type: 'png', // the type you want to download
-    elementIdOrContent: 'customers',
-  }
+  // exportAsConfig: ExportAsConfig = {
+  //   type: 'png', // the type you want to download
+  //   elementIdOrContent: 'customers',
+  // }
 
-  exportAsConfigTxt: ExportAsConfig = {
-    type: 'txt', // the type you want to download
-    elementIdOrContent: 'customers',
-  }
+  // exportAsConfigTxt: ExportAsConfig = {
+  //   type: 'txt', // the type you want to download
+  //   elementIdOrContent: 'customers',
+  // }
 
-  exportAsConfigJSON: ExportAsConfig = {
-    type: 'json', // the type you want to download
-    elementIdOrContent: 'customers',
-  }
+  // exportAsConfigJSON: ExportAsConfig = {
+  //   type: 'json', // the type you want to download
+  //   elementIdOrContent: 'customers',
+  // }
 
-  constructor(private landingSrv: LandingService,private exportAsService: ExportAsService) { }
+  constructor(private landingSrv: LandingService,
+    // private exportAsService: ExportAsService
+    ) { }
 
   ngOnInit(): void {
     this.getCountryCodesData();
@@ -141,21 +143,21 @@ export class ExportFilesComponent implements OnInit {
   csvExporter.generateCsv(this.countryDetObj);
   }
 
-  exportPNG() {
-    this.exportAsService.save(this.exportAsConfig, 'Country').subscribe(() => {
-      // save started
-    });   
-  }
+  // exportPNG() {
+  //   this.exportAsService.save(this.exportAsConfig, 'Country').subscribe(() => {
+  //     // save started
+  //   });   
+  // }
 
-  exportTxt(){
-    this.exportAsService.save(this.exportAsConfigTxt, 'Country').subscribe(() => {
-      // save started
-    }); 
-  }
+  // exportTxt(){
+  //   this.exportAsService.save(this.exportAsConfigTxt, 'Country').subscribe(() => {
+  //     // save started
+  //   }); 
+  // }
 
-  exportJson(){
-    this.exportAsService.save(this.exportAsConfigJSON, 'Country').subscribe(() => {
-      // save started
-    }); 
-  }
+  // exportJson(){
+  //   this.exportAsService.save(this.exportAsConfigJSON, 'Country').subscribe(() => {
+  //     // save started
+  //   }); 
+  // }
 }

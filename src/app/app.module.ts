@@ -64,8 +64,8 @@ import RouterDeactivateGuardService from './routerDeactivateGuard.service';
 import { ProductscatalogComponent } from './productscatalog/productscatalog.component';
 import { FilterComponent } from './filter/filter.component';
 import { CheckTemplateComponent } from './check-template/check-template.component';
-import { ExportFilesComponent } from './export-files/export-files.component';
-import { ExportAsModule } from 'ngx-export-as';
+// import { ExportFilesComponent } from './export-files/export-files.component';
+// import { ExportAsModule } from 'ngx-export-as';
 import { CustomCalendarComponent } from './custom-calendar/custom-calendar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NewOrderAccordianComponent } from './new-order-accordian/new-order-accordian.component';
@@ -135,7 +135,7 @@ export function factoryMethod() {
     ProductscatalogComponent,
     FilterComponent,
     CheckTemplateComponent,
-    ExportFilesComponent,
+    // ExportFilesComponent,
     CustomCalendarComponent,
     NewOrderAccordianComponent,
     CascadingDropdownComponent,
@@ -170,7 +170,7 @@ export function factoryMethod() {
     InfiniteScrollModule,
     NgChartsModule,
     NgxSpinnerModule,
-    ExportAsModule,
+    // ExportAsModule,
     FlexLayoutModule
   ],
   providers: [
