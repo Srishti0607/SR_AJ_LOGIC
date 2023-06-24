@@ -77,6 +77,7 @@ import { SignalBehSubComponent } from './signal-beh-sub/signal-beh-sub.component
 import { ProvidersComponent } from './providers/providers.component';
 import { ProvideSampleService } from './provide-sample.service';
 import {provideClientHydration} from '@angular/platform-browser';
+import { TranformInputChildComponent, TranformInputComponent } from './tranform-input/tranform-input.component';
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
@@ -147,6 +148,8 @@ export function factoryMethod() {
     SignalsComponent,
     SignalBehSubComponent,
     ProvidersComponent,
+    TranformInputComponent,
+    TranformInputChildComponent
   ],
   imports: [
     BrowserModule,
