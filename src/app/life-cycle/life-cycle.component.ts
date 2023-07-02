@@ -78,6 +78,7 @@ OnDestroy  {
   ngOnDestroy() {
     console.log("Life-Cycle Component:OnDestroy");
     this.destroy = true;
+    console.log('You are in On Destroy method now')
   }
 
 }

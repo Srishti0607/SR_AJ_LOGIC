@@ -42,6 +42,7 @@ import { SignalBehSubComponent } from './signal-beh-sub/signal-beh-sub.component
 import { ProvidersComponent } from './providers/providers.component';
 import { StandaloneComponentComponent } from './standalone-component/standalone-component.component';
 import { TranformInputComponent } from './tranform-input/tranform-input.component';
+import { DestroyFeatureComponent } from './destroy-feature/destroy-feature.component';
 
 const routes: Routes = [
   {
@@ -104,6 +105,7 @@ const routes: Routes = [
   { path: 'providers', component: ProvidersComponent},
   { path: 'standalone', component: StandaloneComponentComponent},
   { path: 'transform-input', component: TranformInputComponent},
+  { path: 'destroy-feature', component: DestroyFeatureComponent},
   { path: '**', component: NotFoundComponent }
   
 
