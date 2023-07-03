@@ -8,7 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LandingService {
   private currencyDetBaseURL: string = 'https://api.exchangerate.host'
-  private baseUrl: string = Config.baseURL;
+  public baseUrl: string = Config.baseURL;
+  #currencyDetBaseURLDefined: string = 'https://api.exchangerate.host'
   private employeeURL: string = this.baseUrl + 'Employees';
   public captureBeh = new BehaviorSubject<any>('');
   parameterizedCalled: boolean = false;
@@ -17,7 +18,8 @@ export class LandingService {
     this.captureBeh.next(data);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
 
   //Call to datasource for getting list of Country names with currency codes
   getCountryDetails() {

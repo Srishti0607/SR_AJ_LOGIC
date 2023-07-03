@@ -43,6 +43,7 @@ import { ProvidersComponent } from './providers/providers.component';
 import { StandaloneComponentComponent } from './standalone-component/standalone-component.component';
 import { TranformInputComponent } from './tranform-input/tranform-input.component';
 import { DestroyFeatureComponent } from './destroy-feature/destroy-feature.component';
+import { RouteToComponent } from './route-to/route-to.component';
 
 const routes: Routes = [
   {
@@ -106,6 +107,7 @@ const routes: Routes = [
   { path: 'standalone', component: StandaloneComponentComponent},
   { path: 'transform-input', component: TranformInputComponent},
   { path: 'destroy-feature', component: DestroyFeatureComponent},
+  { path: 'route-to-component/:name', component: RouteToComponent},
   { path: '**', component: NotFoundComponent }
   
 
@@ -113,7 +115,13 @@ const routes: Routes = [
 
 @NgModule({
   // imports: [RouterModule.forRoot(routes)],
-  imports: [RouterModule.forRoot(routes, { useHash: true, initialNavigation: 'enabledBlocking' })],
+  imports: [
+  // [RouterModule.forRoot(routes, { useHash: true, initialNavigation: 'enabledBlocking' })],
+  RouterModule.forRoot(routes, {
+    useHash: true, initialNavigation: 'enabledBlocking',
+    bindToComponentInputs: true // <-- enable this feature
+  })
+],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
