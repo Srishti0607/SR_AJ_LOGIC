@@ -1,0 +1,21 @@
+<form class="container">
+    <div *ngIf="(empData | async).length > 0" class="form-group row">
+    <h4>List of Employees</h4>
+    <div *ngFor="let data of empData | async; let i=index">
+        <span>{{i+1}}.</span> {{data.name}} is {{data.age}} years old.
+    </div>
+</div>
+
+    <h4>Add New Employee</h4>
+    <div class="form-group row">
+        <label class="col-sm-2">Name</label>
+        <input class="col-sm-2" type="text" [(ngModel)]="empName">
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">Age</label>
+        <input class="col-sm-2" type="number" [(ngModel)]="empAge">
+    </div>
+    <div class="form-group row">
+        <button class="col-sm-2" type="button" (click)="addCustomer()">Add Data</button>
+    </div>
+</form>

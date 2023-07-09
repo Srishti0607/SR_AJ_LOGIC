@@ -33,6 +33,7 @@
     "@angular/platform-server": "^16.0.0",
     "@angular/router": "^16.1.2",
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
+    "@ngrx/store": "^16.1.0",
     "@nguniversal/express-engine": "^16.1.0",
     "@popperjs/core": "^2.10.2",
     "@progress/kendo-angular-dateinputs": "^11.6.0",

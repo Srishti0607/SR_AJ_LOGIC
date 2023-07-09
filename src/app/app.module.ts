@@ -80,6 +80,10 @@ import {provideClientHydration} from '@angular/platform-browser';
 import { TranformInputChildComponent, TranformInputComponent } from './tranform-input/tranform-input.component';
 import {DestroyFeatureComponent} from './destroy-feature/destroy-feature.component';
 import {RouteToComponent} from './route-to/route-to.component';
+import { StoreMgtComponent } from './store-mgt/store-mgt.component';
+import { StoreModule } from '@ngrx/store';
+import { employeeFeatureKey, reducer } from './store/data.reducer';
+import { metaReducers, reducers } from './reducers';
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
@@ -153,7 +157,8 @@ export function factoryMethod() {
     TranformInputComponent,
     TranformInputChildComponent,
     DestroyFeatureComponent,
-    RouteToComponent
+    RouteToComponent,
+    StoreMgtComponent
   ],
   imports: [
     BrowserModule,
@@ -178,7 +183,9 @@ export function factoryMethod() {
     NgChartsModule,
     NgxSpinnerModule,
     // ExportAsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forFeature(employeeFeatureKey, reducer),
   ],
   providers: [
     provideClientHydration(),
@@ -213,6 +220,7 @@ export function factoryMethod() {
     { provide: ProvideSampleService, useClass: LandingService },
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [StoreMgtComponent]
 })
 export class AppModule { }

@@ -44,6 +44,7 @@ import { StandaloneComponentComponent } from './standalone-component/standalone-
 import { TranformInputComponent } from './tranform-input/tranform-input.component';
 import { DestroyFeatureComponent } from './destroy-feature/destroy-feature.component';
 import { RouteToComponent } from './route-to/route-to.component';
+import { StoreMgtComponent } from './store-mgt/store-mgt.component';
 
 const routes: Routes = [
   {
@@ -108,9 +109,8 @@ const routes: Routes = [
   { path: 'transform-input', component: TranformInputComponent},
   { path: 'destroy-feature', component: DestroyFeatureComponent},
   { path: 'route-to-component/:name', component: RouteToComponent},
+  { path: 'state-mgt', component: StoreMgtComponent},
   { path: '**', component: NotFoundComponent }
-  
-
 ];
 
 @NgModule({
