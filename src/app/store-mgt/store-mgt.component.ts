@@ -4,7 +4,7 @@ import { EmployeeDataState } from '../store/data.reducer';
 import { Observable } from 'rxjs';
 import { EmployeeData } from '../data.model';
 import { selectEmployeeData } from '../store/data.selector';
-import { addEmployeeData } from '../store/data.actions';
+import { addEmployeeData, LoadDataBegin } from '../store/data.actions';
 
 @Component({
   selector: 'app-store-mgt',
@@ -15,9 +15,15 @@ export class StoreMgtComponent {
   empData: Observable<EmployeeData[]>;
   empName: any;
   empAge:any;
+  usersData:any = [];
 
   constructor(private store: Store<EmployeeDataState>){
     this.empData = this.store.pipe(select(selectEmployeeData));
+  }
+
+  ngOnInit(){
+    this.usersData = this.store.dispatch(new LoadDataBegin());
+    console.log(this.usersData);
   }
 
   addCustomer() {

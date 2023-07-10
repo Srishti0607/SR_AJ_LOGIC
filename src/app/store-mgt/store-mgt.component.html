@@ -18,4 +18,11 @@
     <div class="form-group row">
         <button class="col-sm-2" type="button" (click)="addCustomer()">Add Data</button>
     </div>
+    <h4>Posting Users list using effect</h4>
+    <div class="form-group row">
+        <h4>List of Effect Users</h4>
+        <div *ngFor="let data of usersData | async; let i=index">
+            <span>{{i+1}}.</span> {{data.User}}
+        </div>
+    </div>
 </form>

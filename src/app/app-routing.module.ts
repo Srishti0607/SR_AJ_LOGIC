@@ -45,6 +45,7 @@ import { TranformInputComponent } from './tranform-input/tranform-input.componen
 import { DestroyFeatureComponent } from './destroy-feature/destroy-feature.component';
 import { RouteToComponent } from './route-to/route-to.component';
 import { StoreMgtComponent } from './store-mgt/store-mgt.component';
+import { NewTemplateSyntaxComponent } from './new-template-syntax/new-template-syntax.component';
 
 const routes: Routes = [
   {
@@ -110,6 +111,7 @@ const routes: Routes = [
   { path: 'destroy-feature', component: DestroyFeatureComponent},
   { path: 'route-to-component/:name', component: RouteToComponent},
   { path: 'state-mgt', component: StoreMgtComponent},
+  { path: 'new-template', component: NewTemplateSyntaxComponent},
   { path: '**', component: NotFoundComponent }
 ];
 

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, effect } from '@angular/core';
 //Component
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -82,8 +82,11 @@ import {DestroyFeatureComponent} from './destroy-feature/destroy-feature.compone
 import {RouteToComponent} from './route-to/route-to.component';
 import { StoreMgtComponent } from './store-mgt/store-mgt.component';
 import { StoreModule } from '@ngrx/store';
-import { employeeFeatureKey, reducer } from './store/data.reducer';
+import { employeeFeatureKey, reducer, reducer1 } from './store/data.reducer';
 import { metaReducers, reducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { DataEffects } from './store/data.effect';
+import { effects } from './effects/index'
 
 export const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: HrssInterceptor, multi: true }
@@ -186,6 +189,9 @@ export function factoryMethod() {
     FlexLayoutModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreModule.forFeature(employeeFeatureKey, reducer),
+    // StoreModule.forFeature(employeeFeatureKey, reducer1),
+    EffectsModule.forRoot(effects),
+    EffectsModule.forFeature([ DataEffects ])
   ],
   providers: [
     provideClientHydration(),
