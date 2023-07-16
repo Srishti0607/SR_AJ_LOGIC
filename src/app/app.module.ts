@@ -82,7 +82,7 @@ import {DestroyFeatureComponent} from './destroy-feature/destroy-feature.compone
 import {RouteToComponent} from './route-to/route-to.component';
 import { StoreMgtComponent } from './store-mgt/store-mgt.component';
 import { StoreModule } from '@ngrx/store';
-import { employeeFeatureKey, reducer, reducer1 } from './store/data.reducer';
+import { employeeFeatureKey, reducer } from './store/data.reducer';
 import { metaReducers, reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { DataEffects } from './store/data.effect';
@@ -189,7 +189,6 @@ export function factoryMethod() {
     FlexLayoutModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreModule.forFeature(employeeFeatureKey, reducer),
-    // StoreModule.forFeature(employeeFeatureKey, reducer1),
     EffectsModule.forRoot(effects),
     EffectsModule.forFeature([ DataEffects ])
   ],

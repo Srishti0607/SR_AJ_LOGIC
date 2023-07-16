@@ -212,4 +212,9 @@ export class LandingService {
       let url = "http://localhost:3000/calendar";
       return this.http.get(url);
     }
+
+  submitUser(payload) {
+    let url = "http://localhost:3000/userState"
+    return this.http.post(url,payload);
+  }
 }
