@@ -13,10 +13,12 @@
     "dev:ssr": "ng run sample-application:serve-ssr",
     "serve:ssr": "node dist/sample-application/server/main.js",
     "build:ssr": "ng build && ng run sample-application:server",
-    "prerender": "ng run sample-application:prerender"
+    "prerender": "ng run sample-application:prerender",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^16.0.4",
     "@angular-builders/custom-webpack": "^16.0.0",
     "@angular/animations": "^16.1.2",
     "@angular/cdk": "^16.0.0",
@@ -32,7 +34,7 @@
     "@angular/platform-browser-dynamic": "^16.1.2",
     "@angular/platform-server": "^16.0.0",
     "@angular/router": "^16.1.2",
-    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^13.1.1",
     "@ngrx/effects": "^16.1.0",
     "@ngrx/store": "^16.1.0",
     "@nguniversal/express-engine": "^16.1.0",
@@ -73,6 +75,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "ngx-build-plus": "^16.0.0",
     "typescript": "~4.9.0"
   },
   "main": "karma.conf.js",
